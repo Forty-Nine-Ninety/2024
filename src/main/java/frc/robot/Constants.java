@@ -49,4 +49,6 @@ public final class Constants
     public static final double RIGHT_X_DEADBAND = 0.01;
     public static final double TURN_CONSTANT = 6;
   }
+
+  public static double JOYSTICKF310_AXIS_DEADBAND = 0.05;
 }
