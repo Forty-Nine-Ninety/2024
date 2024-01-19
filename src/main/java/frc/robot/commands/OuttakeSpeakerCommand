@@ -11,8 +11,7 @@ public class OuttakeSpeakerCommand extends CommandBase {
         addRequirements(m_shooter); 
     }
 
-    //might need an @override here
-    //starts the outtake 
+    @Override
     public void initialize() {
         m_shooter.shooterPercentOutput(speed); 
 
