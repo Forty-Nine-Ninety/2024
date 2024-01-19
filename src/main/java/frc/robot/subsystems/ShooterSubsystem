@@ -26,15 +26,15 @@ public class ShooterSubsystem extends SubsystemBase {
         shooter2 = new CANSparkMax(Ports.CAN_SHOOTER_LEFT_SPARKMAX, MotorType.kBrushless);
         shooter3 = new CANSparkMax(Ports.CAN_SHOOTER_LEFT_SPARKMAX, MotorType.kBrushless);
 
-        //Shooter for the actual shooting part 
+        //Shooting neos 
         m_pidController1 = shooter1.getPIDController();
         m_encoder1 = shooter1.getEncoder();
 
-        //Another neo for getting the note from the indexer 
+        //Getting PID and encoder for the other neo 
         m_pidController3 = shooter3.getPIDController();
         m_encoder3 = shooter3.getEncoder();
 
-        //Need constants for all of these 
+        //Closed and Open Loop ramp rate setting 
         shooter1.setClosedLoopRampRate(MotionControl.CLOSED_LOOP_RAMP_RATE);
         shooter2.setClosedLoopRampRate(MotionControl.CLOSED_LOOP_RAMP_RATE);
         shooter3.setClosedLoopRampRate(MotionControl.CLOSED_LOOP_RAMP_RATE);
