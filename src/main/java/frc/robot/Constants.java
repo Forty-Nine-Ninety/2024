@@ -28,6 +28,8 @@ public final class Constants
   public static class Ports {
     public static int PORT_JOYSTICK_DRIVE = 0;
     public static int PORT_JOYSTICK_OPERATOR = 1;
+
+    //CAN IDs
   }
   
   public static class MotorConfig {
