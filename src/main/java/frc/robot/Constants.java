@@ -44,6 +44,8 @@ public final class Constants
     public static final double DRIVE_GEAR_RATIO = 6.75;
     public static final double STEERING_GEAR_RATIO = 150.0/7.0;
 
+    public static double ARM_MOTION_REDUCTION = 1000.0/3.0;
+
     //public static final double ROBOT_MASS = (148 - 20.3) * 0.453592; // 32lbs * kg per pound
     //public static final Matter CHASSIS    = new Matter(new Translation3d(0, 0, Units.inchesToMeters(8)), ROBOT_MASS);
   }

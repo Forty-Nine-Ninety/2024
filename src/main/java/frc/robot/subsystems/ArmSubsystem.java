@@ -6,6 +6,7 @@ import frc.robot.Constants.*;
 
 
 import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkBase;
 import com.revrobotics.RelativeEncoder;
 import com.revrobotics.SparkPIDController;
 import com.revrobotics.CANSparkLowLevel.MotorType;
@@ -43,7 +44,7 @@ public class ArmSubsystem extends SubsystemBase{
     }
 
     public void moveToPosition(double setPoint){
-        m_pidController.setReference(setPoint, CANSparkMax.ControlType.kPosition);
+        m_pidController.setReference(setPoint, CANSparkBase.ControlType.kPosition);
     }
     public void resetArmPosition(){
         m_encoder.setPosition(0);
