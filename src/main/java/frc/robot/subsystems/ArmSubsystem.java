@@ -47,4 +47,5 @@ public class ArmSubsystem extends SubsystemBase{
     public double getPosition(){
         return (m_encoder.getPosition());
     }
+    
 }
