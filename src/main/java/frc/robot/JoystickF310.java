@@ -31,7 +31,7 @@ public class JoystickF310 extends Joystick {
 	}
 
 	public double getRawAxis(int axis) {
-		return Math.abs(super.getRawAxis(axis)) < OperatorConstants.JOYSTICKF310_AXIS_DEADBAND ? 0 : super.getRawAxis(axis);
+		return Math.abs(super.getRawAxis(axis)) < DriveSettings.JOYSTICKF310_AXIS_DEADBAND ? 0 : super.getRawAxis(axis);
 	}
 
 	public static enum POVF310 {

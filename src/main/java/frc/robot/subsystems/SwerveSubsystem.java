@@ -163,10 +163,10 @@ public class SwerveSubsystem extends SubsystemBase
   {
     // swerveDrive.setHeadingCorrection(true); // Normally you would want heading correction for this kind of control.
     return run(() -> {
-      double xInput = Math.pow(translationX.getAsDouble(), 3); // Smooth controll out
-      double yInput = Math.pow(translationY.getAsDouble(), 3); // Smooth controll out
+      double xInput = Math.pow(translationX.getAsDouble(), DriveSettings.JOYSTICK_THROTTLE_X_EXPONENT); // Smooth control out
+      double yInput = Math.pow(translationY.getAsDouble(), DriveSettings.JOYSTICK_THROTTLE_Y_EXPONENT); // Smooth control out
       // Make the robot move
-      driveFieldOriented(swerveDrive.swerveController.getTargetSpeeds(xInput, yInput,
+      driveFieldOriented(swerveDrive.swerveController.getTargetSpeeds(-xInput, -yInput,
                                                                       headingX.getAsDouble(),
                                                                       headingY.getAsDouble(),
                                                                       swerveDrive.getYaw().getRadians(),
@@ -187,8 +187,8 @@ public class SwerveSubsystem extends SubsystemBase
     // swerveDrive.setHeadingCorrection(true); // Normally you would want heading correction for this kind of control.
     return run(() -> {
       // Make the robot move
-      driveFieldOriented(swerveDrive.swerveController.getTargetSpeeds(translationX.getAsDouble(),
-                                                                      translationY.getAsDouble(),
+      driveFieldOriented(swerveDrive.swerveController.getTargetSpeeds(-translationX.getAsDouble(),
+                                                                      -translationY.getAsDouble(),
                                                                       rotation.getAsDouble() * Math.PI,
                                                                       swerveDrive.getYaw().getRadians(),
                                                                       swerveDrive.getMaximumVelocity()));
