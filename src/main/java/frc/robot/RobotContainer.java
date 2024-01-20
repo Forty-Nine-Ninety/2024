@@ -8,6 +8,7 @@ import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.wpilibj.Filesystem;
 import edu.wpi.first.wpilibj.RobotBase;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandJoystick;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
@@ -16,7 +17,8 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.Constants.DriveSettings;
 import frc.robot.Constants.Ports;
 import frc.robot.JoystickF310.*;
-import frc.robot.subsystems.SwerveSubsystem;
+import frc.robot.subsystems.*;
+import frc.robot.commands.*;
 import java.io.File;
 
 /**
@@ -26,13 +28,14 @@ import java.io.File;
  */
 public class RobotContainer
 {
-
+  JoystickF310 joystickDrive = new JoystickF310(Ports.PORT_JOYSTICK_DRIVE);
+  JoystickF310 joystickOperator = new JoystickF310(Ports.PORT_JOYSTICK_OPERATOR);
   // The robot's subsystems and commands are defined here...
   private final SwerveSubsystem drivebase = new SwerveSubsystem(new File(Filesystem.getDeployDirectory(),
                                                                          "swerve"));
+  private final ArmSubsystem m_arm = new ArmSubsystem();
 
-  JoystickF310 joystickDrive = new JoystickF310(Ports.PORT_JOYSTICK_DRIVE);
-  JoystickF310 joystickOperator = new JoystickF310(Ports.PORT_JOYSTICK_OPERATOR);
+  private final ArmNeutralCommand m_armNeutralCommand = new ArmNeutralCommand(m_arm);
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
@@ -75,7 +78,14 @@ public class RobotContainer
 
     joystickDrive.getButton(ButtonF310.A).onTrue((new InstantCommand(drivebase::zeroGyro)));
     joystickDrive.getButton(ButtonF310.B).onTrue(new InstantCommand(drivebase::addFakeVisionReading));
+    joystickOperator.getButton(ButtonF310.A).onTrue(m_armNeutralCommand);
+
     //  joystickDrive.getButton(ButtonF310.X).whileTrue(new RepeatCommand(new InstantCommand(drivebase::lock, drivebase)));
+  }
+  
+  public void setTeleopDefaultCommands()
+  {
+    CommandScheduler.getInstance().setDefaultCommand(m_arm, m_armNeutralCommand);
   }
 
   /**
