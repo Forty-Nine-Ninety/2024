@@ -30,6 +30,8 @@ public final class Constants
     public static int PORT_JOYSTICK_OPERATOR = 1;
 
     //CAN IDs
+    public static final int CAN_ARM_LEFT_SPARKMAX = 9;
+    public static final int CAN_ARM_RIGHT_SPARKMAX = 10;
   }
   
   public static class MotorConfig {
@@ -86,6 +88,9 @@ public final class Constants
 
   public static class MotionControl {
     //PID
+    public static final double[] ARM_PID = {0, 0, 0};
+    public static final double CLOSED_LOOP_RAMP_RATE = 0.6;
+    public static final double OPEN_LOOP_RAMP_RATE = 0.6;
   }
 
   public static final class Auton
