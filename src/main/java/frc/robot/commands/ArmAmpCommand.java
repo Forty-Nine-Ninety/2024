@@ -1,21 +1,22 @@
 //Allison B)
 
 package frc.robot.commands;
-//import edu.wpi.first.wpilibj2.command.CommandBase; DO WE USE THIS?
+
+import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.ArmSubsystem;
 
-public class ArmAmpCommand {
-    private ArmSubsystem arm_subsystem;
+public class ArmAmpCommand extends Command{
+    private final ArmSubsystem arm_subsystem;
     private double armPosition;
     public ArmAmpCommand(ArmSubsystem arm_subsystem){
         this.arm_subsystem = arm_subsystem;
-        //arm_subsystem.addRequirements();
+        addRequirements(arm_subsystem);
     }
     public void setPosition(double armPosition){
         this.armPosition = armPosition;
     }
 
-    //@Override FROM THE COMMANDBASE IMPORT?
+    @Override
     public void initialize(){
         arm_subsystem.moveToPosition(armPosition);
     }
