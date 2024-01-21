@@ -27,9 +27,10 @@ public final class Constants
     public static int PORT_JOYSTICK_DRIVE = 0;
     public static int PORT_JOYSTICK_OPERATOR = 1;
 
-    //CAN IDs
+    //CAN IDs (created by Shreyans: ask Isaac for help since he knows more than me)
     public static final int CAN_ARM_LEFT_SPARKMAX = 9;
     public static final int CAN_ARM_RIGHT_SPARKMAX = 10;
+    public static final int CAN_INDEXER_SPARKMAX = 11;
   }
   
   public static class MotorConfig
@@ -42,6 +43,8 @@ public final class Constants
     public static double DRIVETRAIN_WHEEL_DIAMETER_IN = 4.0;
     public static final double DRIVE_GEAR_RATIO = 6.75;
     public static final double STEERING_GEAR_RATIO = 150.0/7.0;
+
+    public static double ARM_MOTION_REDUCTION = 1000.0/3.0;
 
     //public static final double ROBOT_MASS = (148 - 20.3) * 0.453592; // 32lbs * kg per pound
     //public static final Matter CHASSIS    = new Matter(new Translation3d(0, 0, Units.inchesToMeters(8)), ROBOT_MASS);
@@ -95,7 +98,8 @@ public final class Constants
   public static class MotionControl
   {
     //PID
-    public static final double[] ARM_PID = {0, 0, 0};
+    public static final double[] ARM_PID = {0, 0, 0}; // CHANGE PID LATER (this is for ArmSubsystem.java)
+    public static final double[] INDEXER_PID = {0, 0, 0}; // CHANGE PID LATER (this is for IndexerSubsystem.java)
     
     public static final double CLOSED_LOOP_RAMP_RATE = 0.6;
     public static final double OPEN_LOOP_RAMP_RATE = 0.6;
