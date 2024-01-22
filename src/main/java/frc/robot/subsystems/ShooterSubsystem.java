@@ -21,11 +21,8 @@ public class ShooterSubsystem extends SubsystemBase {
         shooter2 = new CANSparkMax(Ports.CAN_SHOOTER_TWO_SPARKMAX, MotorType.kBrushless);
         shooter3 = new CANSparkMax(Ports.CAN_SHOOTER_THREE_SPARKMAX, MotorType.kBrushless);
 
-        m_pidController1 = shooter1.getPIDController();
-        m_encoder1 = shooter1.getEncoder();
-
-        m_pidController3 = shooter3.getPIDController();
-        m_encoder3 = shooter3.getEncoder();
+        m_pidController = shooter1.getPIDController();
+        m_encoder = shooter1.getEncoder();
       
         configureMotors();
     }

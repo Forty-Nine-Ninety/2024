@@ -1,23 +1,24 @@
-import frc.robot.subsystems.IntakeSubsystem;
-import edu.wpi.first.wpilibj2.command.CommandBase;
+package frc.robot.commands;
 
+import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.subsystems.ShooterSubsystem;
 
-public class OuttakeSpeakerCommand extends CommandBase {
-    private final ShooterSubsystem m_shooter; 
-    private double speed = 1; //idk what this number should be 
+public class OuttakeSpeakerCommand extends Command {
 
-    public OuttakeSpeakerCommand {
-        m_shooter = shooter; //should this be intake or shooter? 
-        addRequirements(m_shooter); 
+    private final ShooterSubsystem shooter_subsystem; 
+    private double speed = 1; 
+
+    public OuttakeSpeakerCommand(ShooterSubsystem shooter_subsystem) {
+        this.shooter_subsystem = shooter_subsystem;
+        addRequirements(shooter_subsystem);
     }
 
     @Override
     public void initialize() {
-        m_shooter.shooterPercentOutput(speed); 
-
+        shooter_subsystem.PercentOutput();
     }
-    //ends the outtake
+
     public void end() {
-        m_shooter.shooterPercentOutput(percent_output: 0)
+        shooter_subsystem.
     }
 }
