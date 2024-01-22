@@ -31,6 +31,7 @@ public final class Constants
     public static final int CAN_ARM_LEFT_SPARKMAX = 9;
     public static final int CAN_ARM_RIGHT_SPARKMAX = 10;
     public static final int CAN_INDEXER_SPARKMAX = 11;
+    public static final int CAN_SHOOTER_ONE_SPARKMAX = 0; //Note I don't know the CAN IDs for the shooter, I'll put them in later -Chloe
   }
   
   public static class MotorConfig
@@ -100,6 +101,7 @@ public final class Constants
     //PID
     public static final double[] ARM_PID = {0, 0, 0}; // CHANGE PID LATER (this is for ArmSubsystem.java)
     public static final double[] INDEXER_PID = {0, 0, 0}; // CHANGE PID LATER (this is for IndexerSubsystem.java)
+    public static final double[] SHOOTER_PID = {0, 0, 0}; //CHANGE PID LATER (this is for ShooterSubsystem.java)
     
     public static final double CLOSED_LOOP_RAMP_RATE = 0.6;
     public static final double OPEN_LOOP_RAMP_RATE = 0.6;
