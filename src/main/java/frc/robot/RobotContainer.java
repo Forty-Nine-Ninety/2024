@@ -34,8 +34,17 @@ public class RobotContainer
   private final SwerveSubsystem drivebase = new SwerveSubsystem(new File(Filesystem.getDeployDirectory(),
                                                                          "swerve"));
   private final ArmSubsystem m_arm = new ArmSubsystem();
+  private final IndexerSubsystem m_indexer = new IndexerSubsystem();
+  private final IntakeSubsystem m_intake = new IntakeSubsystem();
+  private final ShooterSubsystem m_shooter = new ShooterSubsystem();
 
   private final ArmNeutralCommand m_armNeutralCommand = new ArmNeutralCommand(m_arm);
+  private final IndexerCommand m_indexerCommand = new IndexerCommand(m_indexer);
+  private final ArmAmpCommand m_armAmpCommand = new ArmAmpCommand(m_arm);
+  private final ArmSpeakerCommand m_armSpeakerCommand = new ArmSpeakerCommand(m_arm);
+  private final OuttakeAmpCommand m_outtakeAmpCommand = new OuttakeAmpCommand(m_shooter);
+  private final OuttakeOfIntakeCommand m_outtakeOfIntakeCommand = new OuttakeOfIntakeCommand(m_intake);
+  private final OuttakeSpeakerCommand m_outtakeSpeakerCommand = new OuttakeSpeakerCommand(m_shooter);
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
@@ -79,6 +88,11 @@ public class RobotContainer
     joystickDrive.getButton(ButtonF310.A).onTrue((new InstantCommand(drivebase::zeroGyro)));
     joystickDrive.getButton(ButtonF310.B).onTrue(new InstantCommand(drivebase::addFakeVisionReading));
     joystickOperator.getButton(ButtonF310.A).onTrue(m_armNeutralCommand);
+    joystickOperator.getButton(ButtonF310.B).onTrue(m_armAmpCommand);
+    joystickOperator.getButton(ButtonF310.Y).onTrue(m_armSpeakerCommand);
+    joystickOperator.getButton(ButtonF310.BumperLeft).onTrue(m_outtakeAmpCommand);
+    joystickOperator.getButton(ButtonF310.BumperRight).onTrue(m_outtakeOfIntakeCommand);
+    joystickOperator.getButton(ButtonF310.Back).onTrue(m_outtakeSpeakerCommand);
 
     //  joystickDrive.getButton(ButtonF310.X).whileTrue(new RepeatCommand(new InstantCommand(drivebase::lock, drivebase)));
   }
