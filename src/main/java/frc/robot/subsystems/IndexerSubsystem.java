@@ -32,4 +32,7 @@ public class IndexerSubsystem extends SubsystemBase {
 
         indexer.setSmartCurrentLimit(22,25);
     }
+    public void percentOutput(double percent_output) {
+        indexer.set(percent_output);
+    }
 }
