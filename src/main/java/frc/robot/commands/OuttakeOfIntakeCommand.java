@@ -5,10 +5,10 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.IntakeSubsystem;
 
-public class OuttakeOfIntake extends Command {
+public class OuttakeOfIntakeCommand extends Command {
     private final IntakeSubsystem m_intakeSubsystem;
 
-    public OuttakeOfIntake(IntakeSubsystem intakeSubsystem){
+    public OuttakeOfIntakeCommand(IntakeSubsystem intakeSubsystem){
         m_intakeSubsystem = intakeSubsystem;
     }
 
