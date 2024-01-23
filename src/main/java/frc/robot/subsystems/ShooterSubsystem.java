@@ -3,10 +3,8 @@ package frc.robot.subsystems;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.SparkPIDController;
 import com.revrobotics.RelativeEncoder;
-import edu.wpi.first.wpilibj2.command.Subsystem;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.MotionControl;
-import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import frc.robot.Constants.*;
 import com.revrobotics.CANSparkLowLevel.MotorType;
 
@@ -30,11 +28,10 @@ public class ShooterSubsystem extends SubsystemBase {
     private void configureMotors() {
         shooter1.restoreFactoryDefaults(); 
         shooter2.restoreFactoryDefaults(); 
-        shooter3.restoreFactoryDefaults(); //Intakes from indexer 
+        shooter3.restoreFactoryDefaults();
 
         m_pidController = shooter1.getPIDController();
-
-        //Note - work in progress 
+ 
         m_pidController.setP(MotionControl.SHOOTER_PID[1]);
         m_pidController.setP(MotionControl.SHOOTER_PID[2]);
         m_pidController.setP(MotionControl.SHOOTER_PID[3]);
@@ -49,9 +46,12 @@ public class ShooterSubsystem extends SubsystemBase {
 
         shooter2.follow(shooter1, true);
 
-        // Numbers from last year's code 
         shooter1.setSmartCurrentLimit(22, 15);
         shooter2.setSmartCurrentLimit(22, 15);
         shooter3.setSmartCurrentLimit(22, 15);
+    }
+
+    public void percentOutput(double percent_output) {
+        shooter1.set(percent_output);
     }
 }

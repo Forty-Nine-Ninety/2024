@@ -15,10 +15,6 @@ public class OuttakeSpeakerCommand extends Command {
 
     @Override
     public void initialize() {
-        shooter_subsystem.PercentOutput();
-    }
-
-    public void end() {
-        shooter_subsystem.
+        shooter_subsystem.percentOutput(speed);
     }
 }
