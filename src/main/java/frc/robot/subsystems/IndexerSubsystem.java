@@ -25,11 +25,7 @@ public class IndexerSubsystem extends SubsystemBase {
     }
     private void configureMotors(){
         indexer.restoreFactoryDefaults();
-
-        m_pidController.setP(MotionControl.INDEXER_PID[0]);
-        m_pidController.setI(MotionControl.INDEXER_PID[1]);
-        m_pidController.setD(MotionControl.INDEXER_PID[2]);
-
+        // No indexer PID
         indexer.setSmartCurrentLimit(22,25);
     }
     public void percentOutput(double percent_output) {
