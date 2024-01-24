@@ -37,8 +37,9 @@ public class IntakeSubsystem extends SubsystemBase {
         intakeRoller.setSmartCurrentLimit(15, 20);
     }
 
-    public void intakePercentOutput(double percent_output){
-        intakeRoller.set(percent_output);
+    public void intakePercentOutput(double percent_output_roller){
+        intakeExtend.set(MotionControl.POSITION_INTAKE_EXTENDED);
+        intakeRoller.set(percent_output_roller);
     }
 
     public void positionPID(double position){
@@ -53,4 +54,7 @@ public class IntakeSubsystem extends SubsystemBase {
         return intakeRoller.getOutputCurrent();
     }
 
+    public void retractIntake(){
+        intakeExtend.set(MotionControl.INTAKE_RETRACTED_POS);
+    }
 }
