@@ -1,20 +1,18 @@
-// Shreyans
-
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.IntakeSubsystem;
 
-public class OuttakeOfIntakeCommand extends Command {
+public class IntakeExtendCommand extends Command{
     private final IntakeSubsystem m_intakeSubsystem;
 
-    public OuttakeOfIntakeCommand(IntakeSubsystem intakeSubsystem){
+    public IntakeExtendCommand(IntakeSubsystem intakeSubsystem){
         m_intakeSubsystem = intakeSubsystem;
     }
 
     @Override
     public void initialize(){
-       m_intakeSubsystem.intakePercentOutput(-1);
+       m_intakeSubsystem.intakePercentOutput(1);
     }
 
     @Override
