@@ -433,6 +433,11 @@ public class SwerveSubsystem extends SubsystemBase
     return swerveDrive.getRobotVelocity();
   }
 
+  public SwerveDrive getSwerveDrive()
+  {
+    return swerveDrive;
+  }
+
   /**
    * Get the {@link SwerveController} in the swerve drive.
    *

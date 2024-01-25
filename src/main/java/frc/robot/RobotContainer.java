@@ -35,7 +35,7 @@ public class RobotContainer
   JoystickF310 joystickDrive = new JoystickF310(Ports.PORT_JOYSTICK_DRIVE);
   JoystickF310 joystickOperator = new JoystickF310(Ports.PORT_JOYSTICK_OPERATOR);
   // The robot's subsystems and commands are defined here...
-  private final SwerveSubsystem drivebase = new SwerveSubsystem(new File(Filesystem.getDeployDirectory(),
+  private final SwerveSubsystem m_drivebase = new SwerveSubsystem(new File(Filesystem.getDeployDirectory(),
                                                                          "swerve"));
   private final ArmSubsystem m_arm = new ArmSubsystem();
   private final IndexerSubsystem m_indexer = new IndexerSubsystem();
@@ -51,6 +51,9 @@ public class RobotContainer
   private final OuttakeSpeakerCommand m_outtakeSpeakerCommand = new OuttakeSpeakerCommand(m_shooter);
   private final IntakeExtendCommand m_intakeExtendCommand = new IntakeExtendCommand(m_intake); // new (temp comment)
 
+  private final DriveCommand m_driveCommand = new DriveCommand(m_drivebase);
+  private final DriveSimulationCommand m_driveSimulationCommand = new DriveSimulationCommand(m_drivebase);
+
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
    */
@@ -64,18 +67,18 @@ public class RobotContainer
     // controls are front-left positive
     // left stick controls translation
     // right stick controls the desired angle NOT angular rotation
-    Command driveFieldOrientedDirectAngle = drivebase.driveCommand(
+    Command driveFieldOrientedDirectAngle = m_drivebase.driveCommand(
         () -> MathUtil.applyDeadband(joystickDrive.getRawAxis(AxisF310.JoystickLeftY), DriveSettings.LEFT_Y_DEADBAND),
         () -> MathUtil.applyDeadband(joystickDrive.getRawAxis(AxisF310.JoystickLeftX), DriveSettings.LEFT_X_DEADBAND),
         () -> joystickDrive.getRawAxis(AxisF310.JoystickRightX),
         () -> joystickDrive.getRawAxis(AxisF310.JoystickRightY));
 
-    Command driveFieldOrientedDirectAngleSim = drivebase.simDriveCommand(
+    Command driveFieldOrientedDirectAngleSim = m_drivebase.simDriveCommand(
         () -> MathUtil.applyDeadband(joystickDrive.getRawAxis(AxisF310.JoystickLeftY), DriveSettings.LEFT_Y_DEADBAND),
         () -> MathUtil.applyDeadband(joystickDrive.getRawAxis(AxisF310.JoystickLeftX), DriveSettings.LEFT_X_DEADBAND),
         () -> joystickDrive.getRawAxis(2));
 
-    drivebase.setDefaultCommand(
+    m_drivebase.setDefaultCommand(
         !RobotBase.isSimulation() ? driveFieldOrientedDirectAngle : driveFieldOrientedDirectAngleSim);
   }
 
@@ -88,12 +91,25 @@ public class RobotContainer
    */
   private void configureBindings()
   {
+    m_driveCommand.setSuppliers(
+      () -> MathUtil.applyDeadband(joystickDrive.getRawAxis(AxisF310.JoystickLeftY), DriveSettings.LEFT_Y_DEADBAND),
+      () -> MathUtil.applyDeadband(joystickDrive.getRawAxis(AxisF310.JoystickLeftX), DriveSettings.LEFT_X_DEADBAND),
+      () -> joystickDrive.getRawAxis(AxisF310.JoystickRightX),
+      () -> joystickDrive.getRawAxis(AxisF310.JoystickRightY)
+    );
+
+    m_driveSimulationCommand.setSuppliers(
+      () -> MathUtil.applyDeadband(joystickDrive.getRawAxis(AxisF310.JoystickLeftY), DriveSettings.LEFT_Y_DEADBAND),
+      () -> MathUtil.applyDeadband(joystickDrive.getRawAxis(AxisF310.JoystickLeftX), DriveSettings.LEFT_X_DEADBAND),
+      () -> joystickDrive.getRawAxis(2)
+    );
+
     // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
 
-    joystickDrive.getButton(ButtonF310.A).onTrue((new InstantCommand(drivebase::zeroGyro)));
-    joystickDrive.getButton(ButtonF310.B).onTrue(new InstantCommand(drivebase::addFakeVisionReading));
+    joystickDrive.getButton(ButtonF310.A).onTrue((new InstantCommand(m_drivebase::zeroGyro)));
+    joystickDrive.getButton(ButtonF310.B).onTrue(new InstantCommand(m_drivebase::addFakeVisionReading));
     joystickDrive.getButton(ButtonF310.X).whileTrue(
-        Commands.deferredProxy(() -> drivebase.driveToPose(
+        Commands.deferredProxy(() -> m_drivebase.driveToPose(
                                    new Pose2d(new Translation2d(4, 4), Rotation2d.fromDegrees(0)))
                               ));
     joystickOperator.getButton(ButtonF310.A).onTrue(m_armNeutralCommand);
@@ -110,6 +126,7 @@ public class RobotContainer
   
   public void setTeleopDefaultCommands()
   {
+    // CommandScheduler.getInstance().setDefaultCommand(m_drivebase, !RobotBase.isSimulation() ? m_driveCommand : m_driveSimulationCommand);
     CommandScheduler.getInstance().setDefaultCommand(m_arm, m_armNeutralCommand);
   }
 
@@ -121,7 +138,7 @@ public class RobotContainer
   public Command getAutonomousCommand()
   {
     // An example command will be run in autonomous
-    return drivebase.getAutonomousCommand("New Path", true);
+    return m_drivebase.getAutonomousCommand("New Path", true);
   }
 
   public void setDriveMode()
@@ -131,6 +148,6 @@ public class RobotContainer
 
   public void setMotorBrake(boolean brake)
   {
-    drivebase.setMotorBrake(brake);
+    m_drivebase.setMotorBrake(brake);
   }
 }
