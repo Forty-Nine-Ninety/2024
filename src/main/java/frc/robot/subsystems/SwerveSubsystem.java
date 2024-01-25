@@ -413,6 +413,11 @@ public class SwerveSubsystem extends SubsystemBase
                                                         maximumSpeed);
   }
 
+  public SwerveDrive getSwerveDrive()
+  {
+    return swerveDrive;
+  }
+
   /**
    * Gets the current field-relative velocity (x, y and omega) of the robot
    *
@@ -431,11 +436,6 @@ public class SwerveSubsystem extends SubsystemBase
   public ChassisSpeeds getRobotVelocity()
   {
     return swerveDrive.getRobotVelocity();
-  }
-
-  public SwerveDrive getSwerveDrive()
-  {
-    return swerveDrive;
   }
 
   /**

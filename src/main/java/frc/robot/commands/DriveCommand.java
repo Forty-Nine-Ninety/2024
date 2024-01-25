@@ -27,7 +27,7 @@ public class DriveCommand extends Command{
         double yInput = Math.pow(m_translationY.getAsDouble(), DriveSettings.JOYSTICK_THROTTLE_Y_EXPONENT); // Smooth control out
 
         // Make the robot move
-        m_drivebase.driveFieldOriented(m_drivebase.getSwerveDrive().swerveController.getTargetSpeeds(
+        m_drivebase.driveFieldOriented(m_drivebase.getSwerveController().getTargetSpeeds(
                                         -xInput, 
                                         -yInput,
                                         m_headingX.getAsDouble(),
