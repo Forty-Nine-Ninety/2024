@@ -26,7 +26,7 @@ public class DriveSimulationCommand extends Command{
                                         -m_translationX.getAsDouble(),
                                         -m_translationY.getAsDouble(),
                                         m_rotation.getAsDouble() * Math.PI,
-                                        m_drivebase.getSwerveDrive().getYaw().getRadians(),
+                                        m_drivebase.getSwerveDrive().getOdometryHeading().getRadians(),
                                         m_drivebase.getSwerveDrive().getMaximumVelocity()));
     }
 }

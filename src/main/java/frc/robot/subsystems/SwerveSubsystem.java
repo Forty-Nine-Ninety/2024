@@ -192,7 +192,7 @@ public class SwerveSubsystem extends SubsystemBase
       driveFieldOriented(swerveDrive.swerveController.getTargetSpeeds(-xInput, -yInput,
                                                                       headingX.getAsDouble(),
                                                                       headingY.getAsDouble(),
-                                                                      swerveDrive.getYaw().getRadians(),
+                                                                      swerveDrive.getOdometryHeading().getRadians(),
                                                                       swerveDrive.getMaximumVelocity()));
     });
   }
@@ -213,7 +213,7 @@ public class SwerveSubsystem extends SubsystemBase
       driveFieldOriented(swerveDrive.swerveController.getTargetSpeeds(-translationX.getAsDouble(),
                                                                       -translationY.getAsDouble(),
                                                                       rotation.getAsDouble() * Math.PI,
-                                                                      swerveDrive.getYaw().getRadians(),
+                                                                      swerveDrive.getOdometryHeading().getRadians(),
                                                                       swerveDrive.getMaximumVelocity()));
     });
   }

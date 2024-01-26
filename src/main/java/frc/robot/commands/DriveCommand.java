@@ -32,7 +32,7 @@ public class DriveCommand extends Command{
                                         -yInput,
                                         m_headingX.getAsDouble(),
                                         m_headingY.getAsDouble(),
-                                        m_drivebase.getSwerveDrive().getYaw().getRadians(),
+                                        m_drivebase.getSwerveDrive().getOdometryHeading().getRadians(),
                                         m_drivebase.getSwerveDrive().getMaximumVelocity()));
     }
 }
