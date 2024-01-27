@@ -26,6 +26,7 @@ public final class Constants
   {
     public static int PORT_JOYSTICK_DRIVE = 0;
     public static int PORT_JOYSTICK_OPERATOR = 1;
+    public static int PORT_DIO_BREAK_BEAM = 5; //Chloe; for the shootersubsystem break beam port 
 
     //CAN IDs (created by Shreyans: ask Isaac for help since he knows more than me)
     public static final int CAN_ARM_LEFT_SPARKMAX = 9;
