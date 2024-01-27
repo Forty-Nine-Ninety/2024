@@ -50,12 +50,12 @@ public class AutoCommand{
 
   public static Command exampleAuto(SwerveSubsystem swerve)
   {
-    boolean               onTheFly = false; // Use the path defined in code or loaded from PathPlanner.
+    boolean               custom = false; // Use the path defined in code or loaded from PathPlanner.
     PathPlannerTrajectory example;
 
 
     /*EXAMPLE AUTO DEFAULT */
-    if (onTheFly)
+    if (!custom)
     {
       // Simple path with holonomic rotation. Stationary start/end. Max velocity of 4 m/s and max accel of 3 m/s^2
       example = PathPlanner.generatePath(
