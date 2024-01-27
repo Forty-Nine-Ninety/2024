@@ -31,7 +31,7 @@ public class AutoCommand{
     throw new UnsupportedOperationException("This is a utility class!");
   }
 
-  public static CommandBase driveAndSpin(SwerveSubsystem swerve)
+  public static Command driveAndSpin(SwerveSubsystem swerve)
   {
     return Commands.sequence(
         new RepeatCommand(new InstantCommand(() -> swerve.drive(new Translation2d(1, 0), 5, true), swerve)));
@@ -48,7 +48,7 @@ public class AutoCommand{
    */
 
 
-  public static CommandBase exampleAuto(SwerveSubsystem swerve)
+  public static Command exampleAuto(SwerveSubsystem swerve)
   {
     boolean               onTheFly = false; // Use the path defined in code or loaded from PathPlanner.
     PathPlannerTrajectory example;
@@ -129,7 +129,7 @@ public class AutoCommand{
   /**
    * Example static factory for an autonomous command.
    */
-  public static CommandBase Newexampleauto(SwerveSubsystem swerve)
+  public static Command Newexampleauto(SwerveSubsystem swerve)
   {
     boolean               onTheFly = false; // Use the path defined in code or loaded from PathPlanner.
     PathPlannerTrajectory example;
