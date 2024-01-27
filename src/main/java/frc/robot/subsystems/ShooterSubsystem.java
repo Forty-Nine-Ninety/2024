@@ -55,6 +55,6 @@ public class ShooterSubsystem extends SubsystemBase {
 
     public boolean breakBeam() {
         //Detects if anything is obstructing the break beam 
-        return m_breakbeam.get();
+        return !m_breakbeam.get();
     }
 }
