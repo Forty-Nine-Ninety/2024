@@ -4,11 +4,12 @@
 
 package frc.robot;
 
+import com.pathplanner.lib.util.PIDConstants;
+
 import edu.wpi.first.math.geometry.Translation3d;
 import edu.wpi.first.math.util.Units;
 import frc.robot.ourunits.*;
 import swervelib.math.Matter;
-import swervelib.parser.PIDFConfig;
 
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean constants. This
@@ -29,13 +30,13 @@ public final class Constants
     public static int PORT_DIO_BREAK_BEAM = 5; //Chloe; for the shootersubsystem break beam port 
 
     //CAN IDs (created by Shreyans: ask Isaac for help since he knows more than me)
-    public static final int CAN_ARM_LEFT_SPARKMAX = 9;
-    public static final int CAN_ARM_RIGHT_SPARKMAX = 10;
-    public static final int CAN_INDEXER_SPARKMAX = 11;
+    public static final int CAN_ARM_LEFT_SPARKMAX = 10;
+    public static final int CAN_ARM_RIGHT_SPARKMAX = 9;
+    //public static final int CAN_INDEXER_SPARKMAX = 11;
     public static final int CAN_SHOOTER_ONE_SPARKMAX = 12; //Note I don't know the CAN IDs for the shooter, I'll put them in later -Chloe
-    public static final int CAN_SHOOTER_TWO_SPARKMAX = 13;
-    public static final int CAN_INTAKE_SPARKMAX_EXTEND = 14;
-    public static final int CAN_INTAKE_SPARKMAX_ROLLER = 15;
+    public static final int CAN_SHOOTER_TWO_SPARKMAX = 11;
+    //public static final int CAN_INTAKE_SPARKMAX_EXTEND = 14;
+    public static final int CAN_INTAKE_SPARKMAX_ROLLER = 14;
   }
   
   public static class MotorConfig
@@ -115,20 +116,18 @@ public final class Constants
     public static final double INTAKE_RETRACTED_POS = 0;
   }
 
-  public static final class Auton
+  public static final class AutonConstants
   {
-    public static final PIDFConfig TranslationPID = new PIDFConfig(0.7, 0, 0);
-    public static final PIDFConfig angleAutoPID   = new PIDFConfig(0.4, 0, 0.01);
-
-    public static final double MAX_ACCELERATION = 2;
+    public static final PIDConstants TRANSLATION_PID = new PIDConstants(0.7, 0, 0);
+    public static final PIDConstants ANGLE_PID   = new PIDConstants(0.4, 0, 0.01);
   }
 
   public static class DriveSettings
   {
     // Joystick Deadband
-    public static final double LEFT_X_DEADBAND  = 0.1;
-    public static final double LEFT_Y_DEADBAND  = 0.1;
-    public static final double RIGHT_X_DEADBAND = 0.1;
+    public static final double LEFT_X_DEADBAND  = 0.01;
+    public static final double LEFT_Y_DEADBAND  = 0.01;
+    public static final double RIGHT_X_DEADBAND = 0.01;
     public static final double TURN_CONSTANT    = 6;
 
     //Driver settings
