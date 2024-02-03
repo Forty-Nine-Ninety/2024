@@ -1,11 +1,16 @@
 package frc.robot.commands.Auto;
 
-import com.pathplanner.lib.PathConstraints;
-import com.pathplanner.lib.PathPlanner;
-import com.pathplanner.lib.PathPlannerTrajectory;
-import com.pathplanner.lib.PathPoint;
-import com.pathplanner.lib.auto.PIDConstants;
-import com.pathplanner.lib.auto.SwerveAutoBuilder;
+import com.pathplanner.lib.*;
+import com.pathplanner.lib.path.ConstraintsZone;
+import com.pathplanner.lib.path.EventMarker;
+import com.pathplanner.lib.path.GoalEndState;
+import com.pathplanner.lib.path.PathConstraints;
+import com.pathplanner.lib.path.PathPlannerPath; //different name
+import com.pathplanner.lib.path.PathPlannerTrajectory;
+import com.pathplanner.lib.path.PathPoint;
+import com.pathplanner.lib.path.RotationTarget;
+import com.pathplanner.lib.util.PIDConstants;
+import com.pathplanner.lib.auto.AutoBuilder;
 import edu.wpi.first.apriltag.AprilTagFieldLayout;
 import edu.wpi.first.apriltag.AprilTagFields;
 import edu.wpi.first.math.geometry.Rotation2d;
@@ -58,7 +63,15 @@ public class AutoCommand{
     if (!custom)
     {
       // Simple path with holonomic rotation. Stationary start/end. Max velocity of 4 m/s and max accel of 3 m/s^2
-      example = PathPlanner.generatePath(
+      example = PathPlannerPath.createPath(
+      List<Translation2d> bezierPoints,
+      List<RotationTarget> holonomicRotations,
+      List<ConstraintsZone> constraintZones,
+      List<EventMarker> eventMarkers,
+      PathConstraints globalConstraints,
+      GoalEndState goalEndState,
+      boolean reversed,
+      Rotation2d previewStartingRotation);
           new PathConstraints(4, 3),
           new PathPoint(new Translation2d(0, 0), Rotation2d.fromDegrees(0), Rotation2d.fromDegrees(0)),
 // position, heading(direction of travel), holonomic rotation
@@ -77,7 +90,7 @@ public class AutoCommand{
     /*EXAMPLE AUTO ONE */
     else
     {
-      List<PathPlannerTrajectory> example1 = PathPlanner.loadPathGroup("New New Path", new PathConstraints(4, 3));
+      PathPlannerPath example1 = new PathPlannerPath("New New Path", new PathConstraints(4, 3));
       // This is just an example event map. It would be better to have a constant, global event map
       // in your code that will be used by all path following commands.
       HashMap<String, Command> eventMap = new HashMap<>();
@@ -179,3 +192,4 @@ public class AutoCommand{
   }
 
 }
+*/
