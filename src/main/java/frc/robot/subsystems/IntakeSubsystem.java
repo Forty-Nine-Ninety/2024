@@ -16,29 +16,29 @@ public class IntakeSubsystem extends SubsystemBase {
     private RelativeEncoder pid_encoder;
 
     public IntakeSubsystem(){
-        intakeExtend = new CANSparkMax(Ports.CAN_INTAKE_SPARKMAX_EXTEND, MotorType.kBrushless);
+     //   intakeExtend = new CANSparkMax(Ports.CAN_INTAKE_SPARKMAX_EXTEND, MotorType.kBrushless);
         intakeRoller = new CANSparkMax(Ports.CAN_INTAKE_SPARKMAX_ROLLER, MotorType.kBrushless);
-        pid_intake = intakeExtend.getPIDController();
+      //  pid_intake = intakeExtend.getPIDController();
         pid_encoder = intakeExtend.getEncoder();
         configureMotors();
     }
     private void configureMotors(){
-        intakeExtend.restoreFactoryDefaults();
+   //     intakeExtend.restoreFactoryDefaults();
         intakeRoller.restoreFactoryDefaults();
 
         pid_intake.setP(MotionControl.INTAKE_EXTEND_PID[0]);
         pid_intake.setI(MotionControl.INTAKE_EXTEND_PID[1]);
         pid_intake.setD(MotionControl.INTAKE_EXTEND_PID[2]);
    
-        intakeExtend.setInverted(true);
+    //    intakeExtend.setInverted(true);
         intakeRoller.setInverted(true);
 
-        intakeExtend.setSmartCurrentLimit(15, 20);
+   //     intakeExtend.setSmartCurrentLimit(15, 20);
         intakeRoller.setSmartCurrentLimit(15, 20);
     }
 
     public void intakePercentOutput(double percent_output_roller){
-        intakeExtend.set(MotionControl.POSITION_INTAKE_EXTENDED);
+    //    intakeExtend.set(MotionControl.POSITION_INTAKE_EXTENDED);
         intakeRoller.set(percent_output_roller);
     }
 
@@ -46,15 +46,15 @@ public class IntakeSubsystem extends SubsystemBase {
         pid_intake.setReference(position, CANSparkBase.ControlType.kPosition);
     }
 
-    public double intakeCurrentDrawExtend(){
-        return intakeExtend.getOutputCurrent();
-    }
+ //   public double intakeCurrentDrawExtend(){
+   //     return intakeExtend.getOutputCurrent();
+  //  }
 
     public double intakeCurrentDrawRoller(){
         return intakeRoller.getOutputCurrent();
     }
 
-    public void retractIntake(){
-        intakeExtend.set(MotionControl.INTAKE_RETRACTED_POS);
-    }
+   // public void retractIntake(){
+     //   intakeExtend.set(MotionControl.INTAKE_RETRACTED_POS);
+  //  }
 }

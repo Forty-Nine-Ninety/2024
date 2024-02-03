@@ -1,4 +1,6 @@
-//Work in progress -Chloe 
+/* 
+
+// Chloe
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
@@ -19,3 +21,5 @@ public class IndexerCommand extends Command {
         indexer_subsystem.percentOutput(speed);
     }
 }
+
+*/

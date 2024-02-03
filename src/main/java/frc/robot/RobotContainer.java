@@ -38,19 +38,19 @@ public class RobotContainer
   private final SwerveSubsystem m_drivebase = new SwerveSubsystem(new File(Filesystem.getDeployDirectory(),
                                                                          "swerve"));
   private final ArmSubsystem m_arm = new ArmSubsystem();
-  private final IndexerSubsystem m_indexer = new IndexerSubsystem();
-  private final IntakeSubsystem m_intake = new IntakeSubsystem();
+ // private final IndexerSubsystem m_indexer = new IndexerSubsystem();
+   private final IntakeSubsystem m_intake = new IntakeSubsystem();
   private final ShooterSubsystem m_shooter = new ShooterSubsystem();
 
   private final ArmNeutralCommand m_armNeutralCommand = new ArmNeutralCommand(m_arm);
-  private final IndexerCommand m_indexerCommand = new IndexerCommand(m_indexer);
+ // private final IndexerCommand m_indexerCommand = new IndexerCommand(m_indexer);
   private final ArmAmpCommand m_armAmpCommand = new ArmAmpCommand(m_arm);
   private final ArmSpeakerCommand m_armSpeakerCommand = new ArmSpeakerCommand(m_arm);
   private final OuttakeAmpCommand m_outtakeAmpCommand = new OuttakeAmpCommand(m_shooter);
   private final OuttakeOfIntakeCommand m_outtakeOfIntakeCommand = new OuttakeOfIntakeCommand(m_intake);
   private final OuttakeSpeakerCommand m_outtakeSpeakerCommand = new OuttakeSpeakerCommand(m_shooter);
-  private final IntakeExtendCommand m_intakeExtendCommand = new IntakeExtendCommand(m_intake); // new (temp comment)
-  private final NoteProcessingCommand m_noteProcessingCommand = new NoteProcessingCommand(m_intake, m_indexer);
+ // private final IntakeExtendCommand m_intakeExtendCommand = new IntakeExtendCommand(m_intake); // new (temp comment)
+  // private final NoteProcessingCommand m_noteProcessingCommand = new NoteProcessingCommand(m_intake, m_indexer);
   private final DriveCommand m_driveCommand = new DriveCommand(m_drivebase);
   private final DriveSimulationCommand m_driveSimulationCommand = new DriveSimulationCommand(m_drivebase);
 
@@ -118,9 +118,9 @@ public class RobotContainer
     joystickOperator.getButton(ButtonF310.BumperLeft).onTrue(m_outtakeAmpCommand);
     joystickOperator.getButton(ButtonF310.BumperRight).onTrue(m_outtakeOfIntakeCommand);
     joystickOperator.getButton(ButtonF310.Back).onTrue(m_outtakeSpeakerCommand);
-    joystickOperator.getButton(ButtonF310.X).onTrue(m_intakeExtendCommand);
-    joystickOperator.getButton(POVF310.Top).onTrue(m_indexerCommand);
-    joystickOperator.getButton(POVF310.Bottom).onTrue(m_noteProcessingCommand);
+    //joystickOperator.getButton(ButtonF310.X).onTrue(m_intakeExtendCommand);
+    //joystickOperator.getButton(POVF310.Top).onTrue(m_indexerCommand);
+   // joystickOperator.getButton(POVF310.Bottom).onTrue(m_noteProcessingCommand);
 
     //  joystickDrive.getButton(ButtonF310.X).whileTrue(new RepeatCommand(new InstantCommand(drivebase::lock, drivebase)));
   }
