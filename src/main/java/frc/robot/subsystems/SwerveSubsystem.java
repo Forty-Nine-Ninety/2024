@@ -8,7 +8,6 @@ import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.path.PathConstraints;
 import com.pathplanner.lib.path.PathPlannerPath;
 import com.pathplanner.lib.util.HolonomicPathFollowerConfig;
-import com.pathplanner.lib.util.PIDConstants;
 import com.pathplanner.lib.util.ReplanningConfig;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
@@ -216,6 +215,30 @@ public class SwerveSubsystem extends SubsystemBase
                                                                       swerveDrive.getOdometryHeading().getRadians(),
                                                                       swerveDrive.getMaximumVelocity()));
     });
+  }
+
+  /**
+   * Command to characterize the robot drive motors using SysId
+   * @return SysId Drive Command
+   */
+  public Command sysIdDriveMotorCommand() {
+    return SwerveDriveTest.generateSysIdCommand(
+          SwerveDriveTest.setDriveSysIdRoutine(
+              new Config(),
+              this, swerveDrive, 12),
+          3.0, 5.0, 3.0);
+  }
+
+  /**
+   * Command to characterize the robot angle motors using SysId
+   * @return SysId Angle Command
+   */
+  public Command sysIdAngleMotorCommand() {
+      return SwerveDriveTest.generateSysIdCommand(
+            SwerveDriveTest.setAngleSysIdRoutine(
+                new Config(),
+                this, swerveDrive),
+            3.0, 5.0, 3.0);
   }
 
   /**
