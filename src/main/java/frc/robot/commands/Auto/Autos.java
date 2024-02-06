@@ -25,13 +25,13 @@ import frc.robot.subsystems.SwerveSubsystem;
 import java.util.HashMap;
 import java.util.List;
 
-public class AutoCommand{
+public class Autos{
   /**
    * April Tag field layout.
    */
   private static AprilTagFieldLayout aprilTagField = null;
 
-  private AutoCommand()
+  private Autos()
   {
     throw new UnsupportedOperationException("This is a utility class!");
   }
@@ -53,10 +53,10 @@ public class AutoCommand{
    */
 
 
-  public static Command exampleAuto(SwerveSubsystem swerve)
+  public static Command exit1(SwerveSubsystem swerve)
   {
     boolean               custom = false; // Use the path defined in code or loaded from PathPlanner.
-    PathPlannerTrajectory example;
+    PathPlannerTrajectory exit1;
 
 
     /*EXAMPLE AUTO DEFAULT */
