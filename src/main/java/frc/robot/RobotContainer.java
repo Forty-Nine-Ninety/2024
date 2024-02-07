@@ -96,10 +96,6 @@ public class RobotContainer
     SmartDashboard.putData("Exit 1", autoChooser);
   }
 
-  public Command getAutonomousCommand() {
-    return autoChooser.getSelected();
-  }
-
   /**
    * Use this method to define your trigger->command mappings. Triggers can be created via the
    * {@link Trigger#Trigger(java.util.function.BooleanSupplier)} constructor with an arbitrary predicate, or via the
@@ -147,6 +143,18 @@ public class RobotContainer
   {
     // CommandScheduler.getInstance().setDefaultCommand(m_drivebase, !RobotBase.isSimulation() ? m_driveCommand : m_driveSimulationCommand);
     CommandScheduler.getInstance().setDefaultCommand(m_arm, m_armNeutralCommand);
+  }
+
+  /**
+   * Use this to pass the autonomous command to the main {@link Robot} class.
+   *
+   * @return the command to run in autonomous
+   */
+  public Command getAutonomousCommand()
+  {
+    // An example command will be run in autonomous
+    return m_drivebase.getAutonomousCommand("New Auto");
+    //return autoChooser.getSelected();
   }
 
   public void setDriveMode()
