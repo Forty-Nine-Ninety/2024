@@ -18,6 +18,6 @@ public class IntakeExtendCommand extends Command{
     @Override
     public void end(boolean interrupted){
         m_intakeSubsystem.intakePercentOutput(0);
-        m_intakeSubsystem.retractIntake();
+        //m_intakeSubsystem.retractIntake();
     }
 }
