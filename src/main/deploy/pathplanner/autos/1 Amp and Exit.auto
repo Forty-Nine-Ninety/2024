@@ -1,0 +1,44 @@
+{
+  "version": 1.0,
+  "startingPose": {
+    "position": {
+      "x": 1.460174837016341,
+      "y": 6.986453306239945
+    },
+    "rotation": 0
+  },
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "sequential",
+          "data": {
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "amp1"
+                }
+              },
+              {
+                "type": "wait",
+                "data": {
+                  "waitTime": 2.0
+                }
+              },
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "ampToExit1"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "folder": "1",
+  "choreoAuto": false
+}
