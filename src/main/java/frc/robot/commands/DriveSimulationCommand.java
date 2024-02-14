@@ -23,8 +23,8 @@ public class DriveSimulationCommand extends Command{
     public void execute() {
         // Make the robot move
         m_drivebase.driveFieldOriented(m_drivebase.getSwerveController().getTargetSpeeds(
-                                        -m_translationX.getAsDouble(),
-                                        -m_translationY.getAsDouble(),
+                                        m_translationX.getAsDouble(),
+                                        m_translationY.getAsDouble(),
                                         m_rotation.getAsDouble() * Math.PI,
                                         m_drivebase.getSwerveDrive().getOdometryHeading().getRadians(),
                                         m_drivebase.getSwerveDrive().getMaximumVelocity()));

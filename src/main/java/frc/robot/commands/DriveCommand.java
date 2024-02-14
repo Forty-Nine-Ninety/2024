@@ -28,8 +28,8 @@ public class DriveCommand extends Command{
 
         // Make the robot move
         m_drivebase.driveFieldOriented(m_drivebase.getSwerveController().getTargetSpeeds(
-                                        -xInput, 
-                                        -yInput,
+                                        xInput, 
+                                        yInput,
                                         m_headingX.getAsDouble(),
                                         m_headingY.getAsDouble(),
                                         m_drivebase.getSwerveDrive().getOdometryHeading().getRadians(),
