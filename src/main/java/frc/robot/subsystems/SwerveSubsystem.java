@@ -83,8 +83,7 @@ public class SwerveSubsystem extends SubsystemBase
     {
       throw new RuntimeException(e);
     }
-    swerveDrive.setHeadingCorrection(true); // Heading correction should only be used while controlling the robot via angle.
-
+    swerveDrive.setHeadingCorrection(false); // Heading correction should only be used while controlling the robot via angle.
     swerveDrive.setCosineCompensator(!SwerveDriveTelemetry.isSimulation); // Disables cosine compensation for simulations since it causes discrepancies not seen in real life.
     setupPathPlanner();
   }
@@ -205,7 +204,7 @@ public class SwerveSubsystem extends SubsystemBase
       double xInput = Math.pow(translationX.getAsDouble(), DriveSettings.JOYSTICK_THROTTLE_X_EXPONENT); // Smooth control out
       double yInput = Math.pow(translationY.getAsDouble(), DriveSettings.JOYSTICK_THROTTLE_Y_EXPONENT); // Smooth control out
       // Make the robot move
-      driveFieldOriented(swerveDrive.swerveController.getTargetSpeeds(-xInput, -yInput,
+      driveFieldOriented(swerveDrive.swerveController.getTargetSpeeds(xInput, yInput,
                                                                       headingX.getAsDouble(),
                                                                       headingY.getAsDouble(),
                                                                       swerveDrive.getOdometryHeading().getRadians(),
@@ -226,8 +225,8 @@ public class SwerveSubsystem extends SubsystemBase
     // swerveDrive.setHeadingCorrection(true); // Normally you would want heading correction for this kind of control.
     return run(() -> {
       // Make the robot move
-      driveFieldOriented(swerveDrive.swerveController.getTargetSpeeds(-translationX.getAsDouble(),
-                                                                      -translationY.getAsDouble(),
+      driveFieldOriented(swerveDrive.swerveController.getTargetSpeeds(translationX.getAsDouble(),
+                                                                      translationY.getAsDouble(),
                                                                       rotation.getAsDouble() * Math.PI,
                                                                       swerveDrive.getOdometryHeading().getRadians(),
                                                                       swerveDrive.getMaximumVelocity()));
