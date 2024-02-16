@@ -32,11 +32,11 @@ public final class Constants
     //CAN IDs (created by Shreyans: ask Isaac for help since he knows more than me)
     public static final int CAN_ARM_LEFT_SPARKMAX = 10;
     public static final int CAN_ARM_RIGHT_SPARKMAX = 9;
-    //public static final int CAN_INDEXER_SPARKMAX = 11;
     public static final int CAN_SHOOTER_ONE_SPARKMAX = 12; //Note I don't know the CAN IDs for the shooter, I'll put them in later -Chloe
     public static final int CAN_SHOOTER_TWO_SPARKMAX = 11;
-    //public static final int CAN_INTAKE_SPARKMAX_EXTEND = 14;
+    //public static final int CAN_INTAKE_SPARKMAX_EXTEND = 13;
     public static final int CAN_INTAKE_SPARKMAX_ROLLER = 14;
+    // CAN ID 15 is in use on drivebase
   }
   
   public static class MotorConfig
