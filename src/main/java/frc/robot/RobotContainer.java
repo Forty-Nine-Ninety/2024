@@ -87,13 +87,15 @@ public class RobotContainer
     m_drivebase.setDefaultCommand(
         !RobotBase.isSimulation() ? driveFieldOrientedDirectAngle : driveFieldOrientedDirectAngleSim);
     
-    // AUTO- SmartDashboard (Build an auto chooser. This will use Commands.none() as the default option.)
+    // AUTO- SmartDashboard
     autoChooser = AutoBuilder.buildAutoChooser();
+    SmartDashboard.putData("Auto Chooser", autoChooser);
+
 
     // Another option that allows you to specify the default auto by its name
     // autoChooser = AutoBuilder.buildAutoChooser("My Default Auto");
 
-    SmartDashboard.putData("Exit 1", autoChooser);
+    //SmartDashboard.putData("Exit 1", autoChooser);
   }
 
   /**
