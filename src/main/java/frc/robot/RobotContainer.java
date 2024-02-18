@@ -118,11 +118,11 @@ public class RobotContainer
     // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
 
     joystickDrive.getButton(ButtonF310.A).onTrue((new InstantCommand(m_drivebase::zeroGyro)));
-    joystickDrive.getButton(ButtonF310.B).onTrue(new InstantCommand(m_drivebase::addFakeVisionReading));
-    joystickDrive.getButton(ButtonF310.X).whileTrue(
-        Commands.deferredProxy(() -> m_drivebase.driveToPose(
-                                   new Pose2d(new Translation2d(4, 4), Rotation2d.fromDegrees(0)))
-                              ));
+    //joystickDrive.getButton(ButtonF310.B).onTrue(new InstantCommand(m_drivebase::addFakeVisionReading));
+    //joystickDrive.getButton(ButtonF310.X).whileTrue(
+        //Commands.deferredProxy(() -> m_drivebase.driveToPose(
+                                   //new Pose2d(new Translation2d(4, 4), Rotation2d.fromDegrees(0)))
+                              //));
     joystickOperator.getButton(ButtonF310.A).onTrue(m_armNeutralCommand);
     joystickOperator.getButton(ButtonF310.B).onTrue(m_armAmpCommand);
     joystickOperator.getButton(ButtonF310.Y).onTrue(m_armSpeakerCommand);
