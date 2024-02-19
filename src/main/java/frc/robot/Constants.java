@@ -104,9 +104,9 @@ public final class Constants
   public static class MotionControl
   {
     //PID
-    public static final double[] ARM_PID = {0, 0, 0}; // CHANGE PID LATER (this is for ArmSubsystem.java)
-    public static final double[] SHOOTER_PID = {0, 0, 0}; //CHANGE PID LATER (this is for ShooterSubsystem.java)
-    public static final double[] INTAKE_EXTEND_PID = {0, 0, 0};
+    public static final double[] ARM_PID = {0.04, 0.0, 3.0};
+    public static final double[] SHOOTER_PID = {0, 0, 0}; //DO WE NEED THIS?
+    public static final double[] INTAKE_EXTEND_PID = {0, 0, 0}; //CHANGE PID LATER
     
     public static final double CLOSED_LOOP_RAMP_RATE = 0.6;
     public static final double OPEN_LOOP_RAMP_RATE = 0.6;
