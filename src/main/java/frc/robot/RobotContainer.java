@@ -66,8 +66,8 @@ public class RobotContainer
         () -> -MathUtil.applyDeadband(joystickDrive.getRawAxis(AxisF310.JoystickLeftX), DriveSettings.LEFT_X_DEADBAND),
         () -> -joystickDrive.getRawAxis(2));
 
-    m_drivebase.setDefaultCommand(
-        !RobotBase.isSimulation() ? driveFieldOrientedDirectAngle : driveFieldOrientedDirectAngleSim);
+    //m_drivebase.setDefaultCommand(
+        //!RobotBase.isSimulation() ? driveFieldOrientedDirectAngle : driveFieldOrientedDirectAngleSim);
   }
 
   /**
@@ -105,7 +105,7 @@ public class RobotContainer
   
   public void setTeleopDefaultCommands()
   {
-    //CommandScheduler.getInstance().setDefaultCommand(m_drivebase, !RobotBase.isSimulation() ? m_driveCommand : m_driveSimulationCommand);
+    CommandScheduler.getInstance().setDefaultCommand(m_drivebase, !RobotBase.isSimulation() ? m_driveCommand : m_driveSimulationCommand);
   }
 
   /**
