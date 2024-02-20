@@ -1,5 +1,6 @@
 package frc.robot.commands;
 
+import frc.robot.Constants.*;
 import frc.robot.subsystems.SwerveSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
 import java.util.function.DoubleSupplier;
@@ -23,9 +24,9 @@ public class DriveSimulationCommand extends Command{
     public void execute() {
         // Make the robot move
         m_drivebase.driveFieldOriented(m_drivebase.getSwerveController().getTargetSpeeds(
-                                        m_translationX.getAsDouble(),
-                                        m_translationY.getAsDouble(),
-                                        m_rotation.getAsDouble() * Math.PI,
+                                        m_translationX.getAsDouble() * DriveSettings.ARCADE_SPEED_X_MULTIPLIER,
+                                        m_translationY.getAsDouble() * DriveSettings.ARCADE_SPEED_Y_MULTIPLIER,
+                                        m_rotation.getAsDouble() * Math.PI * DriveSettings.ARCADE_ROTATION_MULTIPLIER,
                                         m_drivebase.getSwerveDrive().getOdometryHeading().getRadians(),
                                         m_drivebase.getSwerveDrive().getMaximumVelocity()));
     }
