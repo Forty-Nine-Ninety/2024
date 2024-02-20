@@ -2,6 +2,7 @@ package frc.robot.commands;
 
 import frc.robot.Constants.*;
 import frc.robot.subsystems.SwerveSubsystem;
+import frc.robot.DriveUtil;
 import edu.wpi.first.wpilibj2.command.Command;
 import java.util.function.DoubleSupplier;
 
@@ -23,15 +24,15 @@ public class DriveCommand extends Command{
 
     @Override
     public void execute() {
-        double xInput = Math.pow(m_translationX.getAsDouble(), DriveSettings.JOYSTICK_THROTTLE_X_EXPONENT); // Smooth control out
-        double yInput = Math.pow(m_translationY.getAsDouble(), DriveSettings.JOYSTICK_THROTTLE_Y_EXPONENT); // Smooth control out
+        double xInput = DriveUtil.powCopySign(m_translationX.getAsDouble() * DriveSettings.ARCADE_SPEED_X_MULTIPLIER, DriveSettings.JOYSTICK_THROTTLE_X_EXPONENT); // Smooth control out
+        double yInput = DriveUtil.powCopySign(m_translationY.getAsDouble() * DriveSettings.ARCADE_SPEED_Y_MULTIPLIER, DriveSettings.JOYSTICK_THROTTLE_Y_EXPONENT); // Smooth control out
 
         // Make the robot move
         m_drivebase.driveFieldOriented(m_drivebase.getSwerveController().getTargetSpeeds(
                                         xInput, 
                                         yInput,
-                                        m_headingX.getAsDouble(),
-                                        m_headingY.getAsDouble(),
+                                        m_headingX.getAsDouble() * DriveSettings.ARCADE_ROTATION_MULTIPLIER,
+                                        m_headingY.getAsDouble() * DriveSettings.ARCADE_ROTATION_MULTIPLIER,
                                         m_drivebase.getSwerveDrive().getOdometryHeading().getRadians(),
                                         m_drivebase.getSwerveDrive().getMaximumVelocity()));
     }
