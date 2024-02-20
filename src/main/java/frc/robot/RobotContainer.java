@@ -39,7 +39,7 @@ public class RobotContainer
   private final SwerveSubsystem m_drivebase = new SwerveSubsystem(new File(Filesystem.getDeployDirectory(),
                                                                          "swerve"));
   private final ArmSubsystem m_arm = new ArmSubsystem();
-   private final IntakeSubsystem m_intake = new IntakeSubsystem();
+  private final IntakeSubsystem m_intake = new IntakeSubsystem();
   private final ShooterSubsystem m_shooter = new ShooterSubsystem();
 
   private final ArmNeutralCommand m_armNeutralCommand = new ArmNeutralCommand(m_arm);
@@ -62,25 +62,6 @@ public class RobotContainer
   {
     // Configure the trigger bindings
     configureBindings();
-
-    // Applies deadbands and inverts controls because joysticks
-    // are back-right positive while robot
-    // controls are front-left positive
-    // left stick controls translation
-    // right stick controls the desired angle NOT angular rotation
-    Command driveFieldOrientedDirectAngle = m_drivebase.driveCommand(
-        () -> -MathUtil.applyDeadband(joystickDrive.getRawAxis(AxisF310.JoystickLeftY), DriveSettings.LEFT_Y_DEADBAND),
-        () -> -MathUtil.applyDeadband(joystickDrive.getRawAxis(AxisF310.JoystickLeftX), DriveSettings.LEFT_X_DEADBAND),
-        () -> -joystickDrive.getRawAxis(AxisF310.JoystickRightX),
-        () -> -joystickDrive.getRawAxis(AxisF310.JoystickRightY));
-
-    Command driveFieldOrientedDirectAngleSim = m_drivebase.simDriveCommand(
-        () -> -MathUtil.applyDeadband(joystickDrive.getRawAxis(AxisF310.JoystickLeftY), DriveSettings.LEFT_Y_DEADBAND),
-        () -> -MathUtil.applyDeadband(joystickDrive.getRawAxis(AxisF310.JoystickLeftX), DriveSettings.LEFT_X_DEADBAND),
-        () -> -joystickDrive.getRawAxis(2));
-
-    m_drivebase.setDefaultCommand(
-        !RobotBase.isSimulation() ? driveFieldOrientedDirectAngle : driveFieldOrientedDirectAngleSim);
     
     // AUTO- SmartDashboard
     autoChooser = AutoBuilder.buildAutoChooser();
@@ -132,7 +113,7 @@ public class RobotContainer
   
   public void setTeleopDefaultCommands()
   {
-    // CommandScheduler.getInstance().setDefaultCommand(m_drivebase, !RobotBase.isSimulation() ? m_driveCommand : m_driveSimulationCommand);
+    CommandScheduler.getInstance().setDefaultCommand(m_drivebase, !RobotBase.isSimulation() ? m_driveCommand : m_driveSimulationCommand);
     CommandScheduler.getInstance().setDefaultCommand(m_arm, m_armNeutralCommand);
   }
 
