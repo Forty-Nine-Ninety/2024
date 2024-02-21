@@ -46,7 +46,7 @@ public class RobotContainer
   private final ArmAmpCommand m_armAmpCommand = new ArmAmpCommand(m_arm);
   private final ArmSpeakerCommand m_armSpeakerCommand = new ArmSpeakerCommand(m_arm);
   private final OuttakeAmpCommand m_outtakeAmpCommand = new OuttakeAmpCommand(m_shooter);
-  private final OuttakeOfIntakeCommand m_outtakeOfIntakeCommand = new OuttakeOfIntakeCommand(m_intake);
+  private final OuttakeOfIntakeCommand m_outtakeOfIntakeCommand = new OuttakeOfIntakeCommand(m_intake, m_shooter);
   private final OuttakeSpeakerCommand m_outtakeSpeakerCommand = new OuttakeSpeakerCommand(m_shooter);
  // private final IntakeExtendCommand m_intakeExtendCommand = new IntakeExtendCommand(m_intake); // new (temp comment)
   // private final NoteProcessingCommand m_noteProcessingCommand = new NoteProcessingCommand(m_intake, m_indexer);

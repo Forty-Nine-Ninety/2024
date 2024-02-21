@@ -16,7 +16,7 @@ public class OuttakeOfIntakeCommand extends Command {
     }
 
     @Override
-    public void initialize(){
+    public void execute(){
         m_shootersubsystem.percentOutput(-1);
         m_intakeSubsystem.intakePercentOutput(-1);
     }
