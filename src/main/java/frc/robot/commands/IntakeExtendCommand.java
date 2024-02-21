@@ -1,4 +1,4 @@
-/* 
+
 
 package frc.robot.commands;
 
@@ -14,6 +14,11 @@ public class IntakeExtendCommand extends Command{
 
     @Override
     public void initialize(){
+        m_intakeSubsystem.extendIntake();
+    }
+
+    @Override
+    public void execute(){
         m_intakeSubsystem.intakePercentOutput(1);
     }
 
@@ -23,4 +28,3 @@ public class IntakeExtendCommand extends Command{
         m_intakeSubsystem.retractIntake();
     }
 }
-*/

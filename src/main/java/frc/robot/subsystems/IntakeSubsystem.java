@@ -38,10 +38,13 @@ public class IntakeSubsystem extends SubsystemBase {
     }
 
     public void intakePercentOutput(double percent_output_roller){
-        intakeExtend.set(MotionControl.POSITION_INTAKE_EXTENDED);
         intakeRoller.set(percent_output_roller);
     }
 
+    public void extendIntake(){
+       intakeExtend.set(MotionControl.POSITION_INTAKE_EXTENDED);
+    }
+    
     public void positionPID(double position){
         pid_intake.setReference(position, CANSparkBase.ControlType.kPosition);
     }
