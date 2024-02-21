@@ -12,12 +12,12 @@ public class IntakeExtendCommand extends Command{
 
     @Override
     public void initialize(){
-       m_intakeSubsystem.intakePercentOutput(1);
+        m_intakeSubsystem.intakePercentOutput(1);
     }
 
     @Override
     public void end(boolean interrupted){
         m_intakeSubsystem.intakePercentOutput(0);
-        //m_intakeSubsystem.retractIntake();
+        m_intakeSubsystem.retractIntake();
     }
 }
