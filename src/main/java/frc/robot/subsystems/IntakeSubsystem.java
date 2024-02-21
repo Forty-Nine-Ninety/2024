@@ -58,3 +58,5 @@ public class IntakeSubsystem extends SubsystemBase {
         intakeExtend.set(MotionControl.INTAKE_RETRACTED_POS);
     }
 }
+
+// there is no "shared motor" between these 2 subsystems but actually only one subsystem >:)

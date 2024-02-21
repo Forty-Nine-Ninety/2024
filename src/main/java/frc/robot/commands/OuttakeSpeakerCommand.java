@@ -19,4 +19,4 @@ public class OuttakeSpeakerCommand extends Command {
     public void initialize() {
         shooter_subsystem.percentOutput(speed);
     }
-}
+} 
