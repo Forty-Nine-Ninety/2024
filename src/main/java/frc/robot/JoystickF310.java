@@ -26,12 +26,34 @@ public class JoystickF310 extends Joystick {
 	}
 
 	public double getRawAxis(AxisF310 axis) {
-		if (axis == AxisF310.JoystickLeftY || axis == AxisF310.JoystickRightY) return -1 * this.getRawAxis(axis.ordinal());
+		double value = this.getRawAxis(axis.ordinal());
+
+		if (value > 0.73)
+		{
+			value = 0.73;
+		}
+		else if (value < -0.73)
+		{
+			value = -0.73;
+		}
+
+		if (axis == AxisF310.JoystickLeftY || axis == AxisF310.JoystickRightY) return -1 * value;
 		return this.getRawAxis(axis.ordinal());
 	}
 
 	public double getRawAxis(int axis) {
-		return Math.abs(super.getRawAxis(axis)) < DriveSettings.JOYSTICKF310_AXIS_DEADBAND ? 0 : super.getRawAxis(axis);
+		double value = Math.abs(super.getRawAxis(axis)) < DriveSettings.JOYSTICKF310_AXIS_DEADBAND ? 0 : super.getRawAxis(axis);
+
+		if (value > 0.73)
+		{
+			value = 0.73;
+		}
+		else if (value < -0.73)
+		{
+			value = -0.73;
+		}
+
+		return value;
 	}
 
 	public static enum POVF310 {
