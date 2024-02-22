@@ -24,6 +24,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine.Config;
 import frc.robot.Constants.*;
+import frc.robot.DriveUtil;
 
 import java.io.File;
 import java.util.function.DoubleSupplier;
@@ -201,12 +202,12 @@ public class SwerveSubsystem extends SubsystemBase
   {
     // swerveDrive.setHeadingCorrection(true); // Normally you would want heading correction for this kind of control.
     return run(() -> {
-      double xInput = Math.pow(translationX.getAsDouble(), DriveSettings.JOYSTICK_THROTTLE_X_EXPONENT); // Smooth control out
-      double yInput = Math.pow(translationY.getAsDouble(), DriveSettings.JOYSTICK_THROTTLE_Y_EXPONENT); // Smooth control out
+      double xInput = DriveUtil.powCopySign(translationX.getAsDouble() * DriveSettings.ARCADE_SPEED_X_MULTIPLIER, DriveSettings.JOYSTICK_THROTTLE_X_EXPONENT); // Smooth control out
+      double yInput = DriveUtil.powCopySign(translationY.getAsDouble() * DriveSettings.ARCADE_SPEED_Y_MULTIPLIER, DriveSettings.JOYSTICK_THROTTLE_Y_EXPONENT); // Smooth control out
       // Make the robot move
       driveFieldOriented(swerveDrive.swerveController.getTargetSpeeds(xInput, yInput,
-                                                                      headingX.getAsDouble(),
-                                                                      headingY.getAsDouble(),
+                                                                      headingX.getAsDouble() * DriveSettings.ARCADE_ROTATION_MULTIPLIER,
+                                                                      headingY.getAsDouble() * DriveSettings.ARCADE_ROTATION_MULTIPLIER,
                                                                       swerveDrive.getOdometryHeading().getRadians(),
                                                                       swerveDrive.getMaximumVelocity()));
     });
@@ -225,9 +226,9 @@ public class SwerveSubsystem extends SubsystemBase
     // swerveDrive.setHeadingCorrection(true); // Normally you would want heading correction for this kind of control.
     return run(() -> {
       // Make the robot move
-      driveFieldOriented(swerveDrive.swerveController.getTargetSpeeds(translationX.getAsDouble(),
-                                                                      translationY.getAsDouble(),
-                                                                      rotation.getAsDouble() * Math.PI,
+      driveFieldOriented(swerveDrive.swerveController.getTargetSpeeds(translationX.getAsDouble() * DriveSettings.ARCADE_SPEED_X_MULTIPLIER,
+                                                                      translationY.getAsDouble() * DriveSettings.ARCADE_SPEED_Y_MULTIPLIER,
+                                                                      rotation.getAsDouble() * Math.PI * DriveSettings.ARCADE_ROTATION_MULTIPLIER,
                                                                       swerveDrive.getOdometryHeading().getRadians(),
                                                                       swerveDrive.getMaximumVelocity()));
     });
