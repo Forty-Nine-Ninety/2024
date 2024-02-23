@@ -48,6 +48,8 @@ public class RobotContainer
   private final OuttakeAmpCommand m_outtakeAmpCommand = new OuttakeAmpCommand(m_shooter);
   private final OuttakeOfIntakeCommand m_outtakeOfIntakeCommand = new OuttakeOfIntakeCommand(m_intake, m_shooter);
   private final OuttakeSpeakerCommand m_outtakeSpeakerCommand = new OuttakeSpeakerCommand(m_shooter);
+  private final RegurgitationCommand m_regurgCommand = new RegurgitationCommand(m_intake);
+  private final StopRoller m_stoproller = new StopRoller(m_intake);
  // private final IntakeExtendCommand m_intakeExtendCommand = new IntakeExtendCommand(m_intake); // new (temp comment)
   // private final NoteProcessingCommand m_noteProcessingCommand = new NoteProcessingCommand(m_intake, m_indexer);
   private final DriveCommand m_driveCommand = new DriveCommand(m_drivebase);
@@ -101,8 +103,9 @@ public class RobotContainer
                               //));
       //  joystickDrive.getButton(ButtonF310.Y).whileTrue(Commands.runOnce(drivebase::lock, drivebase).repeatedly());
     joystickOperator.getButton(ButtonF310.A).onTrue(m_armNeutralCommand);
-    joystickOperator.getButton(ButtonF310.B).onTrue(m_armAmpCommand);
-    joystickOperator.getButton(ButtonF310.Y).onTrue(m_armSpeakerCommand);
+    joystickOperator.getButton(ButtonF310.B).onTrue(m_stoproller);
+    joystickOperator.getButton(ButtonF310.Y).onTrue(m_outtakeAmpCommand);
+    joystickOperator.getButton(ButtonF310.X).onTrue(m_regurgCommand);
     joystickOperator.getButton(ButtonF310.BumperLeft).onTrue(m_outtakeAmpCommand);
     joystickOperator.getButton(ButtonF310.BumperRight).onTrue(m_outtakeOfIntakeCommand);
     joystickOperator.getButton(ButtonF310.Back).onTrue(m_outtakeSpeakerCommand);
