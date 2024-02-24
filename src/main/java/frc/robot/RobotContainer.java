@@ -35,13 +35,15 @@ public class RobotContainer
 {
   JoystickF310 joystickDrive = new JoystickF310(Ports.PORT_JOYSTICK_DRIVE);
   JoystickF310 joystickOperator = new JoystickF310(Ports.PORT_JOYSTICK_OPERATOR);
+
   // The robot's subsystems and commands are defined here...
-  private final SwerveSubsystem m_drivebase = new SwerveSubsystem(new File(Filesystem.getDeployDirectory(),
-                                                                         "swerve"));
+  private final SwerveSubsystem m_drivebase = new SwerveSubsystem(new File(Filesystem.getDeployDirectory(), "swerve"));
   private final ArmSubsystem m_arm = new ArmSubsystem();
   private final IntakeSubsystem m_intake = new IntakeSubsystem();
   private final ShooterSubsystem m_shooter = new ShooterSubsystem();
 
+  private final DriveCommand m_driveCommand = new DriveCommand(m_drivebase);
+  private final DriveSimulationCommand m_driveSimulationCommand = new DriveSimulationCommand(m_drivebase);
   private final ArmNeutralCommand m_armNeutralCommand = new ArmNeutralCommand(m_arm);
   private final ArmAmpCommand m_armAmpCommand = new ArmAmpCommand(m_arm);
   private final ArmSpeakerCommand m_armSpeakerCommand = new ArmSpeakerCommand(m_arm);
@@ -49,11 +51,11 @@ public class RobotContainer
   private final OuttakeOfIntakeCommand m_outtakeOfIntakeCommand = new OuttakeOfIntakeCommand(m_intake, m_shooter);
   private final OuttakeSpeakerCommand m_outtakeSpeakerCommand = new OuttakeSpeakerCommand(m_shooter);
   private final RegurgitationCommand m_regurgCommand = new RegurgitationCommand(m_intake);
-  private final StopRoller m_stoproller = new StopRoller(m_intake);
- // private final IntakeExtendCommand m_intakeExtendCommand = new IntakeExtendCommand(m_intake); // new (temp comment)
+  private final StopRollerCommand m_stopRollerCommand = new StopRollerCommand(m_intake);
+  private final IntakeExtendCommand m_intakeExtendCommand = new IntakeExtendCommand(m_intake);
+  private final IntakeToIndexerCommand m_intakeToIndexerCommand = new IntakeToIndexerCommand(m_intake);
   // private final NoteProcessingCommand m_noteProcessingCommand = new NoteProcessingCommand(m_intake, m_indexer);
-  private final DriveCommand m_driveCommand = new DriveCommand(m_drivebase);
-  private final DriveSimulationCommand m_driveSimulationCommand = new DriveSimulationCommand(m_drivebase);
+
   //AUTO
   private final SendableChooser<Command> autoChooser;
 
@@ -102,16 +104,19 @@ public class RobotContainer
                                    //new Pose2d(new Translation2d(4, 4), Rotation2d.fromDegrees(0)))
                               //));
       //  joystickDrive.getButton(ButtonF310.Y).whileTrue(Commands.runOnce(drivebase::lock, drivebase).repeatedly());
+      
     joystickOperator.getButton(ButtonF310.A).onTrue(m_armNeutralCommand);
-    joystickOperator.getButton(ButtonF310.B).onTrue(m_stoproller);
+    joystickOperator.getButton(ButtonF310.B).onTrue(m_stopRollerCommand);
     joystickOperator.getButton(ButtonF310.Y).onTrue(m_outtakeAmpCommand);
     joystickOperator.getButton(ButtonF310.X).onTrue(m_regurgCommand);
     joystickOperator.getButton(ButtonF310.BumperLeft).onTrue(m_outtakeAmpCommand);
     joystickOperator.getButton(ButtonF310.BumperRight).onTrue(m_outtakeOfIntakeCommand);
     joystickOperator.getButton(ButtonF310.Back).onTrue(m_outtakeSpeakerCommand);
-    //joystickOperator.getButton(ButtonF310.X).onTrue(m_intakeExtendCommand);
-    //joystickOperator.getButton(POVF310.Top).onTrue(m_indexerCommand);
-   // joystickOperator.getButton(POVF310.Bottom).onTrue(m_noteProcessingCommand);
+    //joystickOperator.getButton(POVF310.Top).onTrue(m_intakeExtendCommand);
+    //joystickOperator.getButton(POVF310.Bottom).onTrue(m_intakeToIndexerCommand);
+    //joystickOperator.getButton(POVF310.Left).onTrue(m_armAmpCommand);
+    //joystickOperator.getButton(POVF310.Right).onTrue(m_armSpeakerCommand);
+    //joystickOperator.getButton().onTrue(m_noteProcessingCommand);
   }
   
   public void setTeleopDefaultCommands()

@@ -6,10 +6,10 @@ import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 
-public class StopRoller extends Command {
+public class StopRollerCommand extends Command {
     private final IntakeSubsystem m_intakeSubsystem;
 
-    public StopRoller(IntakeSubsystem intakeSubsystem){
+    public StopRollerCommand(IntakeSubsystem intakeSubsystem){
         m_intakeSubsystem = intakeSubsystem;
     }
 
