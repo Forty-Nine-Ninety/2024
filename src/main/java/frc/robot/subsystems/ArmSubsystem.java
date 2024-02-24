@@ -29,9 +29,9 @@ public class ArmSubsystem extends SubsystemBase{
         armLeft.restoreFactoryDefaults();
         armRight.restoreFactoryDefaults();
 
-        m_pidController.setP(MotionControl.ARM_PID[0]);
-        m_pidController.setI(MotionControl.ARM_PID[1]);
-        m_pidController.setD(MotionControl.ARM_PID[2]);
+        m_pidController.setP(MotionControl.ARM_PID.kP);
+        m_pidController.setI(MotionControl.ARM_PID.kI);
+        m_pidController.setD(MotionControl.ARM_PID.kD);
 
         armLeft.setClosedLoopRampRate(MotionControl.CLOSED_LOOP_RAMP_RATE); 
         armRight.setClosedLoopRampRate(MotionControl.CLOSED_LOOP_RAMP_RATE);

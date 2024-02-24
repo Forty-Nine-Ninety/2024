@@ -26,9 +26,9 @@ public class IntakeSubsystem extends SubsystemBase {
         intakeExtend.restoreFactoryDefaults();
         intakeRoller.restoreFactoryDefaults();
 
-        pid_intake.setP(MotionControl.INTAKE_EXTEND_PID[0]);
-        pid_intake.setI(MotionControl.INTAKE_EXTEND_PID[1]);
-        pid_intake.setD(MotionControl.INTAKE_EXTEND_PID[2]);
+        pid_intake.setP(MotionControl.INTAKE_EXTEND_PID.kP);
+        pid_intake.setI(MotionControl.INTAKE_EXTEND_PID.kI);
+        pid_intake.setD(MotionControl.INTAKE_EXTEND_PID.kD);
    
         intakeExtend.setInverted(true);
         intakeRoller.setInverted(true);
