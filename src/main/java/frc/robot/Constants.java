@@ -26,17 +26,6 @@ public final class Constants
   public static class Ports
   {
     public static int PORT_JOYSTICK_DRIVE = 0;
-    public static int PORT_JOYSTICK_OPERATOR = 1;
-    public static int PORT_DIO_BREAK_BEAM = 5; //Chloe; for the shootersubsystem break beam port 
-
-    //CAN IDs (created by Shreyans: ask Isaac for help since he knows more than me)
-    public static final int CAN_ARM_LEFT_SPARKMAX = 10;
-    public static final int CAN_ARM_RIGHT_SPARKMAX = 9;
-    //public static final int CAN_INDEXER_SPARKMAX = 11;
-    public static final int CAN_SHOOTER_ONE_SPARKMAX = 12; //Note I don't know the CAN IDs for the shooter, I'll put them in later -Chloe
-    public static final int CAN_SHOOTER_TWO_SPARKMAX = 11;
-    //public static final int CAN_INTAKE_SPARKMAX_EXTEND = 14;
-    public static final int CAN_INTAKE_SPARKMAX_ROLLER = 14;
   }
   
   public static class MotorConfig
@@ -49,8 +38,6 @@ public final class Constants
     public static double DRIVETRAIN_WHEEL_DIAMETER_IN = 4.0;
     public static final double DRIVE_GEAR_RATIO = 6.75;
     public static final double STEERING_GEAR_RATIO = 150.0/7.0;
-
-    public static double ARM_MOTION_REDUCTION = 1000.0/3.0;
 
     //public static final double ROBOT_MASS = (148 - 20.3) * 0.453592; // 32lbs * kg per pound
     //public static final Matter CHASSIS    = new Matter(new Translation3d(0, 0, Units.inchesToMeters(8)), ROBOT_MASS);
@@ -97,23 +84,13 @@ public final class Constants
   public static class SubsystemConfig
   {
     //Movement information
+
     // Hold time on motor brakes when disabled
     public static final double WHEEL_LOCK_TIME = 10; // seconds
   }
 
   public static class MotionControl
   {
-    //PID
-    public static final double[] ARM_PID = {0, 0, 0}; // CHANGE PID LATER (this is for ArmSubsystem.java)
-    // public static final double[] INDEXER_PID = {0, 0, 0}; NOT NEEDED
-    public static final double[] SHOOTER_PID = {0, 0, 0}; //CHANGE PID LATER (this is for ShooterSubsystem.java)
-    public static final double[] INTAKE_EXTEND_PID = {0, 0, 0};
-    
-    public static final double CLOSED_LOOP_RAMP_RATE = 0.6;
-    public static final double OPEN_LOOP_RAMP_RATE = 0.6;
-    // this is for the method in IntakeSubsystem, values TBD
-    public static final double POSITION_INTAKE_EXTENDED = 0;
-    public static final double INTAKE_RETRACTED_POS = 0;
   }
 
   public static final class AutonConstants
