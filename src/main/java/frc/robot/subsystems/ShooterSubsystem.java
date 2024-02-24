@@ -31,7 +31,10 @@ public class ShooterSubsystem extends SubsystemBase {
     private void configureMotors() {
         shooter1.restoreFactoryDefaults(); 
         shooter2.restoreFactoryDefaults(); 
- 
+        
+        shooter1.setInverted(true);
+        shooter2.setInverted(true);
+        
         //m_pidController.setP(MotionControl.SHOOTER_PID.kP);
         //m_pidController.setI(MotionControl.SHOOTER_PID.kI);
         //m_pidController.setD(MotionControl.SHOOTER_PID.kD);
@@ -42,7 +45,7 @@ public class ShooterSubsystem extends SubsystemBase {
         shooter1.setOpenLoopRampRate(MotionControl.CLOSED_LOOP_RAMP_RATE);
         shooter2.setOpenLoopRampRate(MotionControl.CLOSED_LOOP_RAMP_RATE);
 
-        //Is motor inversion necessary?
+        shooter2.follow(shooter1, false);
 
         shooter1.setSmartCurrentLimit(15, 20);
         shooter2.setSmartCurrentLimit(15, 20);
