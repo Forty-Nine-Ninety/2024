@@ -33,117 +33,117 @@ import com.pathplanner.lib.auto.AutoBuilder;
  */
 public class RobotContainer
 {
-  JoystickF310 joystickDrive = new JoystickF310(Ports.PORT_JOYSTICK_DRIVE);
-  JoystickF310 joystickOperator = new JoystickF310(Ports.PORT_JOYSTICK_OPERATOR);
+    JoystickF310 joystickDrive = new JoystickF310(Ports.PORT_JOYSTICK_DRIVE);
+    JoystickF310 joystickOperator = new JoystickF310(Ports.PORT_JOYSTICK_OPERATOR);
 
-  // The robot's subsystems and commands are defined here...
-  private final SwerveSubsystem m_drivebase = new SwerveSubsystem(new File(Filesystem.getDeployDirectory(), "swerve"));
-  private final ArmSubsystem m_arm = new ArmSubsystem();
-  private final IntakeSubsystem m_intake = new IntakeSubsystem();
-  private final ShooterSubsystem m_shooter = new ShooterSubsystem();
+    // The robot's subsystems and commands are defined here...
+    private final SwerveSubsystem m_drivebase = new SwerveSubsystem(new File(Filesystem.getDeployDirectory(), "swerve"));
+    private final ArmSubsystem m_arm = new ArmSubsystem();
+    private final IntakeSubsystem m_intake = new IntakeSubsystem();
+    private final ShooterSubsystem m_shooter = new ShooterSubsystem();
 
-  private final DriveCommand m_driveCommand = new DriveCommand(m_drivebase);
-  private final DriveSimulationCommand m_driveSimulationCommand = new DriveSimulationCommand(m_drivebase);
-  private final ArmNeutralCommand m_armNeutralCommand = new ArmNeutralCommand(m_arm);
-  private final ArmAmpCommand m_armAmpCommand = new ArmAmpCommand(m_arm);
-  private final ArmSpeakerCommand m_armSpeakerCommand = new ArmSpeakerCommand(m_arm);
-  private final OuttakeAmpCommand m_outtakeAmpCommand = new OuttakeAmpCommand(m_shooter);
-  private final OuttakeOfIntakeCommand m_outtakeOfIntakeCommand = new OuttakeOfIntakeCommand(m_intake, m_shooter);
-  private final OuttakeSpeakerCommand m_outtakeSpeakerCommand = new OuttakeSpeakerCommand(m_shooter);
-  private final RegurgitationCommand m_regurgCommand = new RegurgitationCommand(m_intake);
-  private final StopRollerCommand m_stopRollerCommand = new StopRollerCommand(m_intake);
-  private final IntakeExtendCommand m_intakeExtendCommand = new IntakeExtendCommand(m_intake);
-  private final IntakeToIndexerCommand m_intakeToIndexerCommand = new IntakeToIndexerCommand(m_intake);
-  // private final NoteProcessingCommand m_noteProcessingCommand = new NoteProcessingCommand(m_intake, m_indexer);
+    private final DriveCommand m_driveCommand = new DriveCommand(m_drivebase);
+    private final DriveSimulationCommand m_driveSimulationCommand = new DriveSimulationCommand(m_drivebase);
+    private final ArmNeutralCommand m_armNeutralCommand = new ArmNeutralCommand(m_arm);
+    private final ArmAmpCommand m_armAmpCommand = new ArmAmpCommand(m_arm);
+    private final ArmSpeakerCommand m_armSpeakerCommand = new ArmSpeakerCommand(m_arm);
+    private final OuttakeAmpCommand m_outtakeAmpCommand = new OuttakeAmpCommand(m_shooter);
+    private final OuttakeOfIntakeCommand m_outtakeOfIntakeCommand = new OuttakeOfIntakeCommand(m_intake, m_shooter);
+    private final OuttakeSpeakerCommand m_outtakeSpeakerCommand = new OuttakeSpeakerCommand(m_shooter);
+    private final RegurgitationCommand m_regurgCommand = new RegurgitationCommand(m_intake);
+    private final StopRollerCommand m_stopRollerCommand = new StopRollerCommand(m_intake);
+    private final IntakeExtendCommand m_intakeExtendCommand = new IntakeExtendCommand(m_intake);
+    private final IntakeToIndexerCommand m_intakeToIndexerCommand = new IntakeToIndexerCommand(m_intake);
+    // private final NoteProcessingCommand m_noteProcessingCommand = new NoteProcessingCommand(m_intake, m_indexer);
 
-  //AUTO
-  private final SendableChooser<Command> autoChooser;
+    //AUTO
+    private final SendableChooser<Command> autoChooser;
 
-  /**
-   * The container for the robot. Contains subsystems, OI devices, and commands.
-   */
-  public RobotContainer()
-  {
-    // Configure the trigger bindings
-    configureBindings();
+    /**
+     * The container for the robot. Contains subsystems, OI devices, and commands.
+     */
+    public RobotContainer()
+    {
+        // Configure the trigger bindings
+        configureBindings();
+        
+        // AUTO- SmartDashboard
+        autoChooser = AutoBuilder.buildAutoChooser();
+        SmartDashboard.putData("Auto Chooser", autoChooser);
+        SmartDashboard.putData("Exit 1", autoChooser);
+    }
+
+    /**
+     * Use this method to define your trigger->command mappings. Triggers can be created via the
+     * {@link Trigger#Trigger(java.util.function.BooleanSupplier)} constructor with an arbitrary predicate, or via the
+     * named factories in {@link edu.wpi.first.wpilibj2.command.button.CommandGenericHID}'s subclasses for
+     * {@link CommandXboxController Xbox}/{@link edu.wpi.first.wpilibj2.command.button.CommandPS4Controller PS4}
+     * controllers or {@link edu.wpi.first.wpilibj2.command.button.CommandJoystick Flight joysticks}.
+     */
+    private void configureBindings()
+    {
+        m_driveCommand.setSuppliers(
+            () -> MathUtil.applyDeadband(joystickDrive.getRawAxis(AxisF310.JoystickLeftY), DriveSettings.LEFT_Y_DEADBAND),
+            () -> MathUtil.applyDeadband(joystickDrive.getRawAxis(AxisF310.JoystickLeftX), DriveSettings.LEFT_X_DEADBAND),
+            () -> joystickDrive.getRawAxis(AxisF310.JoystickRightX),
+            () -> joystickDrive.getRawAxis(AxisF310.JoystickRightY)
+        );
+
+        m_driveSimulationCommand.setSuppliers(
+            () -> MathUtil.applyDeadband(joystickDrive.getRawAxis(AxisF310.JoystickLeftY), DriveSettings.LEFT_Y_DEADBAND),
+            () -> MathUtil.applyDeadband(joystickDrive.getRawAxis(AxisF310.JoystickLeftX), DriveSettings.LEFT_X_DEADBAND),
+            () -> joystickDrive.getRawAxis(2)
+        );
+
+        // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
+
+        joystickDrive.getButton(ButtonF310.A).onTrue((Commands.runOnce(m_drivebase::zeroGyro)));
+        //joystickDrive.getButton(ButtonF310.B).onTrue(Commands.runOnce(m_drivebase::addFakeVisionReading));
+        //joystickDrive.getButton(ButtonF310.X).whileTrue(
+                //Commands.deferredProxy(() -> m_drivebase.driveToPose(
+                                                                     //new Pose2d(new Translation2d(4, 4), Rotation2d.fromDegrees(0)))
+                                                            //));
+            //  joystickDrive.getButton(ButtonF310.Y).whileTrue(Commands.runOnce(drivebase::lock, drivebase).repeatedly());
+            
+        joystickOperator.getButton(ButtonF310.A).onTrue(m_armNeutralCommand);
+        joystickOperator.getButton(ButtonF310.B).onTrue(m_stopRollerCommand);
+        joystickOperator.getButton(ButtonF310.Y).onTrue(m_outtakeAmpCommand);
+        joystickOperator.getButton(ButtonF310.X).onTrue(m_regurgCommand);
+        joystickOperator.getButton(ButtonF310.BumperLeft).onTrue(m_outtakeAmpCommand);
+        joystickOperator.getButton(ButtonF310.BumperRight).onTrue(m_outtakeOfIntakeCommand);
+        joystickOperator.getButton(ButtonF310.Back).onTrue(m_outtakeSpeakerCommand);
+        //joystickOperator.getButton(POVF310.Top).onTrue(m_intakeExtendCommand);
+        //joystickOperator.getButton(POVF310.Bottom).onTrue(m_intakeToIndexerCommand);
+        //joystickOperator.getButton(POVF310.Left).onTrue(m_armAmpCommand);
+        //joystickOperator.getButton(POVF310.Right).onTrue(m_armSpeakerCommand);
+        //joystickOperator.getButton().onTrue(m_noteProcessingCommand);
+    }
     
-    // AUTO- SmartDashboard
-    autoChooser = AutoBuilder.buildAutoChooser();
-    SmartDashboard.putData("Auto Chooser", autoChooser);
-    SmartDashboard.putData("Exit 1", autoChooser);
-  }
+    public void setTeleopDefaultCommands()
+    {
+        CommandScheduler.getInstance().setDefaultCommand(m_drivebase, !RobotBase.isSimulation() ? m_driveCommand : m_driveSimulationCommand);
+        CommandScheduler.getInstance().setDefaultCommand(m_arm, m_armNeutralCommand);
+    }
 
-  /**
-   * Use this method to define your trigger->command mappings. Triggers can be created via the
-   * {@link Trigger#Trigger(java.util.function.BooleanSupplier)} constructor with an arbitrary predicate, or via the
-   * named factories in {@link edu.wpi.first.wpilibj2.command.button.CommandGenericHID}'s subclasses for
-   * {@link CommandXboxController Xbox}/{@link edu.wpi.first.wpilibj2.command.button.CommandPS4Controller PS4}
-   * controllers or {@link edu.wpi.first.wpilibj2.command.button.CommandJoystick Flight joysticks}.
-   */
-  private void configureBindings()
-  {
-    m_driveCommand.setSuppliers(
-      () -> MathUtil.applyDeadband(joystickDrive.getRawAxis(AxisF310.JoystickLeftY), DriveSettings.LEFT_Y_DEADBAND),
-      () -> MathUtil.applyDeadband(joystickDrive.getRawAxis(AxisF310.JoystickLeftX), DriveSettings.LEFT_X_DEADBAND),
-      () -> joystickDrive.getRawAxis(AxisF310.JoystickRightX),
-      () -> joystickDrive.getRawAxis(AxisF310.JoystickRightY)
-    );
+    /**
+     * Use this to pass the autonomous command to the main {@link Robot} class.
+     *
+     * @return the command to run in autonomous
+     */
+    public Command getAutonomousCommand()
+    {
+        // An example command will be run in autonomous
+        return m_drivebase.getAutonomousCommand("New Auto");
+        //return autoChooser.getSelected();
+    }
 
-    m_driveSimulationCommand.setSuppliers(
-      () -> MathUtil.applyDeadband(joystickDrive.getRawAxis(AxisF310.JoystickLeftY), DriveSettings.LEFT_Y_DEADBAND),
-      () -> MathUtil.applyDeadband(joystickDrive.getRawAxis(AxisF310.JoystickLeftX), DriveSettings.LEFT_X_DEADBAND),
-      () -> joystickDrive.getRawAxis(2)
-    );
+    public void setDriveMode()
+    {
+        //drivebase.setDefaultCommand();
+    }
 
-    // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
-
-    joystickDrive.getButton(ButtonF310.A).onTrue((Commands.runOnce(m_drivebase::zeroGyro)));
-    //joystickDrive.getButton(ButtonF310.B).onTrue(Commands.runOnce(m_drivebase::addFakeVisionReading));
-    //joystickDrive.getButton(ButtonF310.X).whileTrue(
-        //Commands.deferredProxy(() -> m_drivebase.driveToPose(
-                                   //new Pose2d(new Translation2d(4, 4), Rotation2d.fromDegrees(0)))
-                              //));
-      //  joystickDrive.getButton(ButtonF310.Y).whileTrue(Commands.runOnce(drivebase::lock, drivebase).repeatedly());
-      
-    joystickOperator.getButton(ButtonF310.A).onTrue(m_armNeutralCommand);
-    joystickOperator.getButton(ButtonF310.B).onTrue(m_stopRollerCommand);
-    joystickOperator.getButton(ButtonF310.Y).onTrue(m_outtakeAmpCommand);
-    joystickOperator.getButton(ButtonF310.X).onTrue(m_regurgCommand);
-    joystickOperator.getButton(ButtonF310.BumperLeft).onTrue(m_outtakeAmpCommand);
-    joystickOperator.getButton(ButtonF310.BumperRight).onTrue(m_outtakeOfIntakeCommand);
-    joystickOperator.getButton(ButtonF310.Back).onTrue(m_outtakeSpeakerCommand);
-    //joystickOperator.getButton(POVF310.Top).onTrue(m_intakeExtendCommand);
-    //joystickOperator.getButton(POVF310.Bottom).onTrue(m_intakeToIndexerCommand);
-    //joystickOperator.getButton(POVF310.Left).onTrue(m_armAmpCommand);
-    //joystickOperator.getButton(POVF310.Right).onTrue(m_armSpeakerCommand);
-    //joystickOperator.getButton().onTrue(m_noteProcessingCommand);
-  }
-  
-  public void setTeleopDefaultCommands()
-  {
-    CommandScheduler.getInstance().setDefaultCommand(m_drivebase, !RobotBase.isSimulation() ? m_driveCommand : m_driveSimulationCommand);
-    CommandScheduler.getInstance().setDefaultCommand(m_arm, m_armNeutralCommand);
-  }
-
-  /**
-   * Use this to pass the autonomous command to the main {@link Robot} class.
-   *
-   * @return the command to run in autonomous
-   */
-  public Command getAutonomousCommand()
-  {
-    // An example command will be run in autonomous
-    return m_drivebase.getAutonomousCommand("New Auto");
-    //return autoChooser.getSelected();
-  }
-
-  public void setDriveMode()
-  {
-    //drivebase.setDefaultCommand();
-  }
-
-  public void setMotorBrake(boolean brake)
-  {
-    m_drivebase.setMotorBrake(brake);
-  }
+    public void setMotorBrake(boolean brake)
+    {
+        m_drivebase.setMotorBrake(brake);
+    }
 }
