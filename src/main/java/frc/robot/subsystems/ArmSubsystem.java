@@ -39,8 +39,8 @@ public class ArmSubsystem extends SubsystemBase{
         armRight.setOpenLoopRampRate (MotionControl.OPEN_LOOP_RAMP_RATE);
 
         armLeft.follow(armRight, true);
-        armLeft.setSmartCurrentLimit(22,25);
-        armRight.setSmartCurrentLimit(22,25);
+        armLeft.setSmartCurrentLimit(5,5);
+        armRight.setSmartCurrentLimit(5,5);
     }
 
     public void moveToPosition(double setPoint){

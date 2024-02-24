@@ -54,6 +54,7 @@ public class RobotContainer
     private final StopRollerCommand m_stopRollerCommand = new StopRollerCommand(m_intake);
     private final IntakeExtendCommand m_intakeExtendCommand = new IntakeExtendCommand(m_intake);
     private final IntakeToIndexerCommand m_intakeToIndexerCommand = new IntakeToIndexerCommand(m_intake);
+    private final ChainEndgameCommand m_chainEndgameCommand = new ChainEndgameCommand(m_arm);
     // private final NoteProcessingCommand m_noteProcessingCommand = new NoteProcessingCommand(m_intake, m_indexer);
 
     //AUTO
@@ -112,6 +113,9 @@ public class RobotContainer
         joystickOperator.getButton(ButtonF310.BumperLeft).onTrue(m_outtakeAmpCommand);
         joystickOperator.getButton(ButtonF310.BumperRight).onTrue(m_outtakeOfIntakeCommand);
         joystickOperator.getButton(ButtonF310.Back).onTrue(m_outtakeSpeakerCommand);
+
+        // joystickOperator.getButton(Button.F310.<button>.onTrue(m_chainEndgameCommand));
+
         //joystickOperator.getButton(POVF310.Top).onTrue(m_intakeExtendCommand);
         //joystickOperator.getButton(POVF310.Bottom).onTrue(m_intakeToIndexerCommand);
         //joystickOperator.getButton(POVF310.Left).onTrue(m_armAmpCommand);

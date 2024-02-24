@@ -44,8 +44,8 @@ public class ShooterSubsystem extends SubsystemBase {
 
         //Is motor inversion necessary?
 
-        shooter1.setSmartCurrentLimit(22, 15);
-        shooter2.setSmartCurrentLimit(22, 15);
+        shooter1.setSmartCurrentLimit(15, 20);
+        shooter2.setSmartCurrentLimit(15, 20);
     }
 
     public void percentOutput(double percent_output) {
