@@ -29,10 +29,10 @@ public final class Constants
     public static int PORT_JOYSTICK_OPERATOR = 1;
     public static int PORT_DIO_BREAK_BEAM = 5; //Chloe; for the shootersubsystem break beam port 
 
-    //CAN IDs (created by Shreyans: ask Isaac for help since he knows more than me)
+    //CAN IDs
     public static final int CAN_ARM_LEFT_SPARKMAX = 10;
     public static final int CAN_ARM_RIGHT_SPARKMAX = 9;
-    public static final int CAN_SHOOTER_ONE_SPARKMAX = 12; //Note I don't know the CAN IDs for the shooter, I'll put them in later -Chloe
+    public static final int CAN_SHOOTER_ONE_SPARKMAX = 12;
     public static final int CAN_SHOOTER_TWO_SPARKMAX = 11;
     public static final int CAN_INTAKE_SPARKMAX_EXTEND = 13;
     public static final int CAN_INTAKE_SPARKMAX_ROLLER = 14;
@@ -97,6 +97,7 @@ public final class Constants
   public static class SubsystemConfig
   {
     //Movement information
+
     // Hold time on motor brakes when disabled
     public static final double WHEEL_LOCK_TIME = 10; // seconds
   }
