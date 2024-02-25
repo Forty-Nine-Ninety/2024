@@ -105,14 +105,15 @@ public class RobotContainer
                                                                      //new Pose2d(new Translation2d(4, 4), Rotation2d.fromDegrees(0)))
                                                             //));
             //  joystickDrive.getButton(ButtonF310.Y).whileTrue(Commands.runOnce(drivebase::lock, drivebase).repeatedly());
-            
-        joystickOperator.getButton(ButtonF310.A).onTrue(m_armNeutralCommand);
+        
+        joystickOperator.getButton(POVF310.Top).onTrue(m_armSpeakerCommand);
+        joystickOperator.getButton(POVF310.Right).onTrue(m_armAmpCommand);
+        joystickOperator.getButton(POVF310.Bottom).onTrue(m_armNeutralCommand);
+        joystickOperator.getButton(POVF310.Left).onTrue(m_chainEndgameCommand);
+        joystickOperator.getButton(ButtonF310.Y).onTrue(m_regurgCommand);
         joystickOperator.getButton(ButtonF310.B).onTrue(m_stopRollerCommand);
-        joystickOperator.getButton(ButtonF310.Y).onTrue(m_outtakeAmpCommand);
-        joystickOperator.getButton(ButtonF310.X).onTrue(m_regurgCommand);
-        joystickOperator.getButton(ButtonF310.BumperLeft).onTrue(m_outtakeAmpCommand);
-        joystickOperator.getButton(ButtonF310.BumperRight).onTrue(m_outtakeOfIntakeCommand);
-        joystickOperator.getButton(ButtonF310.Back).onTrue(m_outtakeSpeakerCommand);
+        joystickOperator.getButton(ButtonF310.A).onTrue(m_intakeToIndexerCommand);
+        joystickOperator.getButton(ButtonF310.X).onTrue(m_outtakeSpeakerCommand);//OR OUTTAKE AMP COMMAND
 
         // joystickOperator.getButton(Button.F310.<button>.onTrue(m_chainEndgameCommand));
 
