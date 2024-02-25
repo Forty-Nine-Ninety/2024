@@ -46,6 +46,7 @@ public class RobotContainer
     private final DriveSimulationCommand m_driveSimulationCommand = new DriveSimulationCommand(m_drivebase);
     private final ArmNeutralCommand m_armNeutralCommand = new ArmNeutralCommand(m_arm);
     private final ArmAmpCommand m_armAmpCommand = new ArmAmpCommand(m_arm);
+    private final ArmManualCommand m_armManualCommand = new ArmManualCommand(m_arm);
     private final ArmSpeakerCommand m_armSpeakerCommand = new ArmSpeakerCommand(m_arm);
     private final OuttakeAmpCommand m_outtakeAmpCommand = new OuttakeAmpCommand(m_shooter);
     private final OuttakeOfIntakeCommand m_outtakeOfIntakeCommand = new OuttakeOfIntakeCommand(m_intake, m_shooter);
@@ -96,6 +97,15 @@ public class RobotContainer
             () -> joystickDrive.getRawAxis(2)
         );
 
+        //Check with somebody - Allison
+        m_armManualCommand.setSuppliers(
+            () -> DriveUtil.powCopySign(joystickOperator.getRawAxis(AxisF310.JoystickLeftY), 1)
+        );
+
+        /*m_eyebrowPositionCommand.setSuppliers(
+            () -> DriveUtil.powCopySign(joystickOperator.getRawAxis(AxisF310.TriggerRight),1)
+        );*/
+
         // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
 
         joystickDrive.getButton(ButtonF310.A).onTrue((Commands.runOnce(m_drivebase::zeroGyro)));
@@ -114,7 +124,9 @@ public class RobotContainer
         joystickOperator.getButton(ButtonF310.B).onTrue(m_stopRollerCommand);
         joystickOperator.getButton(ButtonF310.A).onTrue(m_intakeToIndexerCommand);
         joystickOperator.getButton(ButtonF310.X).onTrue(m_outtakeSpeakerCommand);//OR OUTTAKE AMP COMMAND
-
+        joystickOperator.getButton(ButtonF310.BumperLeft).onTrue(m_armManualCommand);
+        /*joystickOperator.getButton(ButtonF310.BumperRight).onTrue(m_eyebrowPositionCommand); */
+        
         // joystickOperator.getButton(Button.F310.<button>.onTrue(m_chainEndgameCommand));
 
         //joystickOperator.getButton(POVF310.Top).onTrue(m_intakeExtendCommand);
