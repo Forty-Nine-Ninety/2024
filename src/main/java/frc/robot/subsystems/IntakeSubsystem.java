@@ -5,6 +5,8 @@ package frc.robot.subsystems;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
 import com.revrobotics.SparkPIDController;
+import com.revrobotics.CANSparkBase.IdleMode;
+import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.revrobotics.CANSparkBase;
 import com.revrobotics.CANSparkLowLevel.MotorType;
 import frc.robot.Constants.*;
@@ -29,14 +31,16 @@ public class IntakeSubsystem extends SubsystemBase {
         pid_intake.setP(MotionControl.INTAKE_EXTEND_PID.kP);
         pid_intake.setI(MotionControl.INTAKE_EXTEND_PID.kI);
         pid_intake.setD(MotionControl.INTAKE_EXTEND_PID.kD);
-   
+        
         intakeExtend.setInverted(true);
         intakeRoller.setInverted(true);
 
         intakeExtend.setSmartCurrentLimit(15, 20);
         intakeRoller.setSmartCurrentLimit(15, 20);
-    }
 
+        intakeExtend.setIdleMode(IdleMode.kBrake);
+        //intakeRoller.setIdleMode(IdleMode.kBrake);
+    }
     public void intakePercentOutput(double percent_output_roller){
         intakeRoller.set(percent_output_roller);
     }
