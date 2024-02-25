@@ -202,14 +202,14 @@ public class SwerveSubsystem extends SubsystemBase
     {
         // swerveDrive.setHeadingCorrection(true); // Normally you would want heading correction for this kind of control.
         return run(() -> {
-            double xInput = DriveUtil.powCopySign(translationX.getAsDouble() * DriveSettings.ARCADE_SPEED_X_MULTIPLIER, DriveSettings.JOYSTICK_THROTTLE_X_EXPONENT); // Smooth control out
-            double yInput = DriveUtil.powCopySign(translationY.getAsDouble() * DriveSettings.ARCADE_SPEED_Y_MULTIPLIER, DriveSettings.JOYSTICK_THROTTLE_Y_EXPONENT); // Smooth control out
+            double xInput = DriveUtil.powCopySign(translationX.getAsDouble(), DriveSettings.JOYSTICK_THROTTLE_X_EXPONENT) * DriveSettings.ARCADE_SPEED_X_MULTIPLIER; // Smooth control out
+            double yInput = DriveUtil.powCopySign(translationY.getAsDouble(), DriveSettings.JOYSTICK_THROTTLE_Y_EXPONENT) * DriveSettings.ARCADE_SPEED_Y_MULTIPLIER; // Smooth control out
             // Make the robot move
             driveFieldOriented(swerveDrive.swerveController.getTargetSpeeds(xInput, yInput,
-                                                                                                                                            headingX.getAsDouble() * DriveSettings.ARCADE_ROTATION_MULTIPLIER,
-                                                                                                                                            headingY.getAsDouble() * DriveSettings.ARCADE_ROTATION_MULTIPLIER,
-                                                                                                                                            swerveDrive.getOdometryHeading().getRadians(),
-                                                                                                                                            swerveDrive.getMaximumVelocity()));
+                                                                            headingX.getAsDouble() * DriveSettings.ARCADE_ROTATION_MULTIPLIER,
+                                                                            headingY.getAsDouble() * DriveSettings.ARCADE_ROTATION_MULTIPLIER,
+                                                                            swerveDrive.getOdometryHeading().getRadians(),
+                                                                            swerveDrive.getMaximumVelocity()));
         });
     }
 
@@ -227,10 +227,10 @@ public class SwerveSubsystem extends SubsystemBase
         return run(() -> {
             // Make the robot move
             driveFieldOriented(swerveDrive.swerveController.getTargetSpeeds(translationX.getAsDouble() * DriveSettings.ARCADE_SPEED_X_MULTIPLIER,
-                                                                                                                                            translationY.getAsDouble() * DriveSettings.ARCADE_SPEED_Y_MULTIPLIER,
-                                                                                                                                            rotation.getAsDouble() * Math.PI * DriveSettings.ARCADE_ROTATION_MULTIPLIER,
-                                                                                                                                            swerveDrive.getOdometryHeading().getRadians(),
-                                                                                                                                            swerveDrive.getMaximumVelocity()));
+                                                                            translationY.getAsDouble() * DriveSettings.ARCADE_SPEED_Y_MULTIPLIER,
+                                                                            rotation.getAsDouble() * Math.PI * DriveSettings.ARCADE_ROTATION_MULTIPLIER,
+                                                                            swerveDrive.getOdometryHeading().getRadians(),
+                                                                            swerveDrive.getMaximumVelocity()));
         });
     }
 
@@ -274,11 +274,11 @@ public class SwerveSubsystem extends SubsystemBase
     {
         return run(() -> {
             // Make the robot move
-            swerveDrive.drive(new Translation2d(Math.pow(translationX.getAsDouble(), 3) * swerveDrive.getMaximumVelocity(),
-                                                                                    Math.pow(translationY.getAsDouble(), 3) * swerveDrive.getMaximumVelocity()),
-                                                Math.pow(angularRotationX.getAsDouble(), 3) * swerveDrive.getMaximumAngularVelocity(),
-                                                true,
-                                                false);
+            swerveDrive.drive(new Translation2d(DriveUtil.powCopySign(translationX.getAsDouble(), DriveSettings.JOYSTICK_THROTTLE_X_EXPONENT) * DriveSettings.ARCADE_SPEED_X_MULTIPLIER * swerveDrive.getMaximumVelocity(),
+                                                DriveUtil.powCopySign(translationY.getAsDouble(), DriveSettings.JOYSTICK_THROTTLE_Y_EXPONENT) * DriveSettings.ARCADE_SPEED_Y_MULTIPLIER * swerveDrive.getMaximumVelocity()),
+                              DriveUtil.powCopySign(angularRotationX.getAsDouble(), DriveSettings.JOYSTICK_TURNING_EXPONENT) * DriveSettings.ARCADE_ROTATION_MULTIPLIER * swerveDrive.getMaximumAngularVelocity(),
+                              true,
+                              false);
         });
     }
 

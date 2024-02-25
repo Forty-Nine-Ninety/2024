@@ -24,8 +24,8 @@ public class DriveCommand extends Command{
 
     @Override
     public void execute() {
-        double xInput = DriveUtil.powCopySign(m_translationX.getAsDouble() * DriveSettings.ARCADE_SPEED_X_MULTIPLIER, DriveSettings.JOYSTICK_THROTTLE_X_EXPONENT); // Smooth control out
-        double yInput = DriveUtil.powCopySign(m_translationY.getAsDouble() * DriveSettings.ARCADE_SPEED_Y_MULTIPLIER, DriveSettings.JOYSTICK_THROTTLE_Y_EXPONENT); // Smooth control out
+        double xInput = DriveUtil.powCopySign(m_translationX.getAsDouble(), DriveSettings.JOYSTICK_THROTTLE_X_EXPONENT) * DriveSettings.ARCADE_SPEED_X_MULTIPLIER; // Smooth control out
+        double yInput = DriveUtil.powCopySign(m_translationY.getAsDouble(), DriveSettings.JOYSTICK_THROTTLE_Y_EXPONENT) * DriveSettings.ARCADE_SPEED_Y_MULTIPLIER; // Smooth control out
 
         // Make the robot move
         m_drivebase.driveFieldOriented(m_drivebase.getSwerveController().getTargetSpeeds(
