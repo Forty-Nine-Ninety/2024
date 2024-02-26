@@ -119,11 +119,12 @@ public class RobotContainer
         joystickOperator.getButton(POVF310.Top).onTrue(m_armSpeakerCommand);
         joystickOperator.getButton(POVF310.Right).onTrue(m_armAmpCommand);
         joystickOperator.getButton(POVF310.Bottom).onTrue(m_armNeutralCommand);
-        joystickOperator.getButton(POVF310.Left).onTrue(m_chainEndgameCommand);
-        joystickOperator.getButton(ButtonF310.Y).onTrue(m_regurgCommand);
-        joystickOperator.getButton(ButtonF310.B).onTrue(m_stopRollerCommand);
-        joystickOperator.getButton(ButtonF310.A).onTrue(m_intakeToIndexerCommand);
-        joystickOperator.getButton(ButtonF310.X).onTrue(m_outtakeSpeakerCommand);//OR OUTTAKE AMP COMMAND
+        joystickOperator.getButton(POVF310.Left).onTrue(m_intakeExtendCommand).toggleOnTrue(m_intakeToIndexerCommand);
+        joystickOperator.getButton(ButtonF310.Y).toggleOnTrue(m_regurgCommand);
+        joystickOperator.getButton(ButtonF310.B).toggleOnTrue(m_stopRollerCommand);
+        //joystickOperator.getButton(ButtonF310.A).toggleOnTrue(m_intakeToIndexerCommand);
+        joystickOperator.getButton(ButtonF310.A).onTrue(m_chainEndgameCommand); /*Check with somebody - Allison */
+        joystickOperator.getButton(ButtonF310.X).toggleOnTrue(m_outtakeSpeakerCommand);//OR OUTTAKE AMP COMMAND
         joystickOperator.getButton(ButtonF310.BumperLeft).onTrue(m_armManualCommand);
         /*joystickOperator.getButton(ButtonF310.BumperRight).onTrue(m_eyebrowPositionCommand); */
         
