@@ -56,7 +56,6 @@ public class RobotContainer
     private final IntakeExtendCommand m_intakeExtendCommand = new IntakeExtendCommand(m_intake);
     private final IntakeToIndexerCommand m_intakeToIndexerCommand = new IntakeToIndexerCommand(m_intake);
     private final ChainEndgameCommand m_chainEndgameCommand = new ChainEndgameCommand(m_arm);
-    // private final NoteProcessingCommand m_noteProcessingCommand = new NoteProcessingCommand(m_intake, m_indexer);
 
     //AUTO
     private final SendableChooser<Command> autoChooser;
