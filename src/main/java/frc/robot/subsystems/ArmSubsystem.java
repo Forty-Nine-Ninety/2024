@@ -35,8 +35,8 @@ public class ArmSubsystem extends SubsystemBase{
 
         armLeft.setClosedLoopRampRate(MotionControl.CLOSED_LOOP_RAMP_RATE); 
         armRight.setClosedLoopRampRate(MotionControl.CLOSED_LOOP_RAMP_RATE);
-        armLeft.setOpenLoopRampRate (MotionControl.OPEN_LOOP_RAMP_RATE); 
-        armRight.setOpenLoopRampRate (MotionControl.OPEN_LOOP_RAMP_RATE);
+        armLeft.setOpenLoopRampRate(MotionControl.OPEN_LOOP_RAMP_RATE); 
+        armRight.setOpenLoopRampRate(MotionControl.OPEN_LOOP_RAMP_RATE);
 
         armLeft.follow(armRight, true);
         armLeft.setSmartCurrentLimit(5,5);
