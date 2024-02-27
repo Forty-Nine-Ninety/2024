@@ -45,10 +45,10 @@ public class ShooterSubsystem extends SubsystemBase {
         shooter1.setOpenLoopRampRate(MotionControl.CLOSED_LOOP_RAMP_RATE);
         shooter2.setOpenLoopRampRate(MotionControl.CLOSED_LOOP_RAMP_RATE);
 
-        shooter2.follow(shooter1, false);
+        shooter2.follow(shooter1, true);
 
-        shooter1.setSmartCurrentLimit(15, 20);
-        shooter2.setSmartCurrentLimit(15, 20);
+        shooter1.setSmartCurrentLimit(15, 40);
+        shooter2.setSmartCurrentLimit(15, 40);
     }
 
     public void percentOutput(double percent_output) {
