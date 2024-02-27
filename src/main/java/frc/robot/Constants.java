@@ -109,8 +109,8 @@ public final class Constants
         //public static final PIDConstants SHOOTER_PID = new PIDConstants(0.0, 0.0, 0.0); //DO WE NEED THIS?
         public static final PIDConstants INTAKE_EXTEND_PID = new PIDConstants(0.035, 0.0, 1.5);
 
-        public static final double CLOSED_LOOP_RAMP_RATE = 0.6;
-        public static final double OPEN_LOOP_RAMP_RATE = 0.6;
+        public static final double CLOSED_LOOP_RAMP_RATE = 1.0;
+        public static final double OPEN_LOOP_RAMP_RATE = 1.0;
         // this is for the method in IntakeSubsystem
         public static final double POSITION_INTAKE_EXTENDED = 0;
         public static final double INTAKE_RETRACTED_POS = 20;
