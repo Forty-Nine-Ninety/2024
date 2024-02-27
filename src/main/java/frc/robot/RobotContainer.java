@@ -128,12 +128,6 @@ public class RobotContainer
         /*joystickOperator.getButton(ButtonF310.BumperRight).onTrue(m_eyebrowPositionCommand); */
         
         // joystickOperator.getButton(Button.F310.<button>.onTrue(m_chainEndgameCommand));
-
-        //joystickOperator.getButton(POVF310.Top).onTrue(m_intakeExtendCommand);
-        //joystickOperator.getButton(POVF310.Bottom).onTrue(m_intakeToIndexerCommand);
-        //joystickOperator.getButton(POVF310.Left).onTrue(m_armAmpCommand);
-        //joystickOperator.getButton(POVF310.Right).onTrue(m_armSpeakerCommand);
-        //joystickOperator.getButton().onTrue(m_noteProcessingCommand);
     }
     
     public void setTeleopDefaultCommands()
