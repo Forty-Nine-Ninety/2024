@@ -52,7 +52,7 @@ public class RobotContainer
     private final OuttakeOfIntakeCommand m_outtakeOfIntakeCommand = new OuttakeOfIntakeCommand(m_intake, m_shooter);
     private final OuttakeSpeakerCommand m_outtakeSpeakerCommand = new OuttakeSpeakerCommand(m_shooter);
     private final RegurgitationCommand m_regurgCommand = new RegurgitationCommand(m_intake);
-    private final StopRollerCommand m_stopRollerCommand = new StopRollerCommand(m_intake);
+    private final StopRollerCommand m_stopRollerCommand = new StopRollerCommand(m_intake,m_shooter);
     private final IntakeExtendCommand m_intakeExtendCommand = new IntakeExtendCommand(m_intake);
     private final IntakeToIndexerCommand m_intakeToIndexerCommand = new IntakeToIndexerCommand(m_intake);
     private final ChainEndgameCommand m_chainEndgameCommand = new ChainEndgameCommand(m_arm);
@@ -115,7 +115,7 @@ public class RobotContainer
                                                             //));
             //  joystickDrive.getButton(ButtonF310.Y).whileTrue(Commands.runOnce(drivebase::lock, drivebase).repeatedly());
         
-        joystickOperator.getButton(POVF310.Top).onTrue(m_armSpeakerCommand);
+        joystickOperator.getButton(POVF310.Top).toggleOnTrue(m_armSpeakerCommand);
         joystickOperator.getButton(POVF310.Right).onTrue(m_armAmpCommand);
         joystickOperator.getButton(POVF310.Bottom).onTrue(m_armNeutralCommand);
         joystickOperator.getButton(POVF310.Left).onTrue(m_intakeExtendCommand).toggleOnTrue(m_intakeToIndexerCommand);
