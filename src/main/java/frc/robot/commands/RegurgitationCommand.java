@@ -17,4 +17,9 @@ public class RegurgitationCommand extends Command {
     public void execute(){
         m_intakeSubsystem.intakePercentOutput(-1);
     }
+
+    @Override
+    public void end(boolean interrupted){
+        m_intakeSubsystem.intakePercentOutput(0);
+    }
 }
