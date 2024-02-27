@@ -35,8 +35,8 @@ public class IntakeSubsystem extends SubsystemBase {
         intakeExtend.setInverted(true);
         intakeRoller.setInverted(true);
 
-        intakeExtend.setSmartCurrentLimit(15, 20);
-        intakeRoller.setSmartCurrentLimit(15, 20);
+        intakeExtend.setSmartCurrentLimit(10, 10);
+        intakeRoller.setSmartCurrentLimit(15, 40);
 
         intakeExtend.setIdleMode(IdleMode.kBrake);
         //intakeRoller.setIdleMode(IdleMode.kBrake);
