@@ -15,6 +15,6 @@ public class ArmSpeakerCommand extends Command{
 
     @Override
     public void initialize(){
-        arm_subsystem.moveToPosition(104 /*Check with mech team that this is the right angle */);
+        arm_subsystem.moveToPosition(10);
     }
 }
