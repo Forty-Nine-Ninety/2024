@@ -32,6 +32,9 @@ public class IntakeSubsystem extends SubsystemBase {
         pid_intake.setI(MotionControl.INTAKE_EXTEND_PID.kI);
         pid_intake.setD(MotionControl.INTAKE_EXTEND_PID.kD);
         
+        intakeExtend.setClosedLoopRampRate(MotionControl.CLOSED_LOOP_RAMP_RATE); 
+        intakeExtend.setOpenLoopRampRate(MotionControl.OPEN_LOOP_RAMP_RATE); 
+
         intakeExtend.setInverted(true);
         intakeRoller.setInverted(true);
 

@@ -39,11 +39,11 @@ public class ShooterSubsystem extends SubsystemBase {
         //m_pidController.setI(MotionControl.SHOOTER_PID.kI);
         //m_pidController.setD(MotionControl.SHOOTER_PID.kD);
 
-        shooter1.setClosedLoopRampRate(MotionControl.CLOSED_LOOP_RAMP_RATE);
-        shooter2.setClosedLoopRampRate(MotionControl.CLOSED_LOOP_RAMP_RATE);
+        //shooter1.setClosedLoopRampRate(MotionControl.CLOSED_LOOP_RAMP_RATE);
+        //shooter2.setClosedLoopRampRate(MotionControl.CLOSED_LOOP_RAMP_RATE);
 
-        shooter1.setOpenLoopRampRate(MotionControl.CLOSED_LOOP_RAMP_RATE);
-        shooter2.setOpenLoopRampRate(MotionControl.CLOSED_LOOP_RAMP_RATE);
+        //shooter1.setOpenLoopRampRate(MotionControl.OPEN_LOOP_RAMP_RATE);
+        //shooter2.setOpenLoopRampRate(MotionControl.OPEN_LOOP_RAMP_RATE);
 
         shooter2.follow(shooter1, true);
 

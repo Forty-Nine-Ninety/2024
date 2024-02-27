@@ -27,7 +27,7 @@ public final class Constants
     {
         public static int PORT_JOYSTICK_DRIVE = 0;
         public static int PORT_JOYSTICK_OPERATOR = 1;
-        public static int PORT_DIO_BREAK_BEAM = 5; //Chloe; for the shootersubsystem break beam port 
+        public static int PORT_DIO_BREAK_BEAM = 0; //Chloe; for the shootersubsystem break beam port 
 
         //CAN IDs
         public static final int CAN_ARM_LEFT_SPARKMAX = 10;
@@ -106,12 +106,12 @@ public final class Constants
     {
         //PID
         public static final PIDConstants ARM_PID = new PIDConstants(0.04, 0.0, 3.0);
-        public static final PIDConstants SHOOTER_PID = new PIDConstants(0.0, 0.0, 0.0); //DO WE NEED THIS?
-        public static final PIDConstants INTAKE_EXTEND_PID = new PIDConstants(0.035, 0.0, 1.5); //CHANGE PID LATER
+        //public static final PIDConstants SHOOTER_PID = new PIDConstants(0.0, 0.0, 0.0); //DO WE NEED THIS?
+        public static final PIDConstants INTAKE_EXTEND_PID = new PIDConstants(0.035, 0.0, 1.5);
 
         public static final double CLOSED_LOOP_RAMP_RATE = 0.6;
         public static final double OPEN_LOOP_RAMP_RATE = 0.6;
-        // this is for the method in IntakeSubsystem, values TBD
+        // this is for the method in IntakeSubsystem
         public static final double POSITION_INTAKE_EXTENDED = 0;
         public static final double INTAKE_RETRACTED_POS = 20;
     }
