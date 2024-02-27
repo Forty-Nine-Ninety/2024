@@ -20,4 +20,10 @@ public class OuttakeAmpCommand extends Command {
     public void initialize() {
         shooter_subsystem.percentOutput(speed);
     }
+
+    @Override
+    public void end(boolean interrupted){
+        shooter_subsystem.percentOutput(0);
+    }
+
 }
