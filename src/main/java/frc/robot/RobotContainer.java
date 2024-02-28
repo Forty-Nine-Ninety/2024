@@ -37,11 +37,12 @@ public class RobotContainer
     JoystickF310 joystickOperator = new JoystickF310(Ports.PORT_JOYSTICK_OPERATOR);
 
     // The robot's subsystems and commands are defined here...
+    //Subsystems
     private final SwerveSubsystem m_drivebase = new SwerveSubsystem(new File(Filesystem.getDeployDirectory(), "swerve"));
     private final ArmSubsystem m_arm = new ArmSubsystem();
     private final IntakeSubsystem m_intake = new IntakeSubsystem();
     private final ShooterSubsystem m_shooter = new ShooterSubsystem();
-
+    //Commands
     private final DriveCommand m_driveCommand = new DriveCommand(m_drivebase);
     private final DriveSimulationCommand m_driveSimulationCommand = new DriveSimulationCommand(m_drivebase);
     private final ArmNeutralCommand m_armNeutralCommand = new ArmNeutralCommand(m_arm);
@@ -56,8 +57,7 @@ public class RobotContainer
     private final IntakeExtendCommand m_intakeExtendCommand = new IntakeExtendCommand(m_intake,m_shooter);
     private final IntakeToIndexerCommand m_intakeToIndexerCommand = new IntakeToIndexerCommand(m_intake);
     private final ChainEndgameCommand m_chainEndgameCommand = new ChainEndgameCommand(m_arm);
-
-    //AUTO
+    //Auto
     private final SendableChooser<Command> autoChooser;
 
     /**
@@ -68,7 +68,7 @@ public class RobotContainer
         // Configure the trigger bindings
         configureBindings();
         
-        // AUTO- SmartDashboard
+        // Auto- SmartDashboard
         autoChooser = AutoBuilder.buildAutoChooser();
         SmartDashboard.putData("Auto Chooser", autoChooser);
         SmartDashboard.putData("Exit 1", autoChooser);
@@ -144,7 +144,7 @@ public class RobotContainer
     public Command getAutonomousCommand()
     {
         // An example command will be run in autonomous
-        return m_drivebase.getAutonomousCommand("New Auto");
+        return m_drivebase.getAutonomousCommand("1Exit");
         //return autoChooser.getSelected();
     }
 
