@@ -9,7 +9,7 @@ import frc.robot.subsystems.ShooterSubsystem;
 public class IntakeToIndexerCommand extends Command {
 
     private final IntakeSubsystem m_intakesubsystem; 
-    private double speed = -1; 
+    private double speed = -0.75; 
 
     public IntakeToIndexerCommand(IntakeSubsystem intake_subsystem) {
         m_intakesubsystem = intake_subsystem;

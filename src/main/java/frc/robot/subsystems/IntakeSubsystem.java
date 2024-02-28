@@ -49,7 +49,7 @@ public class IntakeSubsystem extends SubsystemBase {
     }
 
     public void extendIntake(){
-       intakeExtend.set(MotionControl.POSITION_INTAKE_EXTENDED);
+       pid_intake.setReference(MotionControl.POSITION_INTAKE_EXTENDED,CANSparkBase.ControlType.kPosition);
     }
     
     public void positionPID(double position){
@@ -65,7 +65,7 @@ public class IntakeSubsystem extends SubsystemBase {
     }
 
     public void retractIntake(){
-        intakeExtend.set(MotionControl.INTAKE_RETRACTED_POS);
+        pid_intake.setReference(MotionControl.INTAKE_RETRACTED_POS,CANSparkBase.ControlType.kPosition);
     }
 }
 

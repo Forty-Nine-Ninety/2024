@@ -112,8 +112,8 @@ public final class Constants
         public static final double CLOSED_LOOP_RAMP_RATE = 1.0;
         public static final double OPEN_LOOP_RAMP_RATE = 1.0;
         // this is for the method in IntakeSubsystem
-        public static final double POSITION_INTAKE_EXTENDED = 0;
-        public static final double INTAKE_RETRACTED_POS = 20;
+        public static final double POSITION_INTAKE_EXTENDED = -20;
+        public static final double INTAKE_RETRACTED_POS = 0;
     }
 
     public static final class AutonConstants

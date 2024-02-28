@@ -13,6 +13,6 @@ public class ArmAmpCommand extends Command{
 
     @Override
     public void initialize(){
-        arm_subsystem.moveToPosition(10 /*I don't know what the angle is for the amp */);
+        arm_subsystem.moveToPosition(-80);
     }
 }
