@@ -10,6 +10,7 @@ import com.revrobotics.CANSparkBase;
 import com.revrobotics.RelativeEncoder;
 import com.revrobotics.SparkPIDController;
 import com.revrobotics.CANSparkLowLevel.MotorType;
+import com.revrobotics.CANSparkBase.IdleMode;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
@@ -41,6 +42,9 @@ public class ArmSubsystem extends SubsystemBase{
         armLeft.follow(armRight, true);
         armLeft.setSmartCurrentLimit(10,10);
         armRight.setSmartCurrentLimit(10,10);
+
+        armLeft.setIdleMode(IdleMode.kCoast);
+        armRight.setIdleMode(IdleMode.kCoast);
     }
 
     public void moveToPosition(double setPoint){
