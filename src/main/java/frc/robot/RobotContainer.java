@@ -139,7 +139,8 @@ public class RobotContainer
     public Command getAutonomousCommand()
     {
         // An example command will be run in autonomous
-        return m_drivebase.getAutonomousCommand("1Exit");
+        //return m_drivebase.getAutonomousCommand("1Exit");
+        return m_drivebase.getAutonomousCommand("3Exit");
         //return autoChooser.getSelected();
     }
 
