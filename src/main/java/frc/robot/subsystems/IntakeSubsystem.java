@@ -41,7 +41,7 @@ public class IntakeSubsystem extends SubsystemBase {
         intakeExtend.setSmartCurrentLimit(10, 10);
         intakeRoller.setSmartCurrentLimit(15, 40);
 
-        intakeExtend.setIdleMode(IdleMode.kCoast);
+        intakeExtend.setIdleMode(IdleMode.kBrake);
         //intakeRoller.setIdleMode(IdleMode.kBrake);
     }
     public void intakePercentOutput(double percent_output_roller){

@@ -43,8 +43,8 @@ public class ArmSubsystem extends SubsystemBase{
         armLeft.setSmartCurrentLimit(10,10);
         armRight.setSmartCurrentLimit(10,10);
 
-        armLeft.setIdleMode(IdleMode.kCoast);
-        armRight.setIdleMode(IdleMode.kCoast);
+        armLeft.setIdleMode(IdleMode.kBrake);
+        armRight.setIdleMode(IdleMode.kBrake);
     }
 
     public void moveToPosition(double setPoint){

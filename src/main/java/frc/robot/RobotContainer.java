@@ -96,7 +96,6 @@ public class RobotContainer
             () -> joystickDrive.getRawAxis(2)
         );
 
-        //Check with somebody - Allison
         m_armManualCommand.setSuppliers(
             () -> DriveUtil.powCopySign(joystickOperator.getRawAxis(AxisF310.JoystickLeftY), 1)
         );
@@ -119,17 +118,13 @@ public class RobotContainer
         joystickOperator.getButton(POVF310.Right).onTrue(m_armAmpCommand);
         joystickOperator.getButton(POVF310.Bottom).onTrue(m_armNeutralCommand);
         joystickOperator.getButton(POVF310.Left).toggleOnTrue(m_intakeExtendCommand);
-        joystickOperator.getButton(ButtonF310.Y).toggleOnTrue(m_regurgCommand);
-        joystickOperator.getButton(ButtonF310.B).toggleOnTrue(m_stopRollerCommand);
+        joystickOperator.getButton(ButtonF310.B).toggleOnTrue(m_regurgCommand);
         //joystickOperator.getButton(ButtonF310.A).toggleOnTrue(m_intakeToIndexerCommand);
-        joystickOperator.getButton(ButtonF310.A).onTrue(m_chainEndgameCommand); /*Check with somebody - Allison */
+        joystickOperator.getButton(ButtonF310.A).onTrue(m_chainEndgameCommand);
         joystickOperator.getButton(ButtonF310.X).toggleOnTrue(m_outtakeSpeakerCommand);//OR OUTTAKE AMP COMMAND
         joystickOperator.getButton(ButtonF310.BumperLeft).onTrue(m_armManualCommand);
         /*joystickOperator.getButton(ButtonF310.BumperRight).onTrue(m_eyebrowPositionCommand); */
-        
-        // joystickOperator.getButton(Button.F310.<button>.onTrue(m_chainEndgameCommand));
     }
-    
     public void setTeleopDefaultCommands()
     {
         CommandScheduler.getInstance().setDefaultCommand(m_drivebase, !RobotBase.isSimulation() ? m_driveCommand : m_driveSimulationCommand);
