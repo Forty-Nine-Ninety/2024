@@ -17,14 +17,14 @@ public class IntakeExtendCommand extends Command{
 
     @Override
     public void initialize(){
-        //m_intakeSubsystem.extendIntake();
+        m_intakeSubsystem.extendIntake();
     }
 
     @Override
     public void execute(){
-        m_intakeSubsystem.extendIntake();
+        //m_intakeSubsystem.extendIntake();
         m_intakeSubsystem.intakePercentOutput(1);
-        m_shooterSubsystem.percentOutput(1);
+        m_shooterSubsystem.percentOutput(0.35);
         if(m_shooterSubsystem.breakBeam()){
             m_shooterSubsystem.percentOutput(0.0);
             m_intakeSubsystem.intakePercentOutput(0);
