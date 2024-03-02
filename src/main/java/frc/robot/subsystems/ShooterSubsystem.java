@@ -47,8 +47,8 @@ public class ShooterSubsystem extends SubsystemBase {
 
         shooter2.follow(shooter1, true);
 
-        shooter1.setSmartCurrentLimit(15, 40);
-        shooter2.setSmartCurrentLimit(15, 40);
+        shooter1.setSmartCurrentLimit(20, 40);
+        shooter2.setSmartCurrentLimit(20, 40);
     }
 
     public void percentOutput(double percent_output) {

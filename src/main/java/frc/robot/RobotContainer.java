@@ -51,8 +51,9 @@ public class RobotContainer
     private final ArmSpeakerCommand m_armSpeakerCommand = new ArmSpeakerCommand(m_arm);
     private final OuttakeAmpCommand m_outtakeAmpCommand = new OuttakeAmpCommand(m_shooter);
     private final OuttakeOfIntakeCommand m_outtakeOfIntakeCommand = new OuttakeOfIntakeCommand(m_intake, m_shooter);
-    private final OuttakeSpeakerCommand m_outtakeSpeakerCommand = new OuttakeSpeakerCommand(m_shooter);
+    private final OuttakeSpeakerCommand m_outtakeSpeakerCommand = new OuttakeSpeakerCommand(m_shooter,m_arm);
     private final RegurgitationCommand m_regurgCommand = new RegurgitationCommand(m_intake, m_shooter);
+    private final RegurgitationShooterCommand m_regurgShooterCommand = new RegurgitationShooterCommand(m_shooter);
     private final StopRollerCommand m_stopRollerCommand = new StopRollerCommand(m_intake, m_shooter);
     private final IntakeExtendCommand m_intakeExtendCommand = new IntakeExtendCommand(m_intake,m_shooter);
     private final IntakeToIndexerCommand m_intakeToIndexerCommand = new IntakeToIndexerCommand(m_intake);
@@ -120,6 +121,7 @@ public class RobotContainer
         joystickOperator.getButton(POVF310.Bottom).onTrue(m_armNeutralCommand);
         joystickOperator.getButton(POVF310.Left).toggleOnTrue(m_intakeExtendCommand);
         joystickOperator.getButton(ButtonF310.B).toggleOnTrue(m_regurgCommand);
+        joystickOperator.getButton(ButtonF310.Y).toggleOnTrue(m_regurgShooterCommand);
         //joystickOperator.getButton(ButtonF310.A).toggleOnTrue(m_intakeToIndexerCommand);
         joystickOperator.getButton(ButtonF310.A).onTrue(m_chainEndgameCommand);
         joystickOperator.getButton(ButtonF310.X).toggleOnTrue(m_outtakeSpeakerCommand);//OR OUTTAKE AMP COMMAND
