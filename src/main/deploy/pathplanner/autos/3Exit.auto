@@ -2,7 +2,7 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.9010444594963265,
+      "x": 0.5330659272429659,
       "y": 2.1646199634991867
     },
     "rotation": 0
@@ -14,7 +14,13 @@
         {
           "type": "path",
           "data": {
-            "pathName": "3Exit"
+            "pathName": "3Exita"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "3Exitb"
           }
         }
       ]

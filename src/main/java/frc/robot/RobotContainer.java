@@ -49,14 +49,14 @@ public class RobotContainer
     private final ArmAmpCommand m_armAmpCommand = new ArmAmpCommand(m_arm);
     private final ArmManualCommand m_armManualCommand = new ArmManualCommand(m_arm);
     private final ArmSpeakerCommand m_armSpeakerCommand = new ArmSpeakerCommand(m_arm);
-    private final OuttakeAmpCommand m_outtakeAmpCommand = new OuttakeAmpCommand(m_shooter);
-    private final OuttakeOfIntakeCommand m_outtakeOfIntakeCommand = new OuttakeOfIntakeCommand(m_intake, m_shooter);
+    //private final OuttakeAmpCommand m_outtakeAmpCommand = new OuttakeAmpCommand(m_shooter);
+    //private final OuttakeOfIntakeCommand m_outtakeOfIntakeCommand = new OuttakeOfIntakeCommand(m_intake, m_shooter);
     private final OuttakeSpeakerCommand m_outtakeSpeakerCommand = new OuttakeSpeakerCommand(m_shooter,m_arm);
     private final RegurgitationCommand m_regurgCommand = new RegurgitationCommand(m_intake, m_shooter);
-    private final RegurgitationShooterCommand m_regurgShooterCommand = new RegurgitationShooterCommand(m_shooter);
-    private final StopRollerCommand m_stopRollerCommand = new StopRollerCommand(m_intake, m_shooter);
+    private final RegurgitationShooterCommand m_regurgShooterCommand = new RegurgitationShooterCommand(m_shooter,m_arm);
+    //private final StopRollerCommand m_stopRollerCommand = new StopRollerCommand(m_intake, m_shooter);
     private final IntakeExtendCommand m_intakeExtendCommand = new IntakeExtendCommand(m_intake,m_shooter);
-    private final IntakeToIndexerCommand m_intakeToIndexerCommand = new IntakeToIndexerCommand(m_intake);
+    //private final IntakeToIndexerCommand m_intakeToIndexerCommand = new IntakeToIndexerCommand(m_intake);
     private final ChainEndgameCommand m_chainEndgameCommand = new ChainEndgameCommand(m_arm);
     //Auto
     private final SendableChooser<Command> autoChooser;
@@ -141,7 +141,6 @@ public class RobotContainer
      */
     public Command getAutonomousCommand()
     {
-        // An example command will be run in autonomous
         //return m_drivebase.getAutonomousCommand("1Exit");
         return m_drivebase.getAutonomousCommand("3Exit");
         //return autoChooser.getSelected();

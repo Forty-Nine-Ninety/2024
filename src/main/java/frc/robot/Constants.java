@@ -4,10 +4,16 @@
 
 package frc.robot;
 
+import java.util.HashMap;
+
+import com.pathplanner.lib.util.HolonomicPathFollowerConfig;
 import com.pathplanner.lib.util.PIDConstants;
+import com.pathplanner.lib.util.ReplanningConfig;
 
 import edu.wpi.first.math.geometry.Translation3d;
+import edu.wpi.first.math.trajectory.TrapezoidProfile;
 import edu.wpi.first.math.util.Units;
+import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.ourunits.*;
 import swervelib.math.Matter;
 
@@ -51,7 +57,9 @@ public final class Constants
         public static final double STEERING_GEAR_RATIO = 150.0/7.0;
 
         public static double ARM_MOTION_REDUCTION = 1000.0/3.0;
-
+        
+        public static double ROBOT_RADIUS = 0.47;
+        public static double WHEEL_SPEED = 4.60; //Meters per sec
         //public static final double ROBOT_MASS = (148 - 20.3) * 0.453592; // 32lbs * kg per pound
         //public static final Matter CHASSIS    = new Matter(new Translation3d(0, 0, Units.inchesToMeters(8)), ROBOT_MASS);
     }
@@ -120,6 +128,39 @@ public final class Constants
     {
         public static final PIDConstants TRANSLATION_PID = new PIDConstants(0.7, 0, 0);
         public static final PIDConstants ANGLE_PID   = new PIDConstants(0.4, 0, 0.01);
+        public static final HolonomicPathFollowerConfig autoBuilderPathConfig = new HolonomicPathFollowerConfig( // HolonomicPathFollowerConfig, this should likely live in your Constants class
+        //new PIDConstants(5.0, 0.0 ,0.2), //original p = 5, 1st attempt: p = 5, d = 0.5, 2nd attempt: p= 5, d = 0.5, 3rd attempt: p = 5, d = 3 this caused the wheels to shutter
+        //new PIDConstants(1.5, 0.0, 0), //5.0, 0, 0.2
+        TRANSLATION_PID,
+        ANGLE_PID,
+        RobotMeasurements.WHEEL_SPEED, // Max module speed, in m/s
+        RobotMeasurements.ROBOT_RADIUS, // Drive base radius in meters. Distance from robot center to furthest module.
+        new ReplanningConfig());
+
+        public static final double kMaxSpeedMetersPerSecond = 3;
+        public static final double kMaxAccelerationMetersPerSecondSquared = 3;
+        public static final double kMaxAngularSpeedRadiansPerSecond = Math.PI;
+        public static final double kMaxAngularSpeedRadiansPerSecondSquared = Math.PI;
+
+        public static final double kPXController = 1;
+        public static final double kPYController = 1;
+        public static final double kPThetaController = 1;
+
+        // Constraint for the motion profiled robot angle controller
+        public static final TrapezoidProfile.Constraints kThetaControllerConstraints = new TrapezoidProfile.Constraints(
+        kMaxAngularSpeedRadiansPerSecond, kMaxAngularSpeedRadiansPerSecondSquared);
+  
+        public static final TrapezoidProfile.Constraints kDriveControllerConstraints = new TrapezoidProfile.Constraints(
+        RobotMeasurements.ROBOT_RADIUS, RobotMeasurements.WHEEL_SPEED);
+  
+
+        public static final double maxAutoSpeed = 1.4;
+        public static final double maxAutoAcceleration = 2.0;
+
+        public static final HashMap<String, Command> eventMap = new HashMap<>();
+
+        public static final double slowIntakeSpeed = 0.5;
+        public static final double fastIntakeSpeed = 1;
     }
 
     public static class DriveSettings

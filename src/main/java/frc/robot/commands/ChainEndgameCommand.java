@@ -13,6 +13,6 @@ public class ChainEndgameCommand extends Command {
 
     @Override
     public void initialize(){
-        m_ArmSubsystem.moveToPosition(-65); //revhardware client pid said -65
+        m_ArmSubsystem.moveToPosition(-80); //revhardware client pid said -65
     }
 }
