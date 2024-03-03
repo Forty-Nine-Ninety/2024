@@ -141,9 +141,10 @@ public class RobotContainer
      */
     public Command getAutonomousCommand()
     {
-        //return m_drivebase.getAutonomousCommand("1Exit");
-        //return m_drivebase.getAutonomousCommand("3Exit");
-        return m_drivebase.getAutonomousCommand("3ExitBlue");
+        //return m_drivebase.getAutonomousCommand("1ExitRed");
+        //return m_drivebase.getAutonomousCommand("1ExitBlue");
+        //return m_drivebase.getAutonomousCommand("3ExitBlue");
+        return m_drivebase.getAutonomousCommand("3ExitRed");
         //return autoChooser.getSelected();
     }
 
