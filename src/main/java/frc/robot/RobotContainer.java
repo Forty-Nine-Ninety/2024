@@ -117,7 +117,7 @@ public class RobotContainer
             //  joystickDrive.getButton(ButtonF310.Y).whileTrue(Commands.runOnce(drivebase::lock, drivebase).repeatedly());
         
         joystickOperator.getButton(POVF310.Top).onTrue(m_armSpeakerCommand);
-        joystickOperator.getButton(POVF310.Right).onTrue(m_armAmpCommand);
+        joystickOperator.getButton(POVF310.Right).toggleOnTrue(m_armAmpCommand); //test
         joystickOperator.getButton(POVF310.Bottom).onTrue(m_armNeutralCommand);
         joystickOperator.getButton(POVF310.Left).toggleOnTrue(m_intakeExtendCommand);
         joystickOperator.getButton(ButtonF310.B).toggleOnTrue(m_regurgCommand);
