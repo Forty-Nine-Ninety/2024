@@ -44,6 +44,7 @@ public class RobotContainer
     private final ShooterSubsystem m_shooter = new ShooterSubsystem();
     //Commands
     private final DriveCommand m_driveCommand = new DriveCommand(m_drivebase);
+    private final DriveV2Command m_driveV2Command = new DriveV2Command(m_drivebase);
     private final DriveSimulationCommand m_driveSimulationCommand = new DriveSimulationCommand(m_drivebase);
     private final ArmNeutralCommand m_armNeutralCommand = new ArmNeutralCommand(m_arm);
     private final ArmAmpCommand m_armAmpCommand = new ArmAmpCommand(m_arm);
@@ -92,6 +93,12 @@ public class RobotContainer
             () -> joystickDrive.getRawAxis(AxisF310.JoystickRightY)
         );
 
+        m_driveV2Command.setSuppliers(
+            () -> MathUtil.applyDeadband(joystickDrive.getRawAxis(AxisF310.JoystickLeftY), DriveSettings.LEFT_Y_DEADBAND),
+            () -> MathUtil.applyDeadband(joystickDrive.getRawAxis(AxisF310.JoystickLeftX), DriveSettings.LEFT_X_DEADBAND),
+            () -> joystickDrive.getRawAxis(AxisF310.JoystickRightX)
+        );
+
         m_driveSimulationCommand.setSuppliers(
             () -> MathUtil.applyDeadband(joystickDrive.getRawAxis(AxisF310.JoystickLeftY), DriveSettings.LEFT_Y_DEADBAND),
             () -> MathUtil.applyDeadband(joystickDrive.getRawAxis(AxisF310.JoystickLeftX), DriveSettings.LEFT_X_DEADBAND),
@@ -130,7 +137,7 @@ public class RobotContainer
     }
     public void setTeleopDefaultCommands()
     {
-        CommandScheduler.getInstance().setDefaultCommand(m_drivebase, !RobotBase.isSimulation() ? m_driveCommand : m_driveSimulationCommand);
+        CommandScheduler.getInstance().setDefaultCommand(m_drivebase, !RobotBase.isSimulation() ? m_driveV2Command : m_driveSimulationCommand);
         CommandScheduler.getInstance().setDefaultCommand(m_arm, m_armNeutralCommand);
     }
 
