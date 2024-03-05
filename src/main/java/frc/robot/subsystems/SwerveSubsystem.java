@@ -276,7 +276,7 @@ public class SwerveSubsystem extends SubsystemBase
             // Make the robot move
             swerveDrive.drive(new Translation2d(DriveUtil.powCopySign(translationX.getAsDouble(), DriveSettings.JOYSTICK_THROTTLE_X_EXPONENT) * DriveSettings.ARCADE_SPEED_X_MULTIPLIER * swerveDrive.getMaximumVelocity(),
                                                 DriveUtil.powCopySign(translationY.getAsDouble(), DriveSettings.JOYSTICK_THROTTLE_Y_EXPONENT) * DriveSettings.ARCADE_SPEED_Y_MULTIPLIER * swerveDrive.getMaximumVelocity()),
-                              DriveUtil.powCopySign(angularRotationX.getAsDouble(), DriveSettings.JOYSTICK_TURNING_EXPONENT) * DriveSettings.ARCADE_ROTATION_MULTIPLIER * swerveDrive.getMaximumAngularVelocity(),
+                              DriveUtil.powCopySign(angularRotationX.getAsDouble(), DriveSettings.JOYSTICK_TURNING_EXPONENT) * DriveSettings.ARCADE_ROTATIONV2_MULTIPLIER * swerveDrive.getMaximumAngularVelocity(),
                               true,
                               false);
         });

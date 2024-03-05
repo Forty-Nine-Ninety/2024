@@ -39,6 +39,7 @@ public class RobotContainer
     private final SwerveSubsystem m_drivebase = new SwerveSubsystem(new File(Filesystem.getDeployDirectory(), "swerve"));
 
     private final DriveCommand m_driveCommand = new DriveCommand(m_drivebase);
+    private final DriveV2Command m_driveV2Command = new DriveV2Command(m_drivebase);
     private final DriveSimulationCommand m_driveSimulationCommand = new DriveSimulationCommand(m_drivebase);
 
     /**
@@ -55,18 +56,28 @@ public class RobotContainer
         // left stick controls translation
         // right stick controls the desired angle NOT angular rotation
         Command driveFieldOrientedDirectAngle = m_drivebase.driveCommand(
-                () -> -MathUtil.applyDeadband(joystickDrive.getRawAxis(AxisF310.JoystickLeftY), DriveSettings.LEFT_Y_DEADBAND),
-                () -> -MathUtil.applyDeadband(joystickDrive.getRawAxis(AxisF310.JoystickLeftX), DriveSettings.LEFT_X_DEADBAND),
-                () -> -joystickDrive.getRawAxis(AxisF310.JoystickRightX),
-                () -> -joystickDrive.getRawAxis(AxisF310.JoystickRightY));
+                () -> MathUtil.applyDeadband(joystickDrive.getRawAxis(AxisF310.JoystickLeftY), DriveSettings.LEFT_Y_DEADBAND),
+                () -> MathUtil.applyDeadband(joystickDrive.getRawAxis(AxisF310.JoystickLeftX), DriveSettings.LEFT_X_DEADBAND),
+                () -> joystickDrive.getRawAxis(AxisF310.JoystickRightX),
+                () -> joystickDrive.getRawAxis(AxisF310.JoystickRightY));
+
+        // Applies deadbands and inverts controls because joysticks
+        // are back-right positive while robot
+        // controls are front-left positive
+        // left stick controls translation
+        // right stick controls the angular velocity of the robot
+        Command driveFieldOrientedAngularVelocity = m_drivebase.driveCommand(
+                () -> MathUtil.applyDeadband(joystickDrive.getRawAxis(AxisF310.JoystickLeftY), DriveSettings.LEFT_Y_DEADBAND),
+                () -> MathUtil.applyDeadband(joystickDrive.getRawAxis(AxisF310.JoystickLeftX), DriveSettings.LEFT_X_DEADBAND),
+                () -> joystickDrive.getRawAxis(AxisF310.JoystickRightX));
 
         Command driveFieldOrientedDirectAngleSim = m_drivebase.simDriveCommand(
-                () -> -MathUtil.applyDeadband(joystickDrive.getRawAxis(AxisF310.JoystickLeftY), DriveSettings.LEFT_Y_DEADBAND),
-                () -> -MathUtil.applyDeadband(joystickDrive.getRawAxis(AxisF310.JoystickLeftX), DriveSettings.LEFT_X_DEADBAND),
-                () -> -joystickDrive.getRawAxis(2));
+                () -> MathUtil.applyDeadband(joystickDrive.getRawAxis(AxisF310.JoystickLeftY), DriveSettings.LEFT_Y_DEADBAND),
+                () -> MathUtil.applyDeadband(joystickDrive.getRawAxis(AxisF310.JoystickLeftX), DriveSettings.LEFT_X_DEADBAND),
+                () -> joystickDrive.getRawAxis(2));
 
         //m_drivebase.setDefaultCommand(
-                //!RobotBase.isSimulation() ? driveFieldOrientedDirectAngle : driveFieldOrientedDirectAngleSim);
+                //!RobotBase.isSimulation() ? driveFieldOrientedAngularVelocity : driveFieldOrientedDirectAngleSim);
     }
 
     /**
@@ -83,6 +94,12 @@ public class RobotContainer
             () -> MathUtil.applyDeadband(joystickDrive.getRawAxis(AxisF310.JoystickLeftX), DriveSettings.LEFT_X_DEADBAND),
             () -> joystickDrive.getRawAxis(AxisF310.JoystickRightX),
             () -> joystickDrive.getRawAxis(AxisF310.JoystickRightY)
+        );
+
+        m_driveV2Command.setSuppliers(
+            () -> MathUtil.applyDeadband(joystickDrive.getRawAxis(AxisF310.JoystickLeftY), DriveSettings.LEFT_Y_DEADBAND),
+            () -> MathUtil.applyDeadband(joystickDrive.getRawAxis(AxisF310.JoystickLeftX), DriveSettings.LEFT_X_DEADBAND),
+            () -> joystickDrive.getRawAxis(AxisF310.JoystickRightX)
         );
 
         m_driveSimulationCommand.setSuppliers(
@@ -104,7 +121,7 @@ public class RobotContainer
     
     public void setTeleopDefaultCommands()
     {
-        CommandScheduler.getInstance().setDefaultCommand(m_drivebase, !RobotBase.isSimulation() ? m_driveCommand : m_driveSimulationCommand);
+        CommandScheduler.getInstance().setDefaultCommand(m_drivebase, !RobotBase.isSimulation() ? m_driveV2Command : m_driveSimulationCommand);
     }
 
     /**
