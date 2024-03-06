@@ -52,7 +52,7 @@ public class RobotContainer
     private final ArmSpeakerCommand m_armSpeakerCommand = new ArmSpeakerCommand(m_arm);
     //private final OuttakeAmpCommand m_outtakeAmpCommand = new OuttakeAmpCommand(m_shooter);
     //private final OuttakeOfIntakeCommand m_outtakeOfIntakeCommand = new OuttakeOfIntakeCommand(m_intake, m_shooter);
-    private final OuttakeSpeakerCommand m_outtakeSpeakerCommand = new OuttakeSpeakerCommand(m_shooter,m_arm);
+    private final OuttakeSpeakerCommand m_outtakeSpeakerCommand = new OuttakeSpeakerCommand(m_shooter);
     private final RegurgitationCommand m_regurgCommand = new RegurgitationCommand(m_intake, m_shooter);
     private final RegurgitationShooterCommand m_regurgShooterCommand = new RegurgitationShooterCommand(m_shooter,m_arm);
     //private final StopRollerCommand m_stopRollerCommand = new StopRollerCommand(m_intake, m_shooter);
@@ -131,7 +131,7 @@ public class RobotContainer
         joystickOperator.getButton(ButtonF310.Y).toggleOnTrue(m_regurgShooterCommand);
         //joystickOperator.getButton(ButtonF310.A).toggleOnTrue(m_intakeToIndexerCommand);
         joystickOperator.getButton(ButtonF310.A).onTrue(m_chainEndgameCommand);
-        joystickOperator.getButton(ButtonF310.X).toggleOnTrue(m_outtakeSpeakerCommand);//OR OUTTAKE AMP COMMAND
+        joystickOperator.getButton(ButtonF310.BumperRight).toggleOnTrue(m_outtakeSpeakerCommand);//OR OUTTAKE AMP COMMAND
         joystickOperator.getButton(ButtonF310.BumperLeft).onTrue(m_armManualCommand);
         /*joystickOperator.getButton(ButtonF310.BumperRight).onTrue(m_eyebrowPositionCommand); */
     }
@@ -148,10 +148,10 @@ public class RobotContainer
      */
     public Command getAutonomousCommand()
     {
-        //return m_drivebase.getAutonomousCommand("1ExitRed");
+        return m_drivebase.getAutonomousCommand("1ExitRed");
+        //return m_drivebase.getAutonomousCommand("3ExitRed");
         //return m_drivebase.getAutonomousCommand("1ExitBlue");
         //return m_drivebase.getAutonomousCommand("3ExitBlue");
-        return m_drivebase.getAutonomousCommand("3ExitRed");
         //return autoChooser.getSelected();
     }
 
