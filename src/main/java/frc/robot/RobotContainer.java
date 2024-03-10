@@ -10,12 +10,14 @@ import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.wpilibj.Filesystem;
 import edu.wpi.first.wpilibj.RobotBase;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.Constants.DriveSettings;
 import frc.robot.Constants.Ports;
@@ -33,9 +35,12 @@ import com.pathplanner.lib.auto.AutoBuilder;
  */
 public class RobotContainer
 {
+    /*
     JoystickF310 joystickDrive = new JoystickF310(Ports.PORT_JOYSTICK_DRIVE);
     JoystickF310 joystickOperator = new JoystickF310(Ports.PORT_JOYSTICK_OPERATOR);
-
+    */
+    XboxController joystickDrive = new XboxController(0);
+    XboxController joystickOperator = new XboxController(1);
     // The robot's subsystems and commands are defined here...
     //Subsystems
     private final SwerveSubsystem m_drivebase = new SwerveSubsystem(new File(Filesystem.getDeployDirectory(), "swerve"));
@@ -86,6 +91,33 @@ public class RobotContainer
      */
     private void configureBindings()
     {
+        //XBOX
+        m_driveCommand.setSuppliers(() -> MathUtil.applyDeadband(joystickDrive.getRawAxis(XboxController.Axis.kLeftY.ordinal()),DriveSettings.LEFT_Y_DEADBAND),
+            () -> MathUtil.applyDeadband(joystickDrive.getRawAxis(XboxController.Axis.kLeftY.ordinal()),DriveSettings.LEFT_Y_DEADBAND),
+            () -> MathUtil.applyDeadband(joystickDrive.getRawAxis(XboxController.Axis.kLeftX.ordinal()),DriveSettings.LEFT_X_DEADBAND),
+            () -> joystickDrive.getRawAxis(XboxController.Axis.kRightY.ordinal())
+            //() -> joystickDrive.getRawAxis(XboxController.Axis.kRightX.ordinal())
+        );
+        m_driveV2Command.setSuppliers(
+            () -> MathUtil.applyDeadband(joystickDrive.getRawAxis(XboxController.Axis.kLeftY.ordinal()),DriveSettings.LEFT_Y_DEADBAND),
+            () -> MathUtil.applyDeadband(joystickDrive.getRawAxis(XboxController.Axis.kLeftX.ordinal()),DriveSettings.LEFT_X_DEADBAND),
+            () -> joystickDrive.getRawAxis(XboxController.Axis.kRightY.ordinal())
+            //() -> joystickDrive.getRawAxis(XboxController.Axis.kRightX.ordinal())
+        );
+        m_driveSimulationCommand.setSuppliers(
+            () -> MathUtil.applyDeadband(joystickDrive.getRawAxis(XboxController.Axis.kLeftY.ordinal()),DriveSettings.LEFT_Y_DEADBAND),
+            () -> MathUtil.applyDeadband(joystickDrive.getRawAxis(XboxController.Axis.kLeftX.ordinal()),DriveSettings.LEFT_X_DEADBAND),
+            () -> joystickDrive.getRawAxis(2)
+        );
+        //IN PROGRESS joystickDrive.getRawButton(new JoystickButton(this,XboxController.Button.kA.ordinal())).onTrue((Commands.runOnce(m_drivebase::zeroGyro)));
+        //joystickDrive.getButton(ButtonF310.B).onTrue(Commands.runOnce(m_drivebase::addFakeVisionReading));
+        //joystickDrive.getButton(ButtonF310.X).whileTrue(
+                //Commands.deferredProxy(() -> m_drivebase.driveToPose(
+                                                                     //new Pose2d(new Translation2d(4, 4), Rotation2d.fromDegrees(0)))
+                                                            //));
+            //  joystickDrive.getButton(ButtonF310.Y).whileTrue(Commands.runOnce(drivebase::lock, drivebase).repeatedly());
+        /*
+         LOGITECH F310
         m_driveCommand.setSuppliers(
             () -> MathUtil.applyDeadband(joystickDrive.getRawAxis(AxisF310.JoystickLeftY), DriveSettings.LEFT_Y_DEADBAND),
             () -> MathUtil.applyDeadband(joystickDrive.getRawAxis(AxisF310.JoystickLeftX), DriveSettings.LEFT_X_DEADBAND),
@@ -108,10 +140,6 @@ public class RobotContainer
         m_armManualCommand.setSuppliers(
             () -> DriveUtil.powCopySign(joystickOperator.getRawAxis(AxisF310.JoystickLeftY), 1)
         );
-
-        /*m_eyebrowPositionCommand.setSuppliers(
-            () -> DriveUtil.powCopySign(joystickOperator.getRawAxis(AxisF310.TriggerRight),1)
-        );*/
 
         // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
 
