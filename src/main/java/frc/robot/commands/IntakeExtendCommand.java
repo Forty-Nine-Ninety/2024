@@ -27,12 +27,12 @@ public class IntakeExtendCommand extends Command{
         m_intakeSubsystem.intakePercentOutput(1);
         m_shooterSubsystem.indexerToShooter(0.5);
        // m_shooterSubsystem.shoot(0.035);
-        if(m_shooterSubsystem.breakBeam()){
+       // if(m_shooterSubsystem.breakBeam()){
             //m_shooterSubsystem.shoot(0.0);
-            m_intakeSubsystem.intakePercentOutput(0);
-            m_intakeSubsystem.retractIntake();
-            Commands.waitSeconds(3);
-        }
+            //m_intakeSubsystem.intakePercentOutput(0);
+            //m_intakeSubsystem.retractIntake();
+          //  Commands.waitSeconds(3);
+       // }
     }
 
     @Override

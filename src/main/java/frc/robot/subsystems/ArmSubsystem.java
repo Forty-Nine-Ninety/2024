@@ -37,14 +37,9 @@ public class ArmSubsystem extends SubsystemBase{
         // if you add a gravity feedforward (kG), you can apply more voltage when gravity is stronger (ie. horizontal)
         // and apply less voltage when it's not (vertical)
 
-        //m_pidController.setP(MotionControl.ARM_PID.kP);
-        //m_pidController.setI(MotionControl.ARM_PID.kI);
-        //m_pidController.setD(MotionControl.ARM_PID.kD);
-
-        m_pidController.setP(0.02);
-        m_pidController.setI(0);
-        m_pidController.setD(0.01);
-
+        m_pidController.setP(MotionControl.ARM_PID.kP);
+        m_pidController.setI(MotionControl.ARM_PID.kI);
+        m_pidController.setD(MotionControl.ARM_PID.kD);
         
         armLeft.setClosedLoopRampRate(MotionControl.CLOSED_LOOP_RAMP_RATE); 
         armRight.setClosedLoopRampRate(MotionControl.CLOSED_LOOP_RAMP_RATE);
@@ -60,7 +55,7 @@ public class ArmSubsystem extends SubsystemBase{
     }
 
     public void moveToPosition(double setPoint){
-        m_pidController.setReference(setPoint, CANSparkBase.ControlType.kPosition, 0, -.165);
+        m_pidController.setReference(setPoint, CANSparkBase.ControlType.kPosition, 0, MotionControl.ARM_FEEDFORWARD);
 
     }
     public void resetArmPosition(){

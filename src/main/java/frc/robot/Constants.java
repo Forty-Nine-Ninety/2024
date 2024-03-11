@@ -114,10 +114,9 @@ public final class Constants
     public static class MotionControl
     {
         //PID
-        public static final PIDConstants ARM_PID = new PIDConstants(0.04, 0.0, 3.0);
-        //public static final PIDConstants SHOOTER_PID = new PIDConstants(0.0, 0.0, 0.0); //DO WE NEED THIS?
+        public static final PIDConstants ARM_PID = new PIDConstants(0.02, 0.0, 0.01);
         public static final PIDConstants INTAKE_EXTEND_PID = new PIDConstants(0.035, 0.0, 1.5);
-
+        public static final double ARM_FEEDFORWARD = -0.165;
         public static final double CLOSED_LOOP_RAMP_RATE = 1.0;
         public static final double OPEN_LOOP_RAMP_RATE = 1.0;
         // this is for the method in IntakeSubsystem
