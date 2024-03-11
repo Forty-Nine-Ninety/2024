@@ -125,9 +125,9 @@ public class RobotContainer
         //joystickOperator.y().toggleOnTrue(m_regurgShooterCommand);
         //joystickOperator.getButton(ButtonF310.A).toggleOnTrue(m_intakeToIndexerCommand);
         //joystickOperator.x().onTrue(m_chainEndgameCommand);
-        //joystickOperator.rightBumper().toggleOnTrue(m_outtakeSpeakerCommand);//OR OUTTAKE AMP COMMAND
+        //joystickOperator.rightBumper().toggleOnTrue(m_outtakeSpeakerCommand);
         //joystickOperator.leftStick().onTrue(m_armManualCommand);
-        //joystickOperator.getButton(ButtonF310.BumperRight).onTrue(m_eyebrowPositionCommand); */
+        //joystickOperator.rightStick().onTrue(m_eyebrowPositionCommand); */
 
         /*
         LOGITECH F310
