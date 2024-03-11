@@ -52,8 +52,8 @@ public class ArmSubsystem extends SubsystemBase{
         armRight.setOpenLoopRampRate(MotionControl.OPEN_LOOP_RAMP_RATE);
 
         armLeft.follow(armRight, true);
-        armLeft.setSmartCurrentLimit(40,40);
-        armRight.setSmartCurrentLimit(40,40);
+        armLeft.setSmartCurrentLimit(40);
+        armRight.setSmartCurrentLimit(40);
 
         armLeft.setIdleMode(IdleMode.kBrake);
         armRight.setIdleMode(IdleMode.kBrake);

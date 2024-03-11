@@ -17,14 +17,16 @@ public class RegurgitationCommand extends Command {
 
     @Override
     public void execute(){
+        m_shooterSubsystem.indexerToShooter(1);
         m_intakeSubsystem.extendIntake();
         m_intakeSubsystem.intakePercentOutput(-1);
-        m_shooterSubsystem.percentOutput(-1);
+        m_shooterSubsystem.shoot(-1);
     }
     @Override
     public void end(boolean interrupted){
         m_intakeSubsystem.intakePercentOutput(0.0);
-        m_shooterSubsystem.percentOutput(0.0);
+        m_shooterSubsystem.shoot(0.0);
         m_intakeSubsystem.retractIntake();
+        m_shooterSubsystem.indexerToShooter(0);
     }
 }

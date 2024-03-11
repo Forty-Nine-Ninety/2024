@@ -21,12 +21,12 @@ public class OuttakeSpeakerCommand extends Command {
 
     @Override
     public void initialize() {
-        shooter_subsystem.percentOutput(speed);
+        shooter_subsystem.shoot(speed);
     }
 
     @Override
     public void end(boolean interrupted){
-        shooter_subsystem.percentOutput(0.0);
+        shooter_subsystem.shoot(0.0);
         //arm_subsystem.moveToPosition(0);
     }
 } 

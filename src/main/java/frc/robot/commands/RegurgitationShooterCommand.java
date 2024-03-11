@@ -16,11 +16,13 @@ public class RegurgitationShooterCommand extends Command {
 
     @Override
     public void execute(){
-        m_shooterSubsystem.percentOutput(-1);
+        m_shooterSubsystem.indexerToShooter(1);
+        m_shooterSubsystem.shoot(-1);
     }
     @Override
     public void end(boolean interrupted){
-        m_shooterSubsystem.percentOutput(0.0);
+        m_shooterSubsystem.shoot(0.0);
         m_armSubsystem.moveToPosition(0);
+        m_shooterSubsystem.indexerToShooter(0);
     }
 }
