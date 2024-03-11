@@ -17,8 +17,10 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
+import frc.robot.XboxJoystick;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
+import edu.wpi.first.wpilibj.event.EventLoop;
 import frc.robot.Constants.DriveSettings;
 import frc.robot.Constants.Ports;
 import frc.robot.JoystickF310.*;
@@ -92,6 +94,8 @@ public class RobotContainer
     private void configureBindings()
     {
         //XBOX
+
+        //DRIVE
         m_driveCommand.setSuppliers(() -> MathUtil.applyDeadband(joystickDrive.getRawAxis(XboxController.Axis.kLeftY.ordinal()),DriveSettings.LEFT_Y_DEADBAND),
             () -> MathUtil.applyDeadband(joystickDrive.getRawAxis(XboxController.Axis.kLeftY.ordinal()),DriveSettings.LEFT_Y_DEADBAND),
             () -> MathUtil.applyDeadband(joystickDrive.getRawAxis(XboxController.Axis.kLeftX.ordinal()),DriveSettings.LEFT_X_DEADBAND),
@@ -109,13 +113,21 @@ public class RobotContainer
             () -> MathUtil.applyDeadband(joystickDrive.getRawAxis(XboxController.Axis.kLeftX.ordinal()),DriveSettings.LEFT_X_DEADBAND),
             () -> joystickDrive.getRawAxis(2)
         );
-        //IN PROGRESS joystickDrive.getRawButton(new JoystickButton(this,XboxController.Button.kA.ordinal())).onTrue((Commands.runOnce(m_drivebase::zeroGyro)));
-        //joystickDrive.getButton(ButtonF310.B).onTrue(Commands.runOnce(m_drivebase::addFakeVisionReading));
-        //joystickDrive.getButton(ButtonF310.X).whileTrue(
-                //Commands.deferredProxy(() -> m_drivebase.driveToPose(
-                                                                     //new Pose2d(new Translation2d(4, 4), Rotation2d.fromDegrees(0)))
-                                                            //));
-            //  joystickDrive.getButton(ButtonF310.Y).whileTrue(Commands.runOnce(drivebase::lock, drivebase).repeatedly());
+
+        Trigger joystickDrive_aButton = new JoystickButton(joystickDrive,XboxController.Button.kA.value);
+
+        if(joystickDrive.getAButtonPressed()){
+            joystickDrive_aButton.onTrue(Commands.runOnce(m_drivebase::zeroGyro));
+        }
+
+        //OPERATOR
+
+        m_armManualCommand.setSuppliers(
+            () -> DriveUtil.powCopySign(joystickOperator.getLeftY(), 1)
+        );
+
+
+        
         /*
          LOGITECH F310
         m_driveCommand.setSuppliers(

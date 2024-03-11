@@ -4,7 +4,6 @@ import edu.wpi.first.wpilibj.Joystick;
 //import edu.wpi.first.wpilibj2.command.button.Button;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.POVButton;
-import edu.wpi.first.wpilibj.XboxController;
 
 import static frc.robot.Constants.*;
 
@@ -16,10 +15,6 @@ public class JoystickF310 extends Joystick {
 
 	public JoystickButton getButton(ButtonF310 button) {
 		return new JoystickButton(this, button.ordinal());
-	}
-	//ADDED FOR THE XBOX CONTROLLER (NEED TO MOVE TO NEW FILE) - ALLISON
-	public JoystickButton getButton(XboxController.Button button){
-		return new JoystickButton(this,button.ordinal());
 	}
 
 	// public POVButton getPOVButton(POVF310 POVangle) {
