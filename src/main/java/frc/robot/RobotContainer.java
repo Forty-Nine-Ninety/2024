@@ -60,7 +60,7 @@ public class RobotContainer
     private final RegurgitationCommand m_regurgCommand = new RegurgitationCommand(m_intake, m_shooter);
     private final RegurgitationShooterCommand m_regurgShooterCommand = new RegurgitationShooterCommand(m_shooter,m_arm);
     //private final StopRollerCommand m_stopRollerCommand = new StopRollerCommand(m_intake, m_shooter);
-    private final IntakeExtendCommand m_intakeExtendCommand = new IntakeExtendCommand(m_intake);
+    private final IntakeExtendCommand m_intakeExtendCommand = new IntakeExtendCommand(m_intake, m_shooter);
     //private final IntakeToIndexerCommand m_intakeToIndexerCommand = new IntakeToIndexerCommand(m_intake);
     private final ChainEndgameCommand m_chainEndgameCommand = new ChainEndgameCommand(m_arm);
     //Auto
