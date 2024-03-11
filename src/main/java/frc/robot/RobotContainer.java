@@ -128,53 +128,6 @@ public class RobotContainer
         //joystickOperator.rightBumper().toggleOnTrue(m_outtakeSpeakerCommand);
         //joystickOperator.leftStick().onTrue(m_armManualCommand);
         //joystickOperator.rightStick().onTrue(m_eyebrowPositionCommand); */
-
-        /*
-        LOGITECH F310
-        m_driveCommand.setSuppliers(
-            () -> MathUtil.applyDeadband(joystickDrive.getRawAxis(AxisF310.JoystickLeftY), DriveSettings.LEFT_Y_DEADBAND),
-            () -> MathUtil.applyDeadband(joystickDrive.getRawAxis(AxisF310.JoystickLeftX), DriveSettings.LEFT_X_DEADBAND),
-            () -> joystickDrive.getRawAxis(AxisF310.JoystickRightX),
-            () -> joystickDrive.getRawAxis(AxisF310.JoystickRightY)
-        );
-
-        m_driveV2Command.setSuppliers(
-            () -> MathUtil.applyDeadband(joystickDrive.getRawAxis(AxisF310.JoystickLeftY), DriveSettings.LEFT_Y_DEADBAND),
-            () -> MathUtil.applyDeadband(joystickDrive.getRawAxis(AxisF310.JoystickLeftX), DriveSettings.LEFT_X_DEADBAND),
-            () -> joystickDrive.getRawAxis(AxisF310.JoystickRightX)
-        );
-
-        m_driveSimulationCommand.setSuppliers(
-            () -> MathUtil.applyDeadband(joystickDrive.getRawAxis(AxisF310.JoystickLeftY), DriveSettings.LEFT_Y_DEADBAND),
-            () -> MathUtil.applyDeadband(joystickDrive.getRawAxis(AxisF310.JoystickLeftX), DriveSettings.LEFT_X_DEADBAND),
-            () -> joystickDrive.getRawAxis(2)
-        );
-
-        m_armManualCommand.setSuppliers(
-            () -> DriveUtil.powCopySign(joystickOperator.getRawAxis(AxisF310.JoystickLeftY), 1)
-        );
-
-        // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
-
-        joystickDrive.getButton(ButtonF310.A).onTrue((Commands.runOnce(m_drivebase::zeroGyro)));
-        //joystickDrive.getButton(ButtonF310.B).onTrue(Commands.runOnce(m_drivebase::addFakeVisionReading));
-        //joystickDrive.getButton(ButtonF310.X).whileTrue(
-                //Commands.deferredProxy(() -> m_drivebase.driveToPose(
-                                                                     //new Pose2d(new Translation2d(4, 4), Rotation2d.fromDegrees(0)))
-                                                            //));
-            //  joystickDrive.getButton(ButtonF310.Y).whileTrue(Commands.runOnce(drivebase::lock, drivebase).repeatedly());
-        
-        joystickOperator.getButton(POVF310.Top).onTrue(m_armSpeakerCommand);
-        joystickOperator.getButton(POVF310.Right).toggleOnTrue(m_armAmpCommand); //test
-        joystickOperator.getButton(POVF310.Bottom).onTrue(m_armNeutralCommand);
-        joystickOperator.getButton(POVF310.Left).toggleOnTrue(m_intakeExtendCommand);
-        joystickOperator.getButton(ButtonF310.B).toggleOnTrue(m_regurgCommand);
-        joystickOperator.getButton(ButtonF310.Y).toggleOnTrue(m_regurgShooterCommand);
-        //joystickOperator.getButton(ButtonF310.A).toggleOnTrue(m_intakeToIndexerCommand);
-        joystickOperator.getButton(ButtonF310.A).onTrue(m_chainEndgameCommand);
-        joystickOperator.getButton(ButtonF310.BumperRight).toggleOnTrue(m_outtakeSpeakerCommand);//OR OUTTAKE AMP COMMAND
-        joystickOperator.getButton(ButtonF310.BumperLeft).onTrue(m_armManualCommand);
-        //joystickOperator.getButton(ButtonF310.BumperRight).onTrue(m_eyebrowPositionCommand); */
     }
     public void setTeleopDefaultCommands()
     {
