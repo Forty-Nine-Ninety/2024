@@ -10,16 +10,13 @@ import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.wpilibj.Filesystem;
 import edu.wpi.first.wpilibj.RobotBase;
-import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
-import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
-import edu.wpi.first.wpilibj.event.EventLoop;
 import frc.robot.Constants.DriveSettings;
 import frc.robot.Constants.Ports;
 import frc.robot.JoystickF310.*;
@@ -40,8 +37,9 @@ public class RobotContainer
     JoystickF310 joystickDrive = new JoystickF310(Ports.PORT_JOYSTICK_DRIVE);
     JoystickF310 joystickOperator = new JoystickF310(Ports.PORT_JOYSTICK_OPERATOR);
     */
-    XboxController joystickDrive = new XboxController(0);
-    XboxController joystickOperator = new XboxController(1);
+    CommandXboxController joystickDrive = new CommandXboxController(Ports.PORT_JOYSTICK_DRIVE);
+    CommandXboxController joystickOperator = new CommandXboxController(Ports.PORT_JOYSTICK_OPERATOR);
+
     // The robot's subsystems and commands are defined here...
     //Subsystems
     private final SwerveSubsystem m_drivebase = new SwerveSubsystem(new File(Filesystem.getDeployDirectory(), "swerve"));
@@ -93,42 +91,33 @@ public class RobotContainer
     private void configureBindings()
     {
         //XBOX
+        m_driveCommand.setSuppliers(
+            () -> MathUtil.applyDeadband(joystickDrive.getLeftY(), DriveSettings.LEFT_Y_DEADBAND),
+            () -> MathUtil.applyDeadband(joystickDrive.getLeftX(), DriveSettings.LEFT_X_DEADBAND),
+            () -> joystickDrive.getRightX(),
+            () -> joystickDrive.getRightY()
+        );
 
-        //DRIVE
-        m_driveCommand.setSuppliers(() -> MathUtil.applyDeadband(joystickDrive.getRawAxis(XboxController.Axis.kLeftY.ordinal()),DriveSettings.LEFT_Y_DEADBAND),
-            () -> MathUtil.applyDeadband(joystickDrive.getRawAxis(XboxController.Axis.kLeftY.ordinal()),DriveSettings.LEFT_Y_DEADBAND),
-            () -> MathUtil.applyDeadband(joystickDrive.getRawAxis(XboxController.Axis.kLeftX.ordinal()),DriveSettings.LEFT_X_DEADBAND),
-            () -> joystickDrive.getRawAxis(XboxController.Axis.kRightY.ordinal())
-            //() -> joystickDrive.getRawAxis(XboxController.Axis.kRightX.ordinal())
-        );
         m_driveV2Command.setSuppliers(
-            () -> MathUtil.applyDeadband(joystickDrive.getRawAxis(XboxController.Axis.kLeftY.ordinal()),DriveSettings.LEFT_Y_DEADBAND),
-            () -> MathUtil.applyDeadband(joystickDrive.getRawAxis(XboxController.Axis.kLeftX.ordinal()),DriveSettings.LEFT_X_DEADBAND),
-            () -> joystickDrive.getRawAxis(XboxController.Axis.kRightY.ordinal())
-            //() -> joystickDrive.getRawAxis(XboxController.Axis.kRightX.ordinal())
+            () -> MathUtil.applyDeadband(joystickDrive.getLeftY(), DriveSettings.LEFT_Y_DEADBAND),
+            () -> MathUtil.applyDeadband(joystickDrive.getLeftX(), DriveSettings.LEFT_X_DEADBAND),
+            () -> joystickDrive.getRightX()
         );
+
         m_driveSimulationCommand.setSuppliers(
-            () -> MathUtil.applyDeadband(joystickDrive.getRawAxis(XboxController.Axis.kLeftY.ordinal()),DriveSettings.LEFT_Y_DEADBAND),
-            () -> MathUtil.applyDeadband(joystickDrive.getRawAxis(XboxController.Axis.kLeftX.ordinal()),DriveSettings.LEFT_X_DEADBAND),
+            () -> MathUtil.applyDeadband(joystickDrive.getLeftY(), DriveSettings.LEFT_Y_DEADBAND),
+            () -> MathUtil.applyDeadband(joystickDrive.getLeftX(), DriveSettings.LEFT_X_DEADBAND),
             () -> joystickDrive.getRawAxis(2)
         );
-
-        Trigger joystickDrive_aButton = new JoystickButton(joystickDrive,XboxController.Button.kA.value);
-
-        if(joystickDrive.getAButtonPressed()){
-            joystickDrive_aButton.onTrue(Commands.runOnce(m_drivebase::zeroGyro));
-        }
-
-        //OPERATOR
 
         m_armManualCommand.setSuppliers(
             () -> DriveUtil.powCopySign(joystickOperator.getLeftY(), 1)
         );
 
+        joystickDrive.a().onTrue(Commands.runOnce(m_drivebase::zeroGyro));
 
-        
         /*
-         LOGITECH F310
+        LOGITECH F310
         m_driveCommand.setSuppliers(
             () -> MathUtil.applyDeadband(joystickDrive.getRawAxis(AxisF310.JoystickLeftY), DriveSettings.LEFT_Y_DEADBAND),
             () -> MathUtil.applyDeadband(joystickDrive.getRawAxis(AxisF310.JoystickLeftX), DriveSettings.LEFT_X_DEADBAND),
@@ -172,7 +161,7 @@ public class RobotContainer
         joystickOperator.getButton(ButtonF310.A).onTrue(m_chainEndgameCommand);
         joystickOperator.getButton(ButtonF310.BumperRight).toggleOnTrue(m_outtakeSpeakerCommand);//OR OUTTAKE AMP COMMAND
         joystickOperator.getButton(ButtonF310.BumperLeft).onTrue(m_armManualCommand);
-        /*joystickOperator.getButton(ButtonF310.BumperRight).onTrue(m_eyebrowPositionCommand); */
+        //joystickOperator.getButton(ButtonF310.BumperRight).onTrue(m_eyebrowPositionCommand); */
     }
     public void setTeleopDefaultCommands()
     {
