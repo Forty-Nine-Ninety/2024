@@ -60,7 +60,7 @@ public class RobotContainer
     private final RegurgitationCommand m_regurgCommand = new RegurgitationCommand(m_intake, m_shooter);
     private final RegurgitationShooterCommand m_regurgShooterCommand = new RegurgitationShooterCommand(m_shooter,m_arm);
     //private final StopRollerCommand m_stopRollerCommand = new StopRollerCommand(m_intake, m_shooter);
-    private final IntakeExtendCommand m_intakeExtendCommand = new IntakeExtendCommand(m_intake,m_shooter);
+    private final IntakeExtendCommand m_intakeExtendCommand = new IntakeExtendCommand(m_intake);
     //private final IntakeToIndexerCommand m_intakeToIndexerCommand = new IntakeToIndexerCommand(m_intake);
     private final ChainEndgameCommand m_chainEndgameCommand = new ChainEndgameCommand(m_arm);
     //Auto
@@ -110,11 +110,24 @@ public class RobotContainer
             () -> joystickDrive.getRawAxis(2)
         );
 
+        joystickDrive.a().onTrue(Commands.runOnce(m_drivebase::zeroGyro));
+
+        //OPERATOR
         m_armManualCommand.setSuppliers(
             () -> DriveUtil.powCopySign(joystickOperator.getLeftY(), 1)
         );
 
-        joystickDrive.a().onTrue(Commands.runOnce(m_drivebase::zeroGyro));
+        //joystickOperator.y().onTrue(m_armSpeakerCommand);
+        //joystickOperator.b().toggleOnTrue(m_armAmpCommand); //test
+        //joystickOperator.a().onTrue(m_armNeutralCommand);
+        joystickOperator.leftBumper().toggleOnTrue(m_intakeExtendCommand);
+        //joystickOperator.().toggleOnTrue(m_regurgCommand);
+        //joystickOperator.y().toggleOnTrue(m_regurgShooterCommand);
+        //joystickOperator.getButton(ButtonF310.A).toggleOnTrue(m_intakeToIndexerCommand);
+        //joystickOperator.x().onTrue(m_chainEndgameCommand);
+        //joystickOperator.rightBumper().toggleOnTrue(m_outtakeSpeakerCommand);//OR OUTTAKE AMP COMMAND
+        //joystickOperator.leftStick().onTrue(m_armManualCommand);
+        //joystickOperator.getButton(ButtonF310.BumperRight).onTrue(m_eyebrowPositionCommand); */
 
         /*
         LOGITECH F310
