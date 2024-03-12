@@ -19,7 +19,6 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.Constants.DriveSettings;
 import frc.robot.Constants.Ports;
-import frc.robot.JoystickF310.*;
 import frc.robot.subsystems.*;
 import frc.robot.commands.*;
 import java.io.File;
@@ -33,10 +32,6 @@ import com.pathplanner.lib.auto.AutoBuilder;
  */
 public class RobotContainer
 {
-    /*
-    JoystickF310 joystickDrive = new JoystickF310(Ports.PORT_JOYSTICK_DRIVE);
-    JoystickF310 joystickOperator = new JoystickF310(Ports.PORT_JOYSTICK_OPERATOR);
-    */
     CommandXboxController joystickDrive = new CommandXboxController(Ports.PORT_JOYSTICK_DRIVE);
     CommandXboxController joystickOperator = new CommandXboxController(Ports.PORT_JOYSTICK_OPERATOR);
 
@@ -54,14 +49,11 @@ public class RobotContainer
     private final ArmAmpCommand m_armAmpCommand = new ArmAmpCommand(m_arm);
     private final ArmManualCommand m_armManualCommand = new ArmManualCommand(m_arm);
     private final ArmSpeakerCommand m_armSpeakerCommand = new ArmSpeakerCommand(m_arm);
-    //private final OuttakeAmpCommand m_outtakeAmpCommand = new OuttakeAmpCommand(m_shooter);
-    //private final OuttakeOfIntakeCommand m_outtakeOfIntakeCommand = new OuttakeOfIntakeCommand(m_intake, m_shooter);
-    private final OuttakeSpeakerCommand m_outtakeSpeakerCommand = new OuttakeSpeakerCommand(m_shooter);
+    private final OuttakeCommand m_outtakeCommand = new OuttakeCommand(m_shooter);
     private final RegurgitationCommand m_regurgCommand = new RegurgitationCommand(m_intake, m_shooter);
     private final RegurgitationShooterCommand m_regurgShooterCommand = new RegurgitationShooterCommand(m_shooter,m_arm);
     //private final StopRollerCommand m_stopRollerCommand = new StopRollerCommand(m_intake, m_shooter);
     private final IntakeExtendCommand m_intakeExtendCommand = new IntakeExtendCommand(m_intake, m_shooter);
-    //private final IntakeToIndexerCommand m_intakeToIndexerCommand = new IntakeToIndexerCommand(m_intake);
     private final ChainEndgameCommand m_chainEndgameCommand = new ChainEndgameCommand(m_arm);
     //Auto
     private final SendableChooser<Command> autoChooser;
@@ -125,10 +117,11 @@ public class RobotContainer
         //joystickOperator.y().toggleOnTrue(m_regurgShooterCommand);
         //joystickOperator.getButton(ButtonF310.A).toggleOnTrue(m_intakeToIndexerCommand);
         //joystickOperator.x().onTrue(m_chainEndgameCommand);
-        //joystickOperator.rightBumper().toggleOnTrue(m_outtakeSpeakerCommand);
+        //joystickOperator.rightBumper().toggleOnTrue(m_outtakeCommand);
         //joystickOperator.leftStick().onTrue(m_armManualCommand);
         //joystickOperator.rightStick().onTrue(m_eyebrowPositionCommand); */
     }
+
     public void setTeleopDefaultCommands()
     {
         CommandScheduler.getInstance().setDefaultCommand(m_drivebase, !RobotBase.isSimulation() ? m_driveV2Command : m_driveSimulationCommand);

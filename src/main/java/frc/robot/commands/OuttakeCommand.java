@@ -6,13 +6,13 @@ import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.ArmSubsystem;
 
-public class OuttakeSpeakerCommand extends Command {
+public class OuttakeCommand extends Command {
 
     private final ShooterSubsystem shooter_subsystem;
   //  private final ArmSubsystem arm_subsystem; 
     private double speed = 1.0; 
 
-    public OuttakeSpeakerCommand(ShooterSubsystem shooter_subsystem) {
+    public OuttakeCommand(ShooterSubsystem shooter_subsystem) {
       //  this.arm_subsystem = arm_subsystem;
         this.shooter_subsystem = shooter_subsystem;
         addRequirements(shooter_subsystem);
