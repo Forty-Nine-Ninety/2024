@@ -175,7 +175,7 @@ public final class Constants
         public static double JOYSTICKF310_AXIS_DEADBAND = 0.01;
         public static double JOYSTICK_THROTTLE_X_EXPONENT = 2.0;
         public static double JOYSTICK_THROTTLE_Y_EXPONENT = 2.0;
-        public static double JOYSTICK_TURNING_EXPONENT = 1.0;
+        public static double JOYSTICK_TURNING_EXPONENT = 1.2;
         public static double ARCADE_SPEED_X_MULTIPLIER = 1.0;
         public static double ARCADE_SPEED_Y_MULTIPLIER = 1.0;
         public static double ARCADE_ROTATION_MULTIPLIER = 1.0;
