@@ -93,7 +93,7 @@ public class RobotContainer
         m_driveV2Command.setSuppliers(
             () -> MathUtil.applyDeadband(joystickDrive.getLeftY(), DriveSettings.LEFT_Y_DEADBAND),
             () -> MathUtil.applyDeadband(joystickDrive.getLeftX(), DriveSettings.LEFT_X_DEADBAND),
-            () -> joystickDrive.getRightX()
+            () -> MathUtil.applyDeadband(joystickDrive.getRightX(), DriveSettings.RIGHT_X_DEADBAND)
         );
 
         m_driveSimulationCommand.setSuppliers(
@@ -135,7 +135,8 @@ public class RobotContainer
      */
     public Command getAutonomousCommand()
     {
-        return m_drivebase.getAutonomousCommand("1ExitRed");
+        return m_drivebase.getAutonomousCommand("11NBlue");
+        //return m_drivebase.getAutonomousCommand("1ExitRed");
         //return m_drivebase.getAutonomousCommand("3ExitRed");
         //return m_drivebase.getAutonomousCommand("1ExitBlue");
         //return m_drivebase.getAutonomousCommand("3ExitBlue");
