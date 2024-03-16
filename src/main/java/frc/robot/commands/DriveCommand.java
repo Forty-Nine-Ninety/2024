@@ -28,12 +28,10 @@ public class DriveCommand extends Command{
         double yInput = DriveUtil.powCopySign(m_translationY.getAsDouble(), DriveSettings.JOYSTICK_THROTTLE_Y_EXPONENT) * DriveSettings.ARCADE_SPEED_Y_MULTIPLIER; // Smooth control out
 
         // Make the robot move
-        m_drivebase.driveFieldOriented(m_drivebase.getSwerveController().getTargetSpeeds(
-                                        xInput, 
-                                        yInput,
-                                        m_headingX.getAsDouble() * DriveSettings.ARCADE_ROTATION_MULTIPLIER,
-                                        m_headingY.getAsDouble() * DriveSettings.ARCADE_ROTATION_MULTIPLIER,
-                                        m_drivebase.getSwerveDrive().getOdometryHeading().getRadians(),
-                                        m_drivebase.getSwerveDrive().getMaximumVelocity()));
+        m_drivebase.driveFieldOriented(m_drivebase.getSwerveController().getTargetSpeeds(xInput, yInput,
+                                                                                         m_headingX.getAsDouble() * DriveSettings.ARCADE_ROTATION_MULTIPLIER,
+                                                                                         m_headingY.getAsDouble() * DriveSettings.ARCADE_ROTATION_MULTIPLIER,
+                                                                                         m_drivebase.getSwerveDrive().getOdometryHeading().getRadians(),
+                                                                                         m_drivebase.getSwerveDrive().getMaximumVelocity()));
     }
 }
