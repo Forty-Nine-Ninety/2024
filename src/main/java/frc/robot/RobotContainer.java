@@ -103,6 +103,7 @@ public class RobotContainer
         );
 
         joystickDrive.a().onTrue(Commands.runOnce(m_drivebase::zeroGyro));
+        joystickDrive.leftBumper().toggleOnTrue(m_intakeExtendCommand);
 
         //OPERATOR
         m_armManualCommand.setSuppliers(
@@ -113,8 +114,8 @@ public class RobotContainer
         //joystickOperator.b().toggleOnTrue(m_armAmpCommand); //test
         //joystickOperator.a().onTrue(m_armNeutralCommand);
         joystickOperator.leftBumper().toggleOnTrue(m_intakeExtendCommand);
-        //joystickOperator.().toggleOnTrue(m_regurgCommand);
-        //joystickOperator.y().toggleOnTrue(m_regurgShooterCommand);
+        joystickOperator.a().toggleOnTrue(m_regurgCommand);
+        //joystickOperator.().toggleOnTrue(m_regurgShooterCommand);
         //joystickOperator.getButton(ButtonF310.A).toggleOnTrue(m_intakeToIndexerCommand);
         //joystickOperator.x().onTrue(m_chainEndgameCommand);
         //joystickOperator.rightBumper().toggleOnTrue(m_outtakeCommand);

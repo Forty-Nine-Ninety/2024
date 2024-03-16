@@ -199,7 +199,7 @@ public class SwerveSubsystem extends SubsystemBase
     public Command driveCommand(DoubleSupplier translationX, DoubleSupplier translationY, DoubleSupplier headingX,
                                                             DoubleSupplier headingY)
     {
-        // swerveDrive.setHeadingCorrection(true); // Normally you would want heading correction for this kind of control.
+        //swerveDrive.setHeadingCorrection(true); // Normally you would want heading correction for this kind of control.
         return run(() -> {
             double xInput = DriveUtil.powCopySign(translationX.getAsDouble(), DriveSettings.JOYSTICK_THROTTLE_X_EXPONENT) * DriveSettings.ARCADE_SPEED_X_MULTIPLIER; // Smooth control out
             double yInput = DriveUtil.powCopySign(translationY.getAsDouble(), DriveSettings.JOYSTICK_THROTTLE_Y_EXPONENT) * DriveSettings.ARCADE_SPEED_Y_MULTIPLIER; // Smooth control out
