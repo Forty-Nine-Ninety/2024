@@ -5,37 +5,12 @@
       "x": 0.6952446636374756,
       "y": 6.692144328733102
     },
-    "rotation": 0
+    "rotation": -120.23879819556096
   },
   "command": {
     "type": "sequential",
     "data": {
       "commands": [
-        {
-          "type": "named",
-          "data": {
-            "name": "ArmSpeakerCommand.java"
-          }
-        },
-        {
-          "type": "parallel",
-          "data": {
-            "commands": [
-              {
-                "type": "named",
-                "data": {
-                  "name": "OuttakeCommand.java"
-                }
-              },
-              {
-                "type": "wait",
-                "data": {
-                  "waitTime": 2.0
-                }
-              }
-            ]
-          }
-        },
         {
           "type": "path",
           "data": {

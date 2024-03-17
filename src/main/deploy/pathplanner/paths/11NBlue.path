@@ -75,22 +75,19 @@
   "constraintZones": [],
   "eventMarkers": [
     {
-      "name": "Shoot note",
+      "name": "Note 1",
       "waypointRelativePos": 0,
       "command": {
-        "type": "parallel",
+        "type": "sequential",
         "data": {
-          "commands": []
-        }
-      }
-    },
-    {
-      "name": "End",
-      "waypointRelativePos": 0,
-      "command": {
-        "type": "parallel",
-        "data": {
-          "commands": []
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": null
+              }
+            }
+          ]
         }
       }
     }
