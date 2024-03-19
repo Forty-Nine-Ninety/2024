@@ -9,9 +9,12 @@ import com.revrobotics.RelativeEncoder;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.*;
+import monologue.Logged;
+import monologue.Annotations.Log;
+
 import com.revrobotics.CANSparkLowLevel.MotorType;
 
-public class ShooterSubsystem extends SubsystemBase {
+public class ShooterSubsystem extends SubsystemBase implements Logged {
     private CANSparkMax shooter1, shooter2;
     private CANSparkMax indexer1;
     private final DigitalInput m_breakbeam;
@@ -50,6 +53,7 @@ public class ShooterSubsystem extends SubsystemBase {
         indexer1.set(indexer_run_rate);
     }
 
+    @Log
     public boolean breakBeam() {
         //Detects if anything is obstructing the break beam 
         return !m_breakbeam.get();
