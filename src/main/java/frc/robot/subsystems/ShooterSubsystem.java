@@ -15,42 +15,42 @@ import monologue.Annotations.Log;
 import com.revrobotics.CANSparkLowLevel.MotorType;
 
 public class ShooterSubsystem extends SubsystemBase implements Logged {
-    private CANSparkMax shooter1, shooter2;
-    private CANSparkMax indexer1;
+    private CANSparkMax roller1, roller2;
+    private CANSparkMax preshooter;
     private final DigitalInput m_breakbeam;
 
     
     public ShooterSubsystem() {
-        shooter1 = new CANSparkMax(Ports.CAN_SHOOTER_ONE_SPARKMAX, MotorType.kBrushless); 
-        shooter2 = new CANSparkMax(Ports.CAN_SHOOTER_TWO_SPARKMAX, MotorType.kBrushless);
-        indexer1 = new CANSparkMax(Ports.CAN_SHOOTER_INDEXER, MotorType.kBrushless);
+        roller1 = new CANSparkMax(Ports.CAN_SHOOTER_ONE_SPARKMAX, MotorType.kBrushless); 
+        roller2 = new CANSparkMax(Ports.CAN_SHOOTER_TWO_SPARKMAX, MotorType.kBrushless);
+        preshooter = new CANSparkMax(Ports.CAN_PRE_SHOOTER, MotorType.kBrushless);
         m_breakbeam = new DigitalInput(Ports.PORT_DIO_BREAK_BEAM); 
       
         configureMotors();
     }
     
     private void configureMotors() {
-        shooter1.restoreFactoryDefaults(); 
-        shooter2.restoreFactoryDefaults(); 
-        indexer1.restoreFactoryDefaults();
+        roller1.restoreFactoryDefaults(); 
+        roller2.restoreFactoryDefaults(); 
+        preshooter.restoreFactoryDefaults();
         
-        shooter1.setInverted(true);
-        indexer1.setInverted(false);
-        shooter2.setInverted(true);
+        roller1.setInverted(true);
+        roller2.setInverted(true);
+        preshooter.setInverted(false);
 
-        shooter2.follow(shooter1, true);
+        roller2.follow(roller1, true);
 
-        shooter1.setSmartCurrentLimit(60);
-        shooter2.setSmartCurrentLimit(60);
-        indexer1.setSmartCurrentLimit(20);
+        roller1.setSmartCurrentLimit(60);
+        roller2.setSmartCurrentLimit(60);
+        preshooter.setSmartCurrentLimit(20);
     }
 
     public void shoot(double percent_output) {
-        shooter1.set(percent_output);
+        roller1.set(percent_output);
     }
 
     public void indexerToShooter(double indexer_run_rate){
-        indexer1.set(indexer_run_rate);
+        roller1.set(indexer_run_rate);
     }
 
     @Log

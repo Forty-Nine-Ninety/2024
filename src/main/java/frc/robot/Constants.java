@@ -43,7 +43,7 @@ public final class Constants
         public static final int CAN_INTAKE_SPARKMAX_EXTEND = 13;
         public static final int CAN_INTAKE_SPARKMAX_ROLLER = 14;
         // CAN ID 15 is in use on drivebase
-        public static final int CAN_SHOOTER_INDEXER = 16;
+        public static final int CAN_PRE_SHOOTER = 16;
     }
     
     public static class MotorConfig
