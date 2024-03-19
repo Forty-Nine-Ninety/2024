@@ -10,9 +10,11 @@ import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.revrobotics.CANSparkBase;
 import com.revrobotics.CANSparkLowLevel.MotorType;
 import frc.robot.Constants.*;
+import monologue.Logged;
+import monologue.Annotations.Log;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
-public class IntakeSubsystem extends SubsystemBase {
+public class IntakeSubsystem extends SubsystemBase implements Logged{
     private CANSparkMax intakeExtend, intakeRoller;
     private SparkPIDController pid_intake;
     private RelativeEncoder pid_encoder;
@@ -56,10 +58,12 @@ public class IntakeSubsystem extends SubsystemBase {
         pid_intake.setReference(position, CANSparkBase.ControlType.kPosition);
     }
 
+    @Log
     public double intakeCurrentDrawExtend(){
         return intakeExtend.getOutputCurrent();
     }
 
+    @Log
     public double intakeCurrentDrawRoller(){
         return intakeRoller.getOutputCurrent();
     }
