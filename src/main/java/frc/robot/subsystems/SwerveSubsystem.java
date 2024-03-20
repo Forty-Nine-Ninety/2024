@@ -320,7 +320,7 @@ public class SwerveSubsystem extends SubsystemBase
      */
     public void drive(ChassisSpeeds velocity)
     {
-        swerveDrive.drive(ChassisSpeeds.discretize(velocity, 0.02));
+        swerveDrive.drive(velocity);
 
     }
 
@@ -373,7 +373,7 @@ public class SwerveSubsystem extends SubsystemBase
      */
     public void setChassisSpeeds(ChassisSpeeds chassisSpeeds)
     {
-        swerveDrive.setChassisSpeeds(chassisSpeeds);
+        swerveDrive.setChassisSpeeds(ChassisSpeeds.discretize(chassisSpeeds, 0.02));
     }
 
     /**
