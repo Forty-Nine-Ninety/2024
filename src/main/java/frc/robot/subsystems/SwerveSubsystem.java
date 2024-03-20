@@ -320,7 +320,8 @@ public class SwerveSubsystem extends SubsystemBase
      */
     public void drive(ChassisSpeeds velocity)
     {
-        swerveDrive.drive(velocity);
+        swerveDrive.drive(ChassisSpeeds.discretize(velocity, 0.02));
+
     }
 
     @Override
