@@ -1,10 +1,6 @@
-package frc.robot.subsystems;
-import frc.robot.Constants.*;
-import monologue.Logged;
-import monologue.Annotations.Log;
-
 // Shreyans
 
+package frc.robot.subsystems;
 
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkBase;
@@ -15,7 +11,12 @@ import com.revrobotics.CANSparkBase.IdleMode;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
-public class ArmSubsystem extends SubsystemBase implements Logged {
+import frc.robot.Constants.*;
+// import monologue.Logged;
+// import monologue.Annotations.Log;
+
+public class ArmSubsystem extends SubsystemBase// implements Logged 
+{
     private CANSparkMax armLeft, armRight;
     private SparkPIDController m_pidController;
     private RelativeEncoder m_encoder;
@@ -27,7 +28,8 @@ public class ArmSubsystem extends SubsystemBase implements Logged {
         m_encoder = armRight.getEncoder();
         configureMotors();
     }
-    @Log
+
+    //@Log
     private void configureMotors(){
         armLeft.restoreFactoryDefaults();
         armRight.restoreFactoryDefaults();
@@ -55,16 +57,19 @@ public class ArmSubsystem extends SubsystemBase implements Logged {
         armLeft.setIdleMode(IdleMode.kBrake);
         armRight.setIdleMode(IdleMode.kBrake);
     }
-    @Log
+
+    //@Log
     public void moveToPosition(double setPoint){
         m_pidController.setReference(setPoint, CANSparkBase.ControlType.kPosition, 0, MotionControl.ARM_FEEDFORWARD);
 
     }
-    @Log
+
+    //@Log
     public void resetArmPosition(){
         m_encoder.setPosition(0);
     }
-    @Log
+
+    //@Log
     public double getPosition(){
         return (m_encoder.getPosition());
     } 
