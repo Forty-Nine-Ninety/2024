@@ -57,7 +57,7 @@ public class RobotContainer
     private final ChainEndgameCommand m_chainEndgameCommand = new ChainEndgameCommand(m_arm);
     //Auto
     private final SendableChooser<Command> autoChooser;
-    private final AutoCommand m_autoCommand = new AutoCommand(m_arm,m_shooter);
+    private final AutoCommand m_autoCommand = new AutoCommand(m_arm,m_shooter,m_drivebase,"11NBlue");
 
     /**
      * The container for the robot. Contains subsystems, OI devices, and commands.
@@ -137,7 +137,7 @@ public class RobotContainer
      */
     public Command getAutonomousCommand()
     {
-        return m_autoCommand.speaker();
+        return m_autoCommand.Blue11NCommand();
         //return m_drivebase.getAutonomousCommand("1ExitRed");
         //return m_drivebase.getAutonomousCommand("3ExitRed");
         //return m_drivebase.getAutonomousCommand("1ExitBlue");

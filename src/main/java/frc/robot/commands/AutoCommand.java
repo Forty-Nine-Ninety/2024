@@ -12,11 +12,17 @@ import frc.robot.subsystems.*;
 public class AutoCommand extends Command{
     private final ArmSubsystem arm;
     private final ShooterSubsystem shooter;
+    private final SwerveSubsystem swerve;
+    private final ZeroGyroCommand m_zeroGyroCommand;
     private final ArmSpeakerCommand m_armSpeakerCommand;
     private final ArmNeutralCommand m_armNeutralCommand;
     private final OuttakeCommand m_shootCommand;
+    private final String m_exitpath;
     
-    public AutoCommand(ArmSubsystem arm,ShooterSubsystem shooter){
+    public AutoCommand(ArmSubsystem arm,ShooterSubsystem shooter,SwerveSubsystem swerve,String m_path){
+        this.swerve = swerve;
+        m_zeroGyroCommand = new ZeroGyroCommand(swerve);
+        this.m_exitpath = m_path;
         this.arm = arm;
         m_armSpeakerCommand = new ArmSpeakerCommand(arm);
         m_armNeutralCommand = new ArmNeutralCommand(arm);
@@ -34,5 +40,18 @@ public class AutoCommand extends Command{
                                                                     m_armNeutralCommand);
         speaker.setName("Speaker Auto");
         return speaker;
+    }
+    public Command exit(){
+        SequentialCommandGroup exit = new SequentialCommandGroup(swerve.getAutonomousCommand(m_exitpath),
+                                                                 m_zeroGyroCommand
+                                                                );
+        return exit;
+    }
+
+
+    //COMMANDS
+    public Command Blue11NCommand(){
+        SequentialCommandGroup Blue11N = new SequentialCommandGroup(speaker(),exit());
+        return Blue11N;
     }
 }
