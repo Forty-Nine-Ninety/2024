@@ -111,16 +111,16 @@ public class RobotContainer
             () -> DriveUtil.powCopySign(joystickOperator.getLeftY(), 1)
         );
 
-        //joystickOperator.y().onTrue(m_armSpeakerCommand);
-        //joystickOperator.b().toggleOnTrue(m_armAmpCommand); //test
-        //joystickOperator.a().onTrue(m_armNeutralCommand);
-        joystickOperator.leftBumper().toggleOnTrue(m_intakeExtendCommand);
+        joystickOperator.y().onTrue(m_armSpeakerCommand);
+        joystickOperator.b().toggleOnTrue(m_armAmpCommand); //test
+        joystickOperator.a().onTrue(m_armNeutralCommand);
+        //joystickOperator.leftBumper().toggleOnTrue(m_intakeExtendCommand);
         joystickOperator.a().toggleOnTrue(m_regurgCommand);
         //joystickOperator.().toggleOnTrue(m_regurgShooterCommand);
         //joystickOperator.getButton(ButtonF310.A).toggleOnTrue(m_intakeToIndexerCommand);
         //joystickOperator.x().onTrue(m_chainEndgameCommand);
-        //joystickOperator.rightBumper().toggleOnTrue(m_outtakeCommand);
-        //joystickOperator.leftStick().onTrue(m_armManualCommand);
+        joystickOperator.rightBumper().toggleOnTrue(m_outtakeCommand);
+        joystickOperator.leftStick().onTrue(m_armManualCommand);
         //joystickOperator.rightStick().onTrue(m_eyebrowPositionCommand); */
     }
 
