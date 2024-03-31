@@ -8,6 +8,7 @@ import com.revrobotics.RelativeEncoder;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants.*;
 // import monologue.Logged;
 // import monologue.Annotations.Log;
@@ -48,10 +49,11 @@ public class ShooterSubsystem extends SubsystemBase// implements Logged
 
     public void shoot(double percent_output) {
         roller1.set(percent_output);
+        preshooter.set(percent_output);
     }
 
     public void indexerToShooter(double indexer_run_rate){
-        roller1.set(indexer_run_rate);
+        preshooter.set(indexer_run_rate);
     }
 
     // @Log
