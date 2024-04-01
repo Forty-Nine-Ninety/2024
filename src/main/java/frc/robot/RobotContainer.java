@@ -111,17 +111,19 @@ public class RobotContainer
             () -> DriveUtil.powCopySign(joystickOperator.getLeftY(), 1)
         );
 
-        joystickOperator.y().onTrue(m_armSpeakerCommand);
-        joystickOperator.b().toggleOnTrue(m_armAmpCommand); //test
+        joystickOperator.y().onTrue(m_regurgShooterCommand);
+        joystickOperator.b().onTrue(m_armAmpCommand);
         joystickOperator.a().onTrue(m_armNeutralCommand);
-        //joystickOperator.leftBumper().toggleOnTrue(m_intakeExtendCommand);
-        joystickOperator.a().toggleOnTrue(m_regurgCommand);
-        //joystickOperator.().toggleOnTrue(m_regurgShooterCommand);
-        //joystickOperator.getButton(ButtonF310.A).toggleOnTrue(m_intakeToIndexerCommand);
-        //joystickOperator.x().onTrue(m_chainEndgameCommand);
+        joystickOperator.x().onTrue(m_chainEndgameCommand);
+
+        joystickOperator.leftBumper().toggleOnTrue(m_intakeExtendCommand); //onTrue?
         joystickOperator.rightBumper().toggleOnTrue(m_outtakeCommand);
-        joystickOperator.leftStick().onTrue(m_armManualCommand);
-        //joystickOperator.rightStick().onTrue(m_eyebrowPositionCommand); */
+
+        joystickOperator.rightStick().onTrue(m_armManualCommand);
+
+
+        joystickOperator.povUp().toggleOnTrue(m_regurgShooterCommand);
+        joystickOperator.povDown().toggleOnTrue(m_regurgCommand);
     }
 
     public void setTeleopDefaultCommands()
