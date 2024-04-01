@@ -22,11 +22,12 @@ public class OuttakeCommand extends Command {
     @Override
     public void initialize() {
         shooter_subsystem.shoot(speed);
+        
     }
 
     @Override
     public void end(boolean interrupted){
-        shooter_subsystem.shoot(0.0);
+        shooter_subsystem.stop();
         //arm_subsystem.moveToPosition(0);
     }
 } 
