@@ -111,7 +111,7 @@ public class RobotContainer
             () -> DriveUtil.powCopySign(joystickOperator.getLeftY(), 1)
         );
 
-        joystickOperator.y().onTrue(m_regurgShooterCommand);
+        joystickOperator.y().onTrue(m_armSpeakerCommand);
         joystickOperator.b().onTrue(m_armAmpCommand);
         joystickOperator.a().onTrue(m_armNeutralCommand);
         joystickOperator.x().onTrue(m_chainEndgameCommand);
