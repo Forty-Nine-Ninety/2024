@@ -108,7 +108,7 @@ public class RobotContainer
 
         //OPERATOR
         m_armManualCommand.setSuppliers(
-            () -> DriveUtil.powCopySign(joystickOperator.getLeftY(), 1)
+            () -> MathUtil.applyDeadband(DriveUtil.powCopySign(joystickOperator.getLeftY(), 1), DriveSettings.LEFT_Y_DEADBAND)      
         );
 
         joystickOperator.y().onTrue(m_armSpeakerCommand);

@@ -38,8 +38,8 @@ public final class Constants
         //CAN IDs
         public static final int CAN_ARM_LEFT_SPARKMAX = 10;
         public static final int CAN_ARM_RIGHT_SPARKMAX = 9;
-        public static final int CAN_SHOOTER_ONE_SPARKMAX = 12;
-        public static final int CAN_SHOOTER_TWO_SPARKMAX = 11;
+        public static final int CAN_SHOOTER_ONE_SPARKMAX = 11;
+        public static final int CAN_SHOOTER_TWO_SPARKMAX = 12;
         public static final int CAN_INTAKE_SPARKMAX_EXTEND = 13;
         public static final int CAN_INTAKE_SPARKMAX_ROLLER = 14;
         // CAN ID 15 is in use on drivebase
@@ -170,6 +170,8 @@ public final class Constants
         public static final double LEFT_Y_DEADBAND  = 0.1;
         public static final double RIGHT_X_DEADBAND = 0.1;
         public static final double TURN_CONSTANT    = 6;
+        public static final double ARM_DEADBAND    = 0.1;
+
 
         //Driver settings
         public static double JOYSTICKF310_AXIS_DEADBAND = 0.01;

@@ -3,31 +3,23 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
+import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.ArmSubsystem;
+import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.WaitCommand;
 
-public class OuttakeCommand extends Command {
-
+public class OuttakeCommand extends ParallelCommandGroup{
     private final ShooterSubsystem shooter_subsystem;
-  //  private final ArmSubsystem arm_subsystem; 
-    private double speed = 1.0; 
 
     public OuttakeCommand(ShooterSubsystem shooter_subsystem) {
-      //  this.arm_subsystem = arm_subsystem;
-        this.shooter_subsystem = shooter_subsystem;
-        addRequirements(shooter_subsystem);
-      //  addRequirements(arm_subsystem);
+      this.shooter_subsystem = shooter_subsystem;
+      addCommands(new ParallelCommandGroup(new ShooterCommand(shooter_subsystem),
+                                           new SequentialCommandGroup(new WaitCommand(1.0),
+                                                                      new IndexertoShooterCommand(shooter_subsystem)
+                                                                     )
+                                          )
+      );
     }
-
-    @Override
-    public void initialize() {
-        shooter_subsystem.shoot(speed);
-        
-    }
-
-    @Override
-    public void end(boolean interrupted){
-        shooter_subsystem.stop();
-        //arm_subsystem.moveToPosition(0);
-    }
-} 
+}
