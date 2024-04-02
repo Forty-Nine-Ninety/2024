@@ -10,13 +10,6 @@ public class ShootEverythingCommand extends Command {
     }
 
     @Override
-    public void initialize(){
-        m_shooter_subsystem.indexerToShooter(-1.0);
-        m_shooter_subsystem.shoot(1.0);
-
-    }
-
-    @Override
     public void execute(){
         m_shooter_subsystem.indexerToShooter(-1.0);
         m_shooter_subsystem.shoot(1.0);

@@ -13,11 +13,6 @@ public class PreshooterCommand extends Command{
     }
 
     @Override
-    public void initialize(){
-        shooter_subsystem.indexerToShooter(-1.0);
-    }
-
-    @Override
     public void execute(){
         shooter_subsystem.indexerToShooter(-1.0);
     }
