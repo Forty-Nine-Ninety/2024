@@ -13,6 +13,8 @@ public class IntakeExtendCommand extends Command{
     public IntakeExtendCommand(IntakeSubsystem intakeSubsystem,ShooterSubsystem shooterSubsystem){
         m_intakeSubsystem = intakeSubsystem;
         m_shooterSubsystem = shooterSubsystem;
+        addRequirements(intakeSubsystem, shooterSubsystem);
+
     }
 
     @Override
@@ -22,7 +24,7 @@ public class IntakeExtendCommand extends Command{
 
     @Override
     public void execute(){
-        m_intakeSubsystem.intakePercentOutput(1);
+        m_intakeSubsystem.intakePercentOutput(-1);
         m_shooterSubsystem.indexerToShooter(0.5);
        // m_shooterSubsystem.shoot(0.035);
        // if(m_shooterSubsystem.breakBeam()){

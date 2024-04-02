@@ -9,6 +9,7 @@ public class ArmAmpCommand extends Command{
     private final ArmSubsystem arm_subsystem;
     public ArmAmpCommand(ArmSubsystem arm_subsystem){
         this.arm_subsystem = arm_subsystem;
+        addRequirements(arm_subsystem);
     }
 
     @Override

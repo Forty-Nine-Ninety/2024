@@ -7,6 +7,8 @@ public class ZeroGyroCommand extends Command {
     private final SwerveSubsystem m_swerveSubsystem;
     public ZeroGyroCommand(SwerveSubsystem swerveSubsystem){
         m_swerveSubsystem = swerveSubsystem;
+        addRequirements(swerveSubsystem);
+
     }
     @Override
     public void execute(){

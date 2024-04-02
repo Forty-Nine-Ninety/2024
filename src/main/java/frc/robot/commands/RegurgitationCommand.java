@@ -13,6 +13,8 @@ public class RegurgitationCommand extends Command {
     public RegurgitationCommand(IntakeSubsystem intakeSubsystem, ShooterSubsystem shooterSubsystem){
         m_intakeSubsystem = intakeSubsystem;
         m_shooterSubsystem = shooterSubsystem;
+        addRequirements(intakeSubsystem, shooterSubsystem);
+
     }
 
     @Override
