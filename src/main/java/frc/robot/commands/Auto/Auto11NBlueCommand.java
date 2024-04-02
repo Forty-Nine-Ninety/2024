@@ -27,16 +27,16 @@ import frc.robot.subsystems.SwerveSubsystem;
 import frc.robot.Constants.*;
 
 public class Auto11NBlueCommand extends Command{
-    /*private final SwerveSubsystem m_drivetrain;
-    private final ArmSubsystem m_arm;
-    private final ShooterSubsystem m_shooter;
+    private final SwerveSubsystem swerve_subsystem;
+    private final ArmSubsystem arm_subsystem;
+    private final ShooterSubsystem shooter_subsystem;
     private static AutoCommand autoCommand;
 
-    public Auto11NBlueCommand(SwerveSubsystem drivetrain,ArmSubsystem arm,ShooterSubsystem shooter) {
-        m_drivetrain = drivetrain;
-        m_arm = arm;
-        m_shooter = shooter;
-        autoCommand = new AutoCommand(arm,shooter);
+    public Auto11NBlueCommand(SwerveSubsystem swerve_subsystem,ArmSubsystem arm_subsystem,ShooterSubsystem shooter_subsystem) {
+        this.swerve_subsystem = swerve_subsystem;
+        this.arm_subsystem = arm_subsystem;
+        this.shooter_subsystem = shooter_subsystem;
+        autoCommand = new AutoCommand(arm_subsystem,shooter_subsystem);
 
     }
 
@@ -54,25 +54,13 @@ public class Auto11NBlueCommand extends Command{
         PathPlannerAuto path = new PathPlannerAuto("Auto11NBlue");
         List<PathPlannerPath> pathGroup = PathPlannerAuto.getPathGroupFromAutoFile("Auto11NBlue");
         //PathPlannerTrajectory path11NBlueAuto = new PathPlannerTrajectory("")
-        /*PathPlannerPath path11NBlueAuto = new PathPlannerPath​(/*List<Translation2d> bezierPoints,
+        PathPlannerPath path11NBlueAuto = new PathPlannerPath​(List<Translation2d> bezierPoints,
                                                             List<RotationTarget> holonomicRotations,
                                                             List<ConstraintsZone> constraintZones,
                                                             List<EventMarker> eventMarkers,
                                                             PathConstraints globalConstraints,
                                                             GoalEndState (0.0,0.0),
                                                             boolean reversed,
-                                                            -120.24);*/
-        
-        // This is just an example event map. It would be better to have a constant, global event map
-        // in your code that will be used by all path following commands.
-        /*HashMap<String, Command> eventMap = new HashMap<>();
-        eventMap.put("Note 1", autoCommand.speaker()); //cannot make a static reference to a non-static something (and: void autoCommand?)
-        FollowPathWithEvents command = new FollowPathWithEvents(
-            PathPlannerAuto.getPathGroupFromAutoFile("11NBlue.auto"),
-            getPathFollowingCommand(path),
-            //pathGroup11NBlueAuto.get(0).getEventMarkers(),
-            eventMap
-        );
-        return 
-    }*/
+                                                            -120.24);
+    }
 }

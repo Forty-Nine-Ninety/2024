@@ -21,9 +21,13 @@ import frc.robot.Constants.DriveSettings;
 import frc.robot.Constants.Ports;
 import frc.robot.subsystems.*;
 import frc.robot.commands.*;
+import frc.robot.commands.Auto.AutoSpeakerCommand;
+
 import java.io.File;
+import java.util.List;
 
 import com.pathplanner.lib.auto.AutoBuilder;
+import com.pathplanner.lib.path.PathPlannerTrajectory;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a "declarative" paradigm, very
@@ -140,6 +144,12 @@ public class RobotContainer
      */
     public Command getAutonomousCommand()
     {
+        /*List<PathPlannerTrajectory> path = PathPlanner.loadPathGroup("11NBlue", 2,
+        1);
+        // defining variables used in thingy
+        eventMap.put("Speaker", new AutoSpeakerCommand(m_shooter,m_arm));
+        eventMap.put("x", new ArmRest()); // matches x button*/
+
         //return m_autoCommand.Blue11NCommand();
         return m_drivebase.getAutonomousCommand("1ExitRed");
         //return m_drivebase.getAutonomousCommand("3ExitRed");
