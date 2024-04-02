@@ -14,7 +14,7 @@ public class ArmAmpCommand extends Command{
 
     @Override
     public void initialize(){
-        arm_subsystem.moveToPosition(-85);
+        arm_subsystem.moveToPosition(-95);
     }
 
     /*@Override
