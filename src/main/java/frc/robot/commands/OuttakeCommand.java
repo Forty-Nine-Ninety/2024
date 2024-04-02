@@ -15,6 +15,7 @@ public class OuttakeCommand extends ParallelCommandGroup{
 
         public OuttakeCommand(ShooterSubsystem shooter_subsystem) {
             this.shooter_subsystem = shooter_subsystem;
+            addRequirements(shooter_subsystem);
             addCommands(new ParallelCommandGroup(new ShooterCommand(shooter_subsystem),
                                                                                      new SequentialCommandGroup(new WaitCommand(1.0),
                                                                                                                                             new PreshooterCommand(shooter_subsystem)

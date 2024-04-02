@@ -8,6 +8,8 @@ public class PreshooterCommand extends Command{
     private final ShooterSubsystem shooter_subsystem;
     public PreshooterCommand(ShooterSubsystem shooter){
         this.shooter_subsystem = shooter;
+        addRequirements(shooter);
+
     }
 
     @Override

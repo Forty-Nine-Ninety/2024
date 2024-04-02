@@ -13,6 +13,8 @@ public class IntakeExtendCommand extends Command{
     public IntakeExtendCommand(IntakeSubsystem intakeSubsystem,ShooterSubsystem shooterSubsystem){
         m_intakeSubsystem = intakeSubsystem;
         m_shooterSubsystem = shooterSubsystem;
+        addRequirements(intakeSubsystem, shooterSubsystem);
+
     }
 
     @Override
