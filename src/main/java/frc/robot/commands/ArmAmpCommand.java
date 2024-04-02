@@ -16,8 +16,8 @@ public class ArmAmpCommand extends Command{
         arm_subsystem.moveToPosition(-85);
     }
 
-    @Override
+    /*@Override
     public void end(boolean interrupted){
         arm_subsystem.moveToPosition(0);
-    }
+    }*/
 }
