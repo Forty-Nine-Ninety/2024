@@ -22,6 +22,7 @@ import frc.robot.Constants.Ports;
 import frc.robot.subsystems.*;
 import frc.robot.commands.*;
 import frc.robot.commands.Auto.Auto11NBlueCommand;
+import frc.robot.commands.Auto.Auto11NRedCommand;
 import frc.robot.commands.Auto.AutoAmpCommand;
 import frc.robot.commands.Auto.AutoSpeakerCommand;
 
@@ -59,7 +60,7 @@ public class RobotContainer
     private final ArmAmpCommand m_armAmpCommand = new ArmAmpCommand(m_arm);
     private final ArmManualCommand m_armManualCommand = new ArmManualCommand(m_arm);
     private final ArmSpeakerCommand m_armSpeakerCommand = new ArmSpeakerCommand(m_arm);
-    private final OuttakeCommand m_outtakeCommand = new OuttakeCommand(m_shooter);
+    private final OuttakeCommand m_outtakeCommand = new OuttakeCommand(m_shooter,m_arm);
     private final RegurgitationCommand m_regurgCommand = new RegurgitationCommand(m_intake, m_shooter);
     private final RegurgitationShooterCommand m_regurgShooterCommand = new RegurgitationShooterCommand(m_shooter,m_arm);
     //private final StopRollerCommand m_stopRollerCommand = new StopRollerCommand(m_intake, m_shooter);
@@ -67,6 +68,7 @@ public class RobotContainer
     private final ChainEndgameCommand m_chainEndgameCommand = new ChainEndgameCommand(m_arm);
     //Auto
     private final SendableChooser<Command> autoChooser;
+    private final Auto11NRedCommand m_auto11NRedCommand = new Auto11NRedCommand(m_drivebase, m_arm, m_shooter);
     //private final AutoCommand m_autoCommand = new AutoCommand(m_arm,m_shooter,m_drivebase,"11NBlue");
 
     /**
@@ -128,6 +130,7 @@ public class RobotContainer
         joystickOperator.b().onTrue(m_armAmpCommand);
         joystickOperator.a().onTrue(m_armNeutralCommand);
         joystickOperator.x().onTrue(m_chainEndgameCommand);
+        joystickOperator.povRight().toggleOnTrue(m_auto11NRedCommand);
 
         joystickOperator.leftBumper().toggleOnTrue(m_intakeExtendCommand); //onTrue?
         joystickOperator.rightBumper().toggleOnTrue(m_outtakeCommand);
@@ -156,7 +159,10 @@ public class RobotContainer
         // defining variables used in thingy
         path.put("Speaker", new AutoSpeakerCommand(m_shooter,m_arm));
         eventMap.put("Amp", new AutoAmpCommand(m_shooter,m_arm)); // matches x button*/
-        return new Auto11NBlueCommand(m_drivebase,m_arm,m_shooter);
+        //return m_drivebase.getAutonomousCommand("11NBlue");
+        //return new Auto11NRedCommand(m_drivebase,m_arm,m_shooter);
+        return m_drivebase.getAutonomousCommand("11NRed");
+        //return new Auto11NBlueCommand(m_drivebase,m_arm,m_shooter);
         //return m_drivebase.getAutonomousCommand("1ExitRed");
         //return m_drivebase.getAutonomousCommand("3ExitRed");
         //return m_drivebase.getAutonomousCommand("1ExitBlue");

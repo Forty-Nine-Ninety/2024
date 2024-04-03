@@ -17,7 +17,7 @@ public class AutoAmpCommand extends SequentialCommandGroup{
         m_arm = arm;
         addCommands(new SequentialCommandGroup(new ArmAmpCommand(m_arm),
                                                new ParallelCommandGroup(new WaitCommand(1.0),
-                                                                        new OuttakeCommand(m_shooter)
+                                                                        new OuttakeCommand(m_shooter,m_arm)
                                                                        ),
                                                new ArmNeutralCommand(m_arm)
                                               )

@@ -41,8 +41,8 @@ public class ShooterSubsystem extends SubsystemBase// implements Logged
 
         roller2.follow(roller1, true);
 
-        roller1.setSmartCurrentLimit(60);
-        roller2.setSmartCurrentLimit(60);
+        roller1.setSmartCurrentLimit(80);
+        roller2.setSmartCurrentLimit(80);
         preshooter.setSmartCurrentLimit(20);
     }
 

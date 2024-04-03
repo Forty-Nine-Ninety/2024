@@ -15,9 +15,10 @@ public class AutoSpeakerCommand extends SequentialCommandGroup{
     public AutoSpeakerCommand(ShooterSubsystem shooter, ArmSubsystem arm) {
         m_shooter = shooter;
         m_arm = arm;
+        addRequirements(m_shooter,m_arm);
         addCommands(new SequentialCommandGroup(new ArmSpeakerCommand(m_arm),
                                                new ParallelCommandGroup(new WaitCommand(1.0),
-                                                                        new OuttakeCommand(m_shooter)
+                                                                        new OuttakeCommand(m_shooter,m_arm)
                                                                        ),
                                                new ArmNeutralCommand(m_arm)
                                               )

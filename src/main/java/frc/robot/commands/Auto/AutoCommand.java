@@ -1,4 +1,4 @@
-package frc.robot.commands.Auto;
+/*package frc.robot.commands.Auto;
 
 import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.path.PathPlannerPath;
@@ -58,4 +58,4 @@ public class AutoCommand extends Command{
         SequentialCommandGroup Blue11N = new SequentialCommandGroup(speaker(),exit());
         return Blue11N;
     }
-}
+}*/
