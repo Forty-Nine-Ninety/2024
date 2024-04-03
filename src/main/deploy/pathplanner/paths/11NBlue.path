@@ -75,7 +75,7 @@
   "constraintZones": [],
   "eventMarkers": [
     {
-      "name": "Note 1",
+      "name": "Speaker",
       "waypointRelativePos": 0,
       "command": {
         "type": "sequential",
