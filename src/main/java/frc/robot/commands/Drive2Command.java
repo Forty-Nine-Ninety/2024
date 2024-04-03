@@ -7,11 +7,11 @@ import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.wpilibj2.command.Command;
 import java.util.function.DoubleSupplier;
 
-public class DriveV2Command extends Command{
+public class Drive2Command extends Command{
     private final SwerveSubsystem m_drivebase;
     private DoubleSupplier m_translationX, m_translationY, m_angularRotationX;
 
-    public DriveV2Command(SwerveSubsystem drivebase) {
+    public Drive2Command(SwerveSubsystem drivebase) {
         m_drivebase = drivebase;
         addRequirements(drivebase);
     }
