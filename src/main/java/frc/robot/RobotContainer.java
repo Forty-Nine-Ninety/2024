@@ -21,12 +21,18 @@ import frc.robot.Constants.DriveSettings;
 import frc.robot.Constants.Ports;
 import frc.robot.subsystems.*;
 import frc.robot.commands.*;
+import frc.robot.commands.Auto.Auto11NBlueCommand;
+import frc.robot.commands.Auto.AutoAmpCommand;
 import frc.robot.commands.Auto.AutoSpeakerCommand;
 
 import java.io.File;
+import java.util.HashMap;
 import java.util.List;
 
 import com.pathplanner.lib.auto.AutoBuilder;
+import com.pathplanner.lib.auto.NamedCommands;
+import com.pathplanner.lib.commands.PathPlannerAuto;
+import com.pathplanner.lib.path.PathPlannerPath;
 import com.pathplanner.lib.path.PathPlannerTrajectory;
 
 /**
@@ -71,6 +77,9 @@ public class RobotContainer
         // Configure the trigger bindings
         configureBindings();
         
+        NamedCommands.registerCommand("Speaker",new AutoSpeakerCommand(m_shooter,m_arm));
+        NamedCommands.registerCommand("Amp",new AutoAmpCommand(m_shooter,m_arm));
+        NamedCommands.registerCommand("Intake",new IntakeExtendCommand(m_intake,m_shooter));
         // Auto- SmartDashboard
         autoChooser = AutoBuilder.buildAutoChooser();
         SmartDashboard.putData("Auto Chooser", autoChooser);
@@ -142,16 +151,13 @@ public class RobotContainer
      *
      * @return the command to run in autonomous
      */
-    public Command getAutonomousCommand()
-    {
-        /*List<PathPlannerTrajectory> path = PathPlanner.loadPathGroup("11NBlue", 2,
-        1);
+    public Command getAutonomousCommand(){
+        /*List<PathPlannerPath> path = PathPlannerAuto.getPathGroupFromAutoFile(pathname);
         // defining variables used in thingy
-        eventMap.put("Speaker", new AutoSpeakerCommand(m_shooter,m_arm));
-        eventMap.put("x", new ArmRest()); // matches x button*/
-
-        //return m_autoCommand.Blue11NCommand();
-        return m_drivebase.getAutonomousCommand("1ExitRed");
+        path.put("Speaker", new AutoSpeakerCommand(m_shooter,m_arm));
+        eventMap.put("Amp", new AutoAmpCommand(m_shooter,m_arm)); // matches x button*/
+        return new Auto11NBlueCommand(m_drivebase,m_arm,m_shooter);
+        //return m_drivebase.getAutonomousCommand("1ExitRed");
         //return m_drivebase.getAutonomousCommand("3ExitRed");
         //return m_drivebase.getAutonomousCommand("1ExitBlue");
         //return m_drivebase.getAutonomousCommand("3ExitBlue");
