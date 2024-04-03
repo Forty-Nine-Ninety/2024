@@ -5,26 +5,26 @@ import frc.robot.subsystems.*;
 import edu.wpi.first.wpilibj2.command.Command;
 
 public class ShooterCommand extends Command{
-    private final ShooterSubsystem shooter_subsystem;
+    private final ShooterSubsystem m_shooter;
     public ShooterCommand(ShooterSubsystem shooter){
-        this.shooter_subsystem = shooter;
+        m_shooter = shooter;
         addRequirements(shooter);
 
     }
 
     @Override
     public void initialize(){
-        shooter_subsystem.shoot(1.0);
+        m_shooter.shoot(1.0);
     }
 
     @Override
     public void execute(){
-        shooter_subsystem.shoot(1.0);
+        m_shooter.shoot(1.0);
     }
 
     @Override
     public void end(boolean interrupted){
-        shooter_subsystem.shoot(0.0);
+        m_shooter.shoot(0.0);
     }
 
 }

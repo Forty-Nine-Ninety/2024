@@ -7,39 +7,35 @@ import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 
 public class IntakeExtendCommand extends Command{
-    private final IntakeSubsystem m_intakeSubsystem;
-    private final ShooterSubsystem m_shooterSubsystem;
+    private final IntakeSubsystem m_intake;
+    private final ShooterSubsystem m_shooter;
 
-    public IntakeExtendCommand(IntakeSubsystem intakeSubsystem,ShooterSubsystem shooterSubsystem){
-        m_intakeSubsystem = intakeSubsystem;
-        m_shooterSubsystem = shooterSubsystem;
-        addRequirements(intakeSubsystem, shooterSubsystem);
+    public IntakeExtendCommand(IntakeSubsystem intake, ShooterSubsystem shooter){
+        m_intake = intake;
+        m_shooter = shooter;
+        addRequirements(intake, shooter);
 
     }
 
     @Override
     public void initialize(){
-        m_intakeSubsystem.extendIntake();
+        m_intake.extendIntake();
     }
 
     @Override
     public void execute(){
-        if(m_shooterSubsystem.breakBeam()){
-            m_intakeSubsystem.intakePercentOutput(0);
-            m_shooterSubsystem.indexerToShooter(0);
-            m_intakeSubsystem.retractIntake();
+        if(m_shooter.breakBeam()){
             cancel();
         } else {
-            m_intakeSubsystem.intakePercentOutput(1);
-            m_shooterSubsystem.indexerToShooter(-0.3);
+            m_intake.intakePercentOutput(1);
+            m_shooter.preshoot(-0.3);
         }
     }
 
     @Override
     public void end(boolean interrupted){
-      //  m_shooterSubsystem.shoot(0.0);
-        m_shooterSubsystem.indexerToShooter(0);
-        m_intakeSubsystem.intakePercentOutput(0);
-        m_intakeSubsystem.retractIntake();
+        m_intake.intakePercentOutput(0);
+        m_shooter.preshoot(0);
+        m_intake.retractIntake();
     }
 }

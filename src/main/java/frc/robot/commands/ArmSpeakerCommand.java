@@ -6,15 +6,15 @@ import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.ArmSubsystem;
 
 public class ArmSpeakerCommand extends Command{
-    private final ArmSubsystem arm_subsystem;
+    private final ArmSubsystem m_arm;
 
-    public ArmSpeakerCommand(ArmSubsystem arm_subsystem){
-        this.arm_subsystem = arm_subsystem;
-        addRequirements(arm_subsystem);
+    public ArmSpeakerCommand(ArmSubsystem arm){
+        m_arm = arm;
+        addRequirements(arm);
     }
 
     @Override
     public void initialize(){
-        arm_subsystem.moveToPosition(-10);
+        m_arm.moveToPosition(-10);
     }
 }

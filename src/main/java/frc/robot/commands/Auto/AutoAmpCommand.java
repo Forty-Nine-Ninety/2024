@@ -9,18 +9,18 @@ import frc.robot.subsystems.ArmSubsystem;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
 
 public class AutoAmpCommand extends SequentialCommandGroup{
-    private final ShooterSubsystem shooter_subsystem;
-    private final ArmSubsystem arm_subsystem;
+    private final ShooterSubsystem m_shooter;
+    private final ArmSubsystem m_arm;
 
-    public AutoAmpCommand(ShooterSubsystem shooter_subsystem,ArmSubsystem arm_subsystem) {
-      this.shooter_subsystem = shooter_subsystem;
-      this.arm_subsystem = arm_subsystem;
-      addCommands(new SequentialCommandGroup(new ArmAmpCommand(arm_subsystem),
-                                             new ParallelCommandGroup(new WaitCommand(1.0),
-                                                                      new OuttakeCommand(shooter_subsystem)
-                                                                     ),
-                                             new ArmNeutralCommand(arm_subsystem)
-                                            )
-      );
+    public AutoAmpCommand(ShooterSubsystem shooter, ArmSubsystem arm) {
+        m_shooter = shooter;
+        m_arm = arm;
+        addCommands(new SequentialCommandGroup(new ArmAmpCommand(m_arm),
+                                               new ParallelCommandGroup(new WaitCommand(1.0),
+                                                                        new OuttakeCommand(m_shooter)
+                                                                       ),
+                                               new ArmNeutralCommand(m_arm)
+                                              )
+        );
     }
 }

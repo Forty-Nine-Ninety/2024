@@ -5,21 +5,21 @@ import frc.robot.subsystems.*;
 import edu.wpi.first.wpilibj2.command.Command;
 
 public class PreshooterCommand extends Command{
-    private final ShooterSubsystem shooter_subsystem;
+    private final ShooterSubsystem m_shooter;
     public PreshooterCommand(ShooterSubsystem shooter){
-        this.shooter_subsystem = shooter;
+        m_shooter = shooter;
         addRequirements(shooter);
 
     }
 
     @Override
     public void execute(){
-        shooter_subsystem.indexerToShooter(-1.0);
+        m_shooter.preshoot(-1.0);
     }
 
     @Override
     public void end(boolean interrupted){
-        shooter_subsystem.indexerToShooter(0.0);
+        m_shooter.preshoot(0.0);
     }
 
 }

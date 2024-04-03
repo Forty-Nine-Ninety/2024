@@ -5,25 +5,25 @@ import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.ArmSubsystem;
 
 public class RegurgitationShooterCommand extends Command {
-    private final ShooterSubsystem m_shooterSubsystem;
-    private final ArmSubsystem m_armSubsystem;
+    private final ShooterSubsystem m_shooter;
+    private final ArmSubsystem m_arm;
 
-    public RegurgitationShooterCommand(ShooterSubsystem shooterSubsystem,ArmSubsystem armSubsystem){
-        m_shooterSubsystem = shooterSubsystem;
-        m_armSubsystem =  armSubsystem;
-        addRequirements(shooterSubsystem, armSubsystem);
+    public RegurgitationShooterCommand(ShooterSubsystem shooter, ArmSubsystem arm){
+        m_shooter = shooter;
+        m_arm = arm;
+        addRequirements(shooter, arm);
 
     }
 
     @Override
     public void execute(){
-        m_shooterSubsystem.indexerToShooter(1);
-        m_shooterSubsystem.shoot(-1);
+        m_shooter.preshoot(1);
+        m_shooter.shoot(-1);
     }
     @Override
     public void end(boolean interrupted){
-        m_shooterSubsystem.shoot(0.0);
-        m_armSubsystem.moveToPosition(0);
-        m_shooterSubsystem.indexerToShooter(0);
+        m_shooter.shoot(0.0);
+        m_arm.moveToPosition(0);
+        m_shooter.preshoot(0);
     }
 }

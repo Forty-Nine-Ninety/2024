@@ -4,15 +4,15 @@ import frc.robot.subsystems.*;
 import edu.wpi.first.wpilibj2.command.Command;
 
 public class ChainEndgameCommand extends Command {
-    private final ArmSubsystem m_ArmSubsystem;
+    private final ArmSubsystem m_arm;
 
-    public ChainEndgameCommand(ArmSubsystem armsubsystem) {
-        m_ArmSubsystem = armsubsystem;
-        addRequirements(m_ArmSubsystem);
+    public ChainEndgameCommand(ArmSubsystem arm) {
+        m_arm = arm;
+        addRequirements(arm);
     }
 
     @Override
     public void initialize(){
-        m_ArmSubsystem.moveToPosition(-90); //revhardware client pid said -65
+        m_arm.moveToPosition(-90); //revhardware client pid said -65
     }
 }

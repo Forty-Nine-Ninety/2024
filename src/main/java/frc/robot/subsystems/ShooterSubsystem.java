@@ -55,8 +55,8 @@ public class ShooterSubsystem extends SubsystemBase// implements Logged
         preshooter.set(0.0);
     }
 
-    public void indexerToShooter(double indexer_run_rate){
-        preshooter.set(indexer_run_rate);
+    public void preshoot(double preshooter_run_rate){
+        preshooter.set(preshooter_run_rate);
     }
 
     // @Log

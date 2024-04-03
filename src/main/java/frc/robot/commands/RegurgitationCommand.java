@@ -7,28 +7,28 @@ import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 
 public class RegurgitationCommand extends Command {
-    private final IntakeSubsystem m_intakeSubsystem;
-    private final ShooterSubsystem m_shooterSubsystem;
+    private final IntakeSubsystem m_intake;
+    private final ShooterSubsystem m_shooter;
 
-    public RegurgitationCommand(IntakeSubsystem intakeSubsystem, ShooterSubsystem shooterSubsystem){
-        m_intakeSubsystem = intakeSubsystem;
-        m_shooterSubsystem = shooterSubsystem;
-        addRequirements(intakeSubsystem, shooterSubsystem);
+    public RegurgitationCommand(IntakeSubsystem intake, ShooterSubsystem shooter){
+        m_intake = intake;
+        m_shooter = shooter;
+        addRequirements(intake, shooter);
 
     }
 
     @Override
     public void execute(){
-        m_shooterSubsystem.indexerToShooter(-1);
-        m_intakeSubsystem.extendIntake();
-        m_intakeSubsystem.intakePercentOutput(-1);
-        m_shooterSubsystem.shoot(1);
+        m_shooter.preshoot(-1);
+        m_intake.extendIntake();
+        m_intake.intakePercentOutput(-1);
+        m_shooter.shoot(1);
     }
     @Override
     public void end(boolean interrupted){
-        m_intakeSubsystem.intakePercentOutput(0.0);
-        m_shooterSubsystem.shoot(0.0);
-        m_intakeSubsystem.retractIntake();
-        m_shooterSubsystem.indexerToShooter(0);
+        m_intake.intakePercentOutput(0.0);
+        m_shooter.shoot(0.0);
+        m_intake.retractIntake();
+        m_shooter.preshoot(0);
     }
 }

@@ -6,19 +6,14 @@ import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.ArmSubsystem;
 
 public class ArmAmpCommand extends Command{
-    private final ArmSubsystem arm_subsystem;
-    public ArmAmpCommand(ArmSubsystem arm_subsystem){
-        this.arm_subsystem = arm_subsystem;
-        addRequirements(arm_subsystem);
+    private final ArmSubsystem m_arm;
+    public ArmAmpCommand(ArmSubsystem arm){
+        m_arm = arm;
+        addRequirements(arm);
     }
 
     @Override
     public void initialize(){
-        arm_subsystem.moveToPosition(-95);
+        m_arm.moveToPosition(-95);
     }
-
-    /*@Override
-    public void end(boolean interrupted){
-        arm_subsystem.moveToPosition(0);
-    }*/
 }

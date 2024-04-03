@@ -14,23 +14,23 @@ import frc.robot.commands.ZeroGyroCommand;
 import frc.robot.subsystems.*;
 
 public class AutoCommand extends Command{
-    private final ArmSubsystem arm;
-    private final ShooterSubsystem shooter;
-    private final SwerveSubsystem swerve;
+    private final ArmSubsystem m_arm;
+    private final ShooterSubsystem m_shooter;
+    private final SwerveSubsystem m_drivebase;
     private final ZeroGyroCommand m_zeroGyroCommand;
     private final ArmSpeakerCommand m_armSpeakerCommand;
     private final ArmNeutralCommand m_armNeutralCommand;
     private final OuttakeCommand m_shootCommand;
     private final String m_exitpath;
     
-    public AutoCommand(ArmSubsystem arm,ShooterSubsystem shooter,SwerveSubsystem swerve,String m_path){
-        this.swerve = swerve;
-        m_zeroGyroCommand = new ZeroGyroCommand(swerve);
+    public AutoCommand(ArmSubsystem arm, ShooterSubsystem shooter, SwerveSubsystem drivebase, String m_path){
+        m_drivebase = drivebase;
+        m_zeroGyroCommand = new ZeroGyroCommand(m_drivebase);
         this.m_exitpath = m_path;
-        this.arm = arm;
+        m_arm = arm;
         m_armSpeakerCommand = new ArmSpeakerCommand(arm);
         m_armNeutralCommand = new ArmNeutralCommand(arm);
-        this.shooter = shooter;
+        m_shooter = shooter;
         m_shootCommand = new OuttakeCommand(shooter);
         addRequirements();
     }
@@ -46,7 +46,7 @@ public class AutoCommand extends Command{
         return speaker;
     }
     public Command exit(){
-        SequentialCommandGroup exit = new SequentialCommandGroup(swerve.getAutonomousCommand(m_exitpath),
+        SequentialCommandGroup exit = new SequentialCommandGroup(m_drivebase.getAutonomousCommand(m_exitpath),
                                                                  m_zeroGyroCommand
                                                                 );
         return exit;

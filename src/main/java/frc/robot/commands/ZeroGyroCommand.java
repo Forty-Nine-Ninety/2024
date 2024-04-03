@@ -4,14 +4,14 @@ import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.SwerveSubsystem;
 
 public class ZeroGyroCommand extends Command {
-    private final SwerveSubsystem m_swerveSubsystem;
-    public ZeroGyroCommand(SwerveSubsystem swerveSubsystem){
-        m_swerveSubsystem = swerveSubsystem;
-        addRequirements(swerveSubsystem);
+    private final SwerveSubsystem m_drivebase;
+    public ZeroGyroCommand(SwerveSubsystem drivebase){
+        m_drivebase = drivebase;
+        addRequirements(drivebase);
 
     }
     @Override
     public void execute(){
-        m_swerveSubsystem.zeroGyro();
+        m_drivebase.zeroGyro();
     }    
 }
