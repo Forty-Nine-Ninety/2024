@@ -9,21 +9,21 @@ import frc.robot.commands.Auto.AutoSpeakerCommand;
 import frc.robot.subsystems.*;
 
 public class EventMap {
-    private static ArmSubsystem arm_subsystem;
-    private static ShooterSubsystem shooter_subsystem;
-    private static IntakeSubsystem intake_subsystem;
+    private static ArmSubsystem m_arm;
+    private static ShooterSubsystem m_shooter;
+    private static IntakeSubsystem m_intake;
 
-    public EventMap(ArmSubsystem arm_subsystem,ShooterSubsystem shooter_subsystem,IntakeSubsystem intake_subsystem) {
-        EventMap.arm_subsystem = arm_subsystem;
-        EventMap.shooter_subsystem = shooter_subsystem;
-        EventMap.intake_subsystem = intake_subsystem;
+    public EventMap(ArmSubsystem arm, ShooterSubsystem shooter, IntakeSubsystem intake) {
+        EventMap.m_arm = arm;
+        EventMap.m_shooter = shooter;
+        EventMap.m_intake = intake;
     }
 
-  public static HashMap<String, Command> ScoreGrab() {
-    HashMap<String, Command> ScoreGrab = new HashMap<>();
-    ScoreGrab.put("Shooter", new AutoSpeakerCommand(shooter_subsystem,arm_subsystem));
-    ScoreGrab.put("Amp",new AutoAmpCommand(shooter_subsystem,arm_subsystem));
-    ScoreGrab.put("Intake", new IntakeExtendCommand(intake_subsystem,shooter_subsystem));
-    return ScoreGrab;
-  }
+    public static HashMap<String, Command> ScoreGrab() {
+        HashMap<String, Command> ScoreGrab = new HashMap<>();
+        ScoreGrab.put("Shooter", new AutoSpeakerCommand(m_shooter, m_arm));
+        ScoreGrab.put("Amp",new AutoAmpCommand(m_shooter, m_arm));
+        ScoreGrab.put("Intake", new IntakeExtendCommand(m_intake, m_shooter));
+        return ScoreGrab;
+    }
 }

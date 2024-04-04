@@ -25,16 +25,16 @@ import frc.robot.subsystems.SwerveSubsystem;
 import frc.robot.commands.Auto.AutoSpeakerCommand;
 
 public class Auto11NRedCommand extends SequentialCommandGroup{
-    private final SwerveSubsystem swerve_subsystem;
-    private final ArmSubsystem arm_subsystem;
-    private final ShooterSubsystem shooter_subsystem;
+    private final SwerveSubsystem m_drivebase;
+    private final ArmSubsystem m_arm;
+    private final ShooterSubsystem m_shooter;
 
-    public Auto11NRedCommand(SwerveSubsystem swerve,ArmSubsystem arm,ShooterSubsystem shooter) {
-        this.swerve_subsystem = swerve;
-        this.arm_subsystem = arm;
-        this.shooter_subsystem = shooter;
-        addCommands(new AutoSpeakerCommand(shooter_subsystem,arm_subsystem),
-                                               swerve_subsystem.getAutonomousCommand("11NRed")
+    public Auto11NRedCommand(SwerveSubsystem drivebase, ArmSubsystem arm, ShooterSubsystem shooter) {
+        m_drivebase = drivebase;
+        m_arm = arm;
+        m_shooter = shooter;
+        addCommands(new AutoSpeakerCommand(m_shooter, m_arm),
+                    m_drivebase.getAutonomousCommand("11NRed")
         );
 
     }
