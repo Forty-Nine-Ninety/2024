@@ -19,6 +19,7 @@ import edu.wpi.first.math.trajectory.TrajectoryConfig;
 import edu.wpi.first.math.trajectory.TrajectoryGenerator;
 import edu.wpi.first.math.trajectory.constraint.DifferentialDriveVoltageConstraint;*/
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
+import edu.wpi.first.wpilibj2.command.WaitCommand;
 import frc.robot.subsystems.ArmSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.SwerveSubsystem;
@@ -34,6 +35,7 @@ public class Auto11NBlueCommand extends SequentialCommandGroup{
         m_arm = arm;
         m_shooter = shooter;
         addCommands(new AutoSpeakerCommand(m_shooter, m_arm),
+                    new WaitCommand(0),
                     m_drivebase.getAutonomousCommand("11NBlue")
         );
 
