@@ -5,9 +5,6 @@
 package frc.robot;
 
 import edu.wpi.first.math.MathUtil;
-import edu.wpi.first.math.geometry.Pose2d;
-import edu.wpi.first.math.geometry.Rotation2d;
-import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.wpilibj.Filesystem;
 import edu.wpi.first.wpilibj.RobotBase;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -21,20 +18,13 @@ import frc.robot.Constants.DriveSettings;
 import frc.robot.Constants.Ports;
 import frc.robot.subsystems.*;
 import frc.robot.commands.*;
-import frc.robot.commands.Auto.Auto11NBlueCommand;
-import frc.robot.commands.Auto.Auto11NRedCommand;
 import frc.robot.commands.Auto.AutoAmpCommand;
 import frc.robot.commands.Auto.AutoSpeakerCommand;
 
 import java.io.File;
-import java.util.HashMap;
-import java.util.List;
 
 import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.auto.NamedCommands;
-import com.pathplanner.lib.commands.PathPlannerAuto;
-import com.pathplanner.lib.path.PathPlannerPath;
-import com.pathplanner.lib.path.PathPlannerTrajectory;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a "declarative" paradigm, very
