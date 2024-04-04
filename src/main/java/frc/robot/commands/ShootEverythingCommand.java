@@ -5,8 +5,8 @@ import edu.wpi.first.wpilibj2.command.Command;
 public class ShootEverythingCommand extends Command {
     private final ShooterSubsystem m_shooter;
     public ShootEverythingCommand(ShooterSubsystem shooter){
-            m_shooter = shooter;
-            addRequirements(shooter);
+        m_shooter = shooter;
+        addRequirements(shooter);
     }
 
     @Override

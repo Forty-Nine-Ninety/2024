@@ -18,6 +18,7 @@ import frc.robot.Constants.DriveSettings;
 import frc.robot.Constants.Ports;
 import frc.robot.subsystems.*;
 import frc.robot.commands.*;
+import frc.robot.commands.Auto.Auto11NRedCommand;
 import frc.robot.commands.Auto.AutoAmpCommand;
 import frc.robot.commands.Auto.AutoSpeakerCommand;
 
@@ -151,8 +152,8 @@ public class RobotContainer
         path.put("Speaker", new AutoSpeakerCommand(m_shooter,m_arm));
         eventMap.put("Amp", new AutoAmpCommand(m_shooter,m_arm)); // matches x button*/
         //return m_drivebase.getAutonomousCommand("11NBlue");
-        //return new Auto11NRedCommand(m_drivebase,m_arm,m_shooter);
-        return m_drivebase.getAutonomousCommand("11NRed");
+        return new Auto11NRedCommand(m_drivebase,m_arm,m_shooter);
+        //return m_drivebase.getAutonomousCommand("11NRed");
         //return new Auto11NBlueCommand(m_drivebase,m_arm,m_shooter);
         //return m_drivebase.getAutonomousCommand("1ExitRed");
         //return m_drivebase.getAutonomousCommand("3ExitRed");
