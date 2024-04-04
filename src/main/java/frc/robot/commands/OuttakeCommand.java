@@ -16,15 +16,11 @@ public class OuttakeCommand extends SequentialCommandGroup{
         addRequirements(shooter, arm);
         addCommands(
             new ParallelRaceGroup(
-                new WaitCommand(1.5),
-                new ParallelRaceGroup(
-                    new WaitCommand(0.85), 
-                    new ShooterCommand(m_shooter)
-                    ),
-                new ShootEverythingCommand(m_shooter)
+                new WaitCommand(0.85), 
+                new ShooterCommand(m_shooter)
             ),
+            new ShootEverythingCommand(m_shooter),
             new ArmNeutralCommand(m_arm)
-
         );
     }
 }
