@@ -68,7 +68,7 @@ public class RobotContainer
     private final ChainEndgameCommand m_chainEndgameCommand = new ChainEndgameCommand(m_arm);
     //Auto
     private final SendableChooser<Command> autoChooser;
-    private final Auto11NRedCommand m_auto11NRedCommand = new Auto11NRedCommand(m_drivebase, m_arm, m_shooter);
+    private final AutoSpeakerCommand m_autoSpeakerCommand = new AutoSpeakerCommand(m_shooter,m_arm);
     //private final AutoCommand m_autoCommand = new AutoCommand(m_arm,m_shooter,m_drivebase,"11NBlue");
 
     /**
@@ -130,7 +130,7 @@ public class RobotContainer
         joystickOperator.b().onTrue(m_armAmpCommand);
         joystickOperator.a().onTrue(m_armNeutralCommand);
         joystickOperator.x().onTrue(m_chainEndgameCommand);
-        joystickOperator.povRight().toggleOnTrue(m_auto11NRedCommand);
+        joystickOperator.povRight().toggleOnTrue(m_autoSpeakerCommand);
 
         joystickOperator.leftBumper().toggleOnTrue(m_intakeExtendCommand); //onTrue?
         joystickOperator.rightBumper().toggleOnTrue(m_outtakeCommand);

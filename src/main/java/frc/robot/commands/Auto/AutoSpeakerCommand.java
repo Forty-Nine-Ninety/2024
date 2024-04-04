@@ -1,6 +1,6 @@
 package frc.robot.commands.Auto;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
-import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
+import edu.wpi.first.wpilibj2.command.ParallelRaceGroup;
 import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.commands.ArmNeutralCommand;
 import frc.robot.commands.ArmSpeakerCommand;
@@ -15,13 +15,11 @@ public class AutoSpeakerCommand extends SequentialCommandGroup{
     public AutoSpeakerCommand(ShooterSubsystem shooter, ArmSubsystem arm) {
         m_shooter = shooter;
         m_arm = arm;
-        addRequirements(m_shooter,m_arm);
-        addCommands(new SequentialCommandGroup(new ArmSpeakerCommand(m_arm),
-                                               new ParallelCommandGroup(new WaitCommand(1.0),
-                                                                        new OuttakeCommand(m_shooter,m_arm)
-                                                                       ),
-                                               new ArmNeutralCommand(m_arm)
-                                              )
+        addCommands(new ArmSpeakerCommand(m_arm),
+                    new ParallelRaceGroup(new WaitCommand(1.2),
+                                             new OuttakeCommand(m_shooter,m_arm)
+                                            ),
+                    new ArmNeutralCommand(m_arm)
         );
     }
 }

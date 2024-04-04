@@ -33,9 +33,8 @@ public class Auto11NRedCommand extends SequentialCommandGroup{
         this.swerve_subsystem = swerve;
         this.arm_subsystem = arm;
         this.shooter_subsystem = shooter;
-        addRequirements(swerve,arm,shooter);
-        addCommands(new SequentialCommandGroup(new AutoSpeakerCommand(shooter_subsystem,arm_subsystem),
-                                               swerve_subsystem.getAutonomousCommand("11NRed"))
+        addCommands(new AutoSpeakerCommand(shooter_subsystem,arm_subsystem),
+                                               swerve_subsystem.getAutonomousCommand("11NRed")
         );
 
     }
