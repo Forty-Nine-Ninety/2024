@@ -13,7 +13,7 @@ public class OuttakeCommand extends SequentialCommandGroup{
     public OuttakeCommand(ShooterSubsystem shooter,ArmSubsystem arm) {
         m_shooter = shooter;
         m_arm = arm;
-        addRequirements(shooter);
+        addRequirements(shooter, arm);
         addCommands(
             new ParallelRaceGroup(
                 new WaitCommand(1.5),
