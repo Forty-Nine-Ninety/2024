@@ -1,0 +1,122 @@
+{
+  "version": 1.0,
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 15.196791009322762,
+        "y": 5.5483418235355
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 14.655086712951205,
+        "y": 6.033393423268328
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 13.669424806438911,
+        "y": 6.24996824994244
+      },
+      "prevControl": {
+        "x": 14.496333777689783,
+        "y": 6.2384011509937265
+      },
+      "nextControl": {
+        "x": 11.720845210205647,
+        "y": 6.277225679457298
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 11.642576599968015,
+        "y": 7.060683778774965
+      },
+      "prevControl": {
+        "x": 11.652592901306065,
+        "y": 7.0510490808569095
+      },
+      "nextControl": {
+        "x": 11.076762246117086,
+        "y": 7.604941603401725
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 10.725087959435177,
+        "y": 7.438487191789198
+      },
+      "prevControl": {
+        "x": 11.018328018137517,
+        "y": 7.430054610109221
+      },
+      "nextControl": {
+        "x": 9.603136760045523,
+        "y": 7.470750673019111
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 9.142434900610542,
+        "y": 7.438487191789198
+      },
+      "prevControl": {
+        "x": 9.990621971984686,
+        "y": 7.455471123905211
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": null
+    }
+  ],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 1.0,
+      "rotationDegrees": 0,
+      "rotateFast": true
+    },
+    {
+      "waypointRelativePos": 3.0,
+      "rotationDegrees": 47.40026345753055,
+      "rotateFast": false
+    }
+  ],
+  "constraintZones": [],
+  "eventMarkers": [
+    {
+      "name": "Speaker",
+      "waypointRelativePos": 0,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": []
+        }
+      }
+    }
+  ],
+  "globalConstraints": {
+    "maxVelocity": 3.0,
+    "maxAcceleration": 3.0,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": 179.64181649713294,
+    "rotateFast": false
+  },
+  "reversed": false,
+  "folder": null,
+  "previewStartingState": {
+    "rotation": 0,
+    "velocity": 0
+  },
+  "useDefaultConstraints": true
+}

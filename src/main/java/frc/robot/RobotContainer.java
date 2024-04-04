@@ -120,6 +120,7 @@ public class RobotContainer
 
         joystickDrive.a().onTrue(Commands.runOnce(m_drivebase::zeroGyro));
         joystickDrive.leftBumper().toggleOnTrue(m_intakeExtendCommand);
+        joystickDrive.rightBumper().toggleOnTrue(m_outtakeCommand);
 
         //OPERATOR
         m_armManualCommand.setSuppliers(
