@@ -2,10 +2,7 @@ package frc.robot.commands.Auto;
 
 import java.util.HashMap;
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.Constants;
 import frc.robot.commands.IntakeExtendCommand;
-import frc.robot.commands.Auto.AutoAmpCommand;
-import frc.robot.commands.Auto.AutoSpeakerCommand;
 import frc.robot.subsystems.*;
 
 public class EventMap {

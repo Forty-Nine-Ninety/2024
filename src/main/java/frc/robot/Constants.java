@@ -10,12 +10,9 @@ import com.pathplanner.lib.util.HolonomicPathFollowerConfig;
 import com.pathplanner.lib.util.PIDConstants;
 import com.pathplanner.lib.util.ReplanningConfig;
 
-import edu.wpi.first.math.geometry.Translation3d;
 import edu.wpi.first.math.trajectory.TrapezoidProfile;
-import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.ourunits.*;
-import swervelib.math.Matter;
 
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean constants. This
@@ -174,7 +171,6 @@ public final class Constants
 
 
         //Driver settings
-        public static double JOYSTICKF310_AXIS_DEADBAND = 0.01;
         public static double JOYSTICK_THROTTLE_X_EXPONENT = 2.0;
         public static double JOYSTICK_THROTTLE_Y_EXPONENT = 2.0;
         public static double JOYSTICK_TURNING_EXPONENT = 1.0;
