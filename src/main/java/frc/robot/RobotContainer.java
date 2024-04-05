@@ -7,6 +7,7 @@ package frc.robot;
 import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.wpilibj.Filesystem;
 import edu.wpi.first.wpilibj.RobotBase;
+import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -18,9 +19,7 @@ import frc.robot.Constants.DriveSettings;
 import frc.robot.Constants.Ports;
 import frc.robot.subsystems.*;
 import frc.robot.commands.*;
-import frc.robot.commands.Auto.Auto11NRedCommand;
-import frc.robot.commands.Auto.AutoAmpCommand;
-import frc.robot.commands.Auto.AutoSpeakerCommand;
+import frc.robot.commands.Auto.*;
 
 import java.io.File;
 
@@ -58,7 +57,7 @@ public class RobotContainer
     private final IntakeExtendCommand m_intakeExtendCommand = new IntakeExtendCommand(m_intake, m_shooter);
     private final ChainEndgameCommand m_chainEndgameCommand = new ChainEndgameCommand(m_arm);
     //Auto
-    private final SendableChooser<Command> autoChooser;
+    private SendableChooser<Command> m_autoChooser = new SendableChooser<>();
     private final AutoSpeakerCommand m_autoSpeakerCommand = new AutoSpeakerCommand(m_shooter,m_arm);
     private final AutoAmpCommand m_autoAmpCommand = new AutoAmpCommand(m_shooter,m_arm);
     //private final AutoCommand m_autoCommand = new AutoCommand(m_arm,m_shooter,m_drivebase,"11NBlue");
@@ -74,11 +73,19 @@ public class RobotContainer
         NamedCommands.registerCommand("Speaker",new AutoSpeakerCommand(m_shooter,m_arm));
         NamedCommands.registerCommand("Amp",new AutoAmpCommand(m_shooter,m_arm));
         NamedCommands.registerCommand("Intake",new IntakeExtendCommand(m_intake,m_shooter));
-        // Auto- SmartDashboard
-        autoChooser = AutoBuilder.buildAutoChooser();
-        SmartDashboard.putData("Auto Chooser", autoChooser);
-        SmartDashboard.putData("Exit 1", autoChooser);
-        SmartDashboard.putData("Exit 3",autoChooser);
+
+        // Auto - SmartDashboard
+        m_autoChooser.setDefaultOption("Red 1 Exit", m_drivebase.getAutonomousCommand("1ExitRed"));
+        m_autoChooser.addOption("Red 3 Exit", m_drivebase.getAutonomousCommand("3ExitRed"));
+        m_autoChooser.addOption("Blue 1 Exit", m_drivebase.getAutonomousCommand("1ExitBlue"));
+        m_autoChooser.addOption("Blue 3 Exit", m_drivebase.getAutonomousCommand("3ExitBlue"));
+        m_autoChooser.addOption("Red 1 One Note", new Auto11NRedCommand(m_drivebase,m_arm,m_shooter));
+        m_autoChooser.addOption("Red 2 One Note", new Auto21NRedCommand(m_drivebase,m_arm,m_shooter));
+        m_autoChooser.addOption("Red 3 One Note", new Auto31NRedCommand(m_drivebase,m_arm,m_shooter));
+        m_autoChooser.addOption("Blue 1 One Note", new Auto11NBlueCommand(m_drivebase,m_arm,m_shooter));
+        m_autoChooser.addOption("Blue 2 One Note", new Auto21NBlueCommand(m_drivebase,m_arm,m_shooter));
+        m_autoChooser.addOption("Blue 3 One Note", new Auto31NBlueCommand(m_drivebase,m_arm,m_shooter));
+        Shuffleboard.getTab("Auto Choose").add("Choose Auto Path", m_autoChooser);
     }
 
     /**
@@ -153,15 +160,18 @@ public class RobotContainer
         // defining variables used in thingy
         path.put("Speaker", new AutoSpeakerCommand(m_shooter,m_arm));
         eventMap.put("Amp", new AutoAmpCommand(m_shooter,m_arm)); // matches x button*/
-        //return m_drivebase.getAutonomousCommand("11NBlue");
-        return new Auto11NRedCommand(m_drivebase,m_arm,m_shooter);
-        //return m_drivebase.getAutonomousCommand("11NRed");
-        //return new Auto11NBlueCommand(m_drivebase,m_arm,m_shooter);
+
         //return m_drivebase.getAutonomousCommand("1ExitRed");
         //return m_drivebase.getAutonomousCommand("3ExitRed");
         //return m_drivebase.getAutonomousCommand("1ExitBlue");
         //return m_drivebase.getAutonomousCommand("3ExitBlue");
-        //return autoChooser.getSelected();
+        //return new Auto11NRedCommand(m_drivebase,m_arm,m_shooter);
+        //return new Auto21NRedCommand(m_drivebase,m_arm,m_shooter);
+        //return new Auto31NRedCommand(m_drivebase,m_arm,m_shooter);
+        //return new Auto11NBlueCommand(m_drivebase,m_arm,m_shooter);
+        //return new Auto21NBlueCommand(m_drivebase,m_arm,m_shooter);
+        //return new Auto31NBlueCommand(m_drivebase,m_arm,m_shooter);
+        return m_autoChooser.getSelected();
     }
 
     public void setDriveMode()
