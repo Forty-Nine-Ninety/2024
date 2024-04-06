@@ -5,7 +5,7 @@
       "x": 15.196791009322762,
       "y": 5.5483418235355
     },
-    "rotation": 0
+    "rotation": 178.24414488668344
   },
   "command": {
     "type": "sequential",
@@ -14,12 +14,24 @@
         {
           "type": "path",
           "data": {
-            "pathName": "21NRed"
+            "pathName": "22NRedA"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "22NRedB"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "22NRedC"
           }
         }
       ]
     }
   },
-  "folder": "1 Note",
+  "folder": null,
   "choreoAuto": false
 }

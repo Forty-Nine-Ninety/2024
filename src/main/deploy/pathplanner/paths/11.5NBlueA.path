@@ -3,67 +3,50 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 0.6460150142522509,
-        "y": 4.3902870676111725
+        "x": 0.723749165090923,
+        "y": 6.695291700768587
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.1623027968278161,
-        "y": 3.6886012568321433
+        "x": 1.723749165090922,
+        "y": 6.695291700768587
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 1.9815102917242873,
-        "y": 1.2815148778445704
+        "x": 2.8787488593495705,
+        "y": 6.301513890064817
       },
       "prevControl": {
-        "x": 1.2915232034167774,
-        "y": 1.5458347444472667
+        "x": 1.8790178219351361,
+        "y": 6.278322235742103
       },
       "nextControl": {
-        "x": 2.9065684903721545,
-        "y": 0.9271441022028063
+        "x": 5.382334852632668,
+        "y": 6.359591811776216
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 4.121307585207763,
-        "y": 0.7249644869660117
+        "x": 7.393208661417322,
+        "y": 7.43575551039991
       },
       "prevControl": {
-        "x": 3.349666977111733,
-        "y": 0.7278743214893848
+        "x": 4.9136733412355715,
+        "y": 7.3671071693995245
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "11.5NBlueA"
     }
   ],
-  "rotationTargets": [
-    {
-      "waypointRelativePos": 1,
-      "rotationDegrees": 53.230738865735184,
-      "rotateFast": false
-    }
-  ],
+  "rotationTargets": [],
   "constraintZones": [],
-  "eventMarkers": [
-    {
-      "name": "Note 1",
-      "waypointRelativePos": 0,
-      "command": {
-        "type": "parallel",
-        "data": {
-          "commands": []
-        }
-      }
-    }
-  ],
+  "eventMarkers": [],
   "globalConstraints": {
     "maxVelocity": 3.0,
     "maxAcceleration": 3.0,
@@ -78,7 +61,7 @@
   "reversed": false,
   "folder": "1 Note",
   "previewStartingState": {
-    "rotation": 121.05754717951288,
+    "rotation": -120.29798953862422,
     "velocity": 0
   },
   "useDefaultConstraints": true

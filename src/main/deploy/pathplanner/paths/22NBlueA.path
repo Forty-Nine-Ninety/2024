@@ -3,42 +3,36 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 15.829650325973404,
-        "y": 4.37241236981828
+        "x": 1.3540549534802775,
+        "y": 5.570907887186145
       },
       "prevControl": null,
       "nextControl": {
-        "x": 15.425717786626844,
-        "y": 3.524284682822165
+        "x": 2.021951053161366,
+        "y": 5.557130711483645
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 12.780381282984788,
-        "y": 0.7945629780148459
+        "x": 3.863698153322233,
+        "y": 5.570907887186145
       },
       "prevControl": {
-        "x": 13.490855981711963,
-        "y": 0.7866648557371192
+        "x": 3.3030502403597404,
+        "y": 5.55101412054676
       },
       "nextControl": null,
       "isLocked": false,
       "linkedName": null
     }
   ],
-  "rotationTargets": [
-    {
-      "waypointRelativePos": 0.5,
-      "rotationDegrees": 179.11337138795918,
-      "rotateFast": false
-    }
-  ],
+  "rotationTargets": [],
   "constraintZones": [],
   "eventMarkers": [
     {
-      "name": "Speaker",
+      "name": "Note 1",
       "waypointRelativePos": 0,
       "command": {
         "type": "parallel",
@@ -56,13 +50,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0.5779295734685274,
+    "rotation": -179.9521578438569,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "1 Note",
+  "folder": null,
   "previewStartingState": {
-    "rotation": -121.37507536505038,
+    "rotation": -179.1444189685247,
     "velocity": 0
   },
   "useDefaultConstraints": true

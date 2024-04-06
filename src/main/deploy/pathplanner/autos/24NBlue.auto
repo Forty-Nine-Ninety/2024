@@ -1,0 +1,73 @@
+{
+  "version": 1.0,
+  "startingPose": {
+    "position": {
+      "x": 1.3444346842397392,
+      "y": 5.593355182080734
+    },
+    "rotation": 179.25159853163544
+  },
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "path",
+          "data": {
+            "pathName": "24NBlueA"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "24NBlueB"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "24NBlueC"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "24NBlueD"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "24NBlueE"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "24NBlueF"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "24NBlueG"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "24NBlueH"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "24NBlueI"
+          }
+        }
+      ]
+    }
+  },
+  "folder": "fAnCy",
+  "choreoAuto": false
+}
