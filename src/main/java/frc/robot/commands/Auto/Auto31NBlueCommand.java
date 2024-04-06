@@ -15,7 +15,7 @@ public class Auto31NBlueCommand extends SequentialCommandGroup{
         m_drivebase = drivebase;
         m_arm = arm;
         m_shooter = shooter;
-        addCommands(new AutoSpeakerCommand(m_shooter, m_arm),
+        addCommands(new AutoSpeakerCommand(m_shooter, m_arm).withTimeout(4.05),
                     new WaitCommand(0),
                     m_drivebase.getAutonomousCommand("31NBlue")
         );

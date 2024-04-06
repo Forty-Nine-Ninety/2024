@@ -3,45 +3,34 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.3540549534802775,
+        "x": 1.3396245496194699,
         "y": 5.570907887186145
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.0220931339307278,
+        "x": 2.249380500956523,
         "y": 5.570907887186145
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "22NBlueB"
     },
     {
       "anchor": {
-        "x": 3.863698153322233,
+        "x": 3.945826748134978,
         "y": 5.570907887186145
       },
       "prevControl": {
-        "x": 3.3026974008625762,
+        "x": 3.415428910086364,
         "y": 5.570907887186145
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "22NBlueA"
+      "linkedName": null
     }
   ],
   "rotationTargets": [],
   "constraintZones": [],
-  "eventMarkers": [
-    {
-      "name": "Note 1",
-      "waypointRelativePos": 0,
-      "command": {
-        "type": "parallel",
-        "data": {
-          "commands": []
-        }
-      }
-    }
-  ],
+  "eventMarkers": [],
   "globalConstraints": {
     "maxVelocity": 3.0,
     "maxAcceleration": 3.0,
@@ -50,13 +39,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -179.9521578438569,
+    "rotation": -179.25325326197537,
     "rotateFast": false
   },
   "reversed": false,
   "folder": "2 Note",
   "previewStartingState": {
-    "rotation": -179.1444189685247,
+    "rotation": 179.98237233790218,
     "velocity": 0
   },
   "useDefaultConstraints": true

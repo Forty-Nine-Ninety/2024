@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 15.196791009322762,
-      "y": 5.5483418235355
+      "x": 1.3540549534802775,
+      "y": 5.570907887186145
     },
-    "rotation": 178.24414488668344
+    "rotation": 180.0
   },
   "command": {
     "type": "sequential",
@@ -14,19 +14,19 @@
         {
           "type": "path",
           "data": {
-            "pathName": "22NRedA"
+            "pathName": "22NBlueA"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "22NRedB"
+            "pathName": "22NBlueB"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "22NRedC"
+            "pathName": "22NBlueC"
           }
         }
       ]
