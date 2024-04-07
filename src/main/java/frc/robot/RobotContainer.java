@@ -86,6 +86,7 @@ public class RobotContainer
         m_autoChooser.addOption("Blue 1 One Note", new Auto11NBlueCommand(m_drivebase,m_arm,m_shooter));
         m_autoChooser.addOption("Blue 2 One Note", new Auto21NBlueCommand(m_drivebase,m_arm,m_shooter));
         m_autoChooser.addOption("Blue 3 One Note", new Auto31NBlueCommand(m_drivebase,m_arm,m_shooter));
+        m_autoChooser.addOption("Red 2 Two Note", new Auto22NRedCommand(m_drivebase,m_arm,m_shooter,m_intake));
         Shuffleboard.getTab("Auto Choose").add("Choose Auto Path", m_autoChooser);
     }
 
