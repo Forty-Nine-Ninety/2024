@@ -15,6 +15,6 @@ public class ArmFerryCommand extends Command{
 
     @Override
     public void initialize(){
-        m_arm.moveToPosition(-30);
+        m_arm.moveToPosition(-1000/36);
     }
 }
