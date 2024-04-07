@@ -1,4 +1,4 @@
-package frc.robot.commands.Auto;
+/*package frc.robot.commands.Auto;
 
 import java.util.HashMap;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -23,4 +23,4 @@ public class EventMap {
         ScoreGrab.put("Intake", new IntakeExtendCommand(m_intake, m_shooter));
         return ScoreGrab;
     }
-}
+}*/

@@ -42,7 +42,7 @@ public class IntakeSubsystem extends SubsystemBase// implements Logged
         intakeRoller.setInverted(true);
 
         intakeExtend.setSmartCurrentLimit(10);
-        intakeRoller.setSmartCurrentLimit(40);
+        intakeRoller.setSmartCurrentLimit(60);
 
         intakeExtend.setIdleMode(IdleMode.kBrake);
         //intakeRoller.setIdleMode(IdleMode.kBrake);

@@ -85,7 +85,8 @@ public class RobotContainer
         m_autoChooser.addOption("Blue 1 One Note", new Auto11NBlueCommand(m_drivebase,m_arm,m_shooter));
         m_autoChooser.addOption("Blue 2 One Note", new Auto21NBlueCommand(m_drivebase,m_arm,m_shooter));
         m_autoChooser.addOption("Blue 3 One Note", new Auto31NBlueCommand(m_drivebase,m_arm,m_shooter));
-        m_autoChooser.addOption("Red 2 Two Note", new Auto22NRedCommand(m_drivebase,m_arm,m_shooter,m_intake));
+        //m_autoChooser.addOption("Red 2 Two Note", new Auto22NRedCommand(m_drivebase,m_arm,m_shooter,m_intake));
+        //m_autoChooser.addOption("Blue 2 Two Note", new Auto22NBlueCommand(m_drivebase,m_arm,m_shooter,m_intake));
         Shuffleboard.getTab("Auto Choose").add("Choose Auto Path", m_autoChooser);
     }
 
@@ -131,8 +132,7 @@ public class RobotContainer
         joystickOperator.b().onTrue(m_armAmpCommand);
         joystickOperator.a().onTrue(m_armNeutralCommand);
         joystickOperator.x().onTrue(m_chainEndgameCommand);
-        joystickOperator.povRight().toggleOnTrue(m_autoSpeakerCommand);
-        joystickOperator.povLeft().toggleOnTrue(m_autoAmpCommand);
+        //joystickOperator.povRight().toggleOnTrue(new Auto22NRedCommand(m_drivebase,m_arm,m_shooter,m_intake));
 
         joystickOperator.leftBumper().toggleOnTrue(m_intakeExtendCommand); //onTrue?
         joystickOperator.rightBumper().toggleOnTrue(m_outtakeCommand);
