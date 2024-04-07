@@ -28,7 +28,7 @@ public class IntakeExtendCommand extends Command{
             cancel();
         } else {
             m_intake.intakePercentOutput(1);
-            m_shooter.preshoot(-0.2);
+            m_shooter.preshoot(-0.3);
         }
     }
 

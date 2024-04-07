@@ -19,10 +19,10 @@ public class RegurgitationCommand extends Command {
 
     @Override
     public void execute(){
-        m_shooter.preshoot(-0.4);
+        m_shooter.preshoot(-1);
         m_intake.extendIntake();
         m_intake.intakePercentOutput(-1);
-        m_shooter.shoot(0.3);
+        m_shooter.shoot(1);
     }
     @Override
     public void end(boolean interrupted){

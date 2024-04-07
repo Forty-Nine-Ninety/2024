@@ -177,6 +177,6 @@ public final class Constants
         public static double ARCADE_SPEED_X_MULTIPLIER = 1.0;
         public static double ARCADE_SPEED_Y_MULTIPLIER = -1.0;
         public static double ARCADE_ROTATION_MULTIPLIER = 1.0;
-        public static double ARCADE_ROTATIONV2_MULTIPLIER = 0.6;
+        public static double ARCADE_ROTATIONV2_MULTIPLIER = 0.7;
     }
 }
