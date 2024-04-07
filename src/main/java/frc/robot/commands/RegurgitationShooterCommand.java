@@ -17,8 +17,8 @@ public class RegurgitationShooterCommand extends Command {
 
     @Override
     public void execute(){
-        m_shooter.preshoot(1);
-        m_shooter.shoot(-1);
+        m_shooter.preshoot(-0.4);
+        m_shooter.shoot(0.2);
     }
     @Override
     public void end(boolean interrupted){
