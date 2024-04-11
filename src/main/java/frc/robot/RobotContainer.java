@@ -51,6 +51,7 @@ public class RobotContainer
     private final ArmManualCommand m_armManualCommand = new ArmManualCommand(m_arm);
     private final ArmSpeakerCommand m_armSpeakerCommand = new ArmSpeakerCommand(m_arm);
     private final ArmFerryCommand m_armFerryCommand = new ArmFerryCommand(m_arm);
+    private final ArmFerryBackupCommand m_armFerryBackupCommand = new ArmFerryBackupCommand(m_arm);
     private final OuttakeCommand m_outtakeCommand = new OuttakeCommand(m_shooter,m_arm);
     private final RegurgitationCommand m_regurgCommand = new RegurgitationCommand(m_intake, m_shooter);
     private final RegurgitationShooterCommand m_regurgShooterCommand = new RegurgitationShooterCommand(m_shooter,m_arm);
@@ -134,6 +135,7 @@ public class RobotContainer
         joystickOperator.a().onTrue(m_armNeutralCommand);
         joystickOperator.x().onTrue(m_chainEndgameCommand);
         joystickOperator.povRight().onTrue(m_armFerryCommand);
+        joystickOperator.povLeft().onTrue(m_armFerryBackupCommand);
 
         joystickOperator.leftBumper().toggleOnTrue(m_intakeExtendCommand); //onTrue?
         joystickOperator.rightBumper().toggleOnTrue(m_outtakeCommand);

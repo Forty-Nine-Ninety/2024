@@ -16,7 +16,7 @@ public class OuttakeCommand extends SequentialCommandGroup{
 
         addCommands(
             new ParallelRaceGroup(
-                new WaitCommand(0.85), 
+                new WaitCommand(1.2), 
                 new ShooterCommand(m_shooter)
             ),
             new ShootEverythingCommand(m_shooter),
