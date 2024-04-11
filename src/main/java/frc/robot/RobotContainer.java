@@ -151,11 +151,12 @@ public class RobotContainer
         joystickOperator.povUp().toggleOnTrue(m_regurgShooterCommand);
         joystickOperator.povDown().toggleOnTrue(m_regurgCommand);
 
+        joystickOperator.getHID().setRumble(RumbleType.kLeftRumble,1);
         if (m_shooter.breakBeam()){
-            joystickOperator.getHID().setRumble(RumbleType.kBothRumble,1);
+            joystickOperator.getHID().setRumble(RumbleType.kLeftRumble,1);
         }
         else{
-            joystickOperator.getHID().setRumble(RumbleType.kBothRumble,0);
+            joystickOperator.getHID().setRumble(RumbleType.kLeftRumble,0);
         }
         //shooter.breakBeam() ? joystickOperator.getHID().setRumble(RumbleType.kBothRumble,1): joystickOperator.getHID().setRumble(RumbleType.kBothRumble,0);
     }
