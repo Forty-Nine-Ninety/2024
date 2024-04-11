@@ -6,7 +6,10 @@ package frc.robot;
 
 import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.wpilibj.Filesystem;
+import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.RobotBase;
+import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.GenericHID.RumbleType;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -35,6 +38,7 @@ public class RobotContainer
 {
     CommandXboxController joystickDrive = new CommandXboxController(Ports.PORT_JOYSTICK_DRIVE);
     CommandXboxController joystickOperator = new CommandXboxController(Ports.PORT_JOYSTICK_OPERATOR);
+    //XboxController joystickOperator = new XboxController(Ports.PORT_JOYSTICK_OPERATOR);
 
     // The robot's subsystems and commands are defined here...
     //Subsystems
@@ -146,6 +150,14 @@ public class RobotContainer
 
         joystickOperator.povUp().toggleOnTrue(m_regurgShooterCommand);
         joystickOperator.povDown().toggleOnTrue(m_regurgCommand);
+
+        if (m_shooter.breakBeam()){
+            joystickOperator.getHID().setRumble(RumbleType.kBothRumble,1);
+        }
+        else{
+            joystickOperator.getHID().setRumble(RumbleType.kBothRumble,0);
+        }
+        //shooter.breakBeam() ? joystickOperator.getHID().setRumble(RumbleType.kBothRumble,1): joystickOperator.getHID().setRumble(RumbleType.kBothRumble,0);
     }
 
     public void setTeleopDefaultCommands()
