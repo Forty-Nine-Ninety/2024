@@ -18,12 +18,12 @@ public class RumbleCommand extends Command{
     public void rumble(int joystick /*0,1*/){
         if(joystick==0){
             joystickDrive.getHID().setRumble(RumbleType.kBothRumble,1);
-            new WaitCommand(1);
+            new WaitCommand(0.5);
             joystickDrive.getHID().setRumble(RumbleType.kBothRumble,0);
         }
         else{
             joystickOperator.getHID().setRumble(RumbleType.kBothRumble,1);
-            new WaitCommand(1);
+            new WaitCommand(0.5);
             joystickOperator.getHID().setRumble(RumbleType.kBothRumble,0);
         }
     }
