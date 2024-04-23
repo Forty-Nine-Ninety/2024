@@ -61,6 +61,7 @@ public class RobotContainer
     private final RegurgitationShooterCommand m_regurgShooterCommand = new RegurgitationShooterCommand(m_shooter,m_arm);
     //private final StopRollerCommand m_stopRollerCommand = new StopRollerCommand(m_intake, m_shooter);
     private final IntakeExtendCommand m_intakeExtendCommand = new IntakeExtendCommand(m_intake, m_shooter,joystickDrive,joystickOperator);
+    private final RumbleCommand m_rumbleCommand = new RumbleCommand(joystickDrive,joystickOperator);
     private final ChainEndgameCommand m_chainEndgameCommand = new ChainEndgameCommand(m_arm);
     //Auto
     private SendableChooser<Command> m_autoChooser = new SendableChooser<>();
@@ -150,15 +151,15 @@ public class RobotContainer
 
         joystickOperator.povUp().toggleOnTrue(m_regurgShooterCommand);
         joystickOperator.povDown().toggleOnTrue(m_regurgCommand);
+        joystickDrive.povUp().toggleOnTrue(m_rumbleCommand);
 
-        joystickOperator.getHID().setRumble(RumbleType.kLeftRumble,1);
         if (m_shooter.breakBeam()){
             joystickOperator.getHID().setRumble(RumbleType.kLeftRumble,1);
         }
         else{
             joystickOperator.getHID().setRumble(RumbleType.kLeftRumble,0);
         }
-        //shooter.breakBeam() ? joystickOperator.getHID().setRumble(RumbleType.kBothRumble,1): joystickOperator.getHID().setRumble(RumbleType.kBothRumble,0);
+        
     }
 
     public void setTeleopDefaultCommands()

@@ -15,6 +15,23 @@ public class RumbleCommand extends Command{
         this.joystickOperator = joystickOperator;
     }
 
+    @Override
+    public void initialize(){
+        joystickDrive.getHID().setRumble(RumbleType.kBothRumble,1);
+    }
+
+    @Override
+    public void execute(){
+        joystickDrive.getHID().setRumble(RumbleType.kBothRumble,1);
+        //new WaitCommand(1.0);
+        //joystickDrive.getHID().setRumble(RumbleType.kBothRumble,0);
+    }
+
+    @Override
+    public void end(boolean interrupted){
+        joystickOperator.getHID().setRumble(RumbleType.kBothRumble,0);
+    }
+
     public void rumble(int joystick /*0,1*/){
         if(joystick==0){
             joystickDrive.getHID().setRumble(RumbleType.kBothRumble,1);
@@ -27,5 +44,4 @@ public class RumbleCommand extends Command{
             joystickOperator.getHID().setRumble(RumbleType.kBothRumble,0);
         }
     }
-    
 }

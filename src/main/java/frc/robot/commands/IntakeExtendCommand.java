@@ -41,5 +41,6 @@ public class IntakeExtendCommand extends Command{
         m_intake.intakePercentOutput(0);
         m_shooter.preshoot(0);
         m_intake.retractIntake();
+        m_rumble.rumble(1);
     }
 }
