@@ -2,19 +2,24 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.GenericHID.RumbleType;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.ParallelRaceGroup;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 
-public class RumbleCommand extends SequentialCommandGroup{
+public class RumbleCommandHelper extends Command{
     CommandXboxController joystick;
 
-    public RumbleCommand(CommandXboxController joystick){
+    public RumbleCommandHelper(CommandXboxController joystick){
         this.joystick = joystick;
-        addCommands(new ParallelRaceGroup(new RumbleCommandHelper(joystick),
-                                          new WaitCommand(1.0)
-                                         )
-                   );
+    }
+
+    @Override
+    public void execute(){
+        joystick.getHID().setRumble(RumbleType.kBothRumble,1);
+    }
+
+    @Override
+    public void end(boolean interrupted){
+        joystick.getHID().setRumble(RumbleType.kBothRumble,0);
     }
 }
