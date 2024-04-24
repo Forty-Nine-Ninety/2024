@@ -60,7 +60,7 @@ public class RobotContainer
     private final RegurgitationCommand m_regurgCommand = new RegurgitationCommand(m_intake, m_shooter);
     private final RegurgitationShooterCommand m_regurgShooterCommand = new RegurgitationShooterCommand(m_shooter,m_arm);
     //private final StopRollerCommand m_stopRollerCommand = new StopRollerCommand(m_intake, m_shooter);
-    private final IntakeExtendCommand m_intakeExtendCommand = new IntakeExtendCommand(m_intake, m_shooter,joystickDrive);
+    private final IntakeExtendCommand m_intakeExtendCommand = new IntakeExtendCommand(m_intake, m_shooter);
     private final RumbleCommand m_rumbleCommand = new RumbleCommand(joystickDrive);
     private final RumbleCommandHelper m_rumbleCommandHelper = new RumbleCommandHelper(joystickDrive);
     private final ChainEndgameCommand m_chainEndgameCommand = new ChainEndgameCommand(m_arm);
@@ -80,7 +80,7 @@ public class RobotContainer
         
         NamedCommands.registerCommand("Speaker",new AutoSpeakerCommand(m_shooter,m_arm));
         NamedCommands.registerCommand("Amp",new AutoAmpCommand(m_shooter,m_arm));
-        NamedCommands.registerCommand("Intake",new IntakeExtendCommand(m_intake,m_shooter,joystickDrive));
+        NamedCommands.registerCommand("Intake",new IntakeExtendCommand(m_intake,m_shooter));
 
         // Auto - SmartDashboard
         m_autoChooser.setDefaultOption("Red 1 Exit", m_drivebase.getAutonomousCommand("1ExitRed"));
@@ -152,15 +152,10 @@ public class RobotContainer
 
         joystickOperator.povUp().toggleOnTrue(m_regurgShooterCommand);
         joystickOperator.povDown().toggleOnTrue(m_regurgCommand);
-        joystickDrive.povUp().toggleOnTrue(m_rumbleCommand);
 
         if (m_shooter.breakBeam()){
-            joystickOperator.getHID().setRumble(RumbleType.kLeftRumble,1);
-        }
-        else{
-            joystickOperator.getHID().setRumble(RumbleType.kLeftRumble,0);
-        }
-        
+            new RumbleCommand(joystickDrive);
+        } 
     }
 
     public void setTeleopDefaultCommands()
