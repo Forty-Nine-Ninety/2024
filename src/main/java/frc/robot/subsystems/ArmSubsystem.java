@@ -12,10 +12,10 @@ import com.revrobotics.CANSparkBase.IdleMode;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 import frc.robot.Constants.*;
-// import monologue.Logged;
-// import monologue.Annotations.Log;
+import monologue.Logged;
+import monologue.Annotations.Log;
 
-public class ArmSubsystem extends SubsystemBase// implements Logged 
+public class ArmSubsystem extends SubsystemBase implements Logged 
 {
     private CANSparkMax armLeft, armRight;
     private SparkPIDController m_pidController;
