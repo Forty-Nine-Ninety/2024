@@ -10,12 +10,12 @@ import frc.robot.subsystems.ShooterSubsystem;
 public class IntakeExtendCommand extends Command{
     private final IntakeSubsystem m_intake;
     private final ShooterSubsystem m_shooter;
-    private final RumbleCommand m_joystick;
+    private final RumbleCommand m_rumble;
 
     public IntakeExtendCommand(IntakeSubsystem intake, ShooterSubsystem shooter,CommandXboxController joystick){
         m_intake = intake;
         m_shooter = shooter;
-        m_joystick = new RumbleCommand(joystick);
+        m_rumble = new RumbleCommand(joystick);
         addRequirements(intake, shooter);
 
     }
@@ -40,6 +40,6 @@ public class IntakeExtendCommand extends Command{
         m_intake.intakePercentOutput(0);
         m_shooter.preshoot(0);
         m_intake.retractIntake();
-        m_joystick.execute();
+        m_rumble.schedule();
     }
 }
