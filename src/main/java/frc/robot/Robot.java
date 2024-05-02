@@ -4,13 +4,15 @@
 
 package frc.robot;
 
-// import monologue.Monologue;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Filesystem;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
-// import monologue.Logged;
+
+import monologue.Monologue;
+import monologue.Logged;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,7 +23,7 @@ import swervelib.parser.SwerveParser;
  * described in the TimedRobot documentation. If you change the name of this class or the package after creating this
  * project, you must also update the build.gradle file in the project.
  */
-public class Robot extends TimedRobot// implements Logged
+public class Robot extends TimedRobot implements Logged
 {
 
     private static Robot   instance;
@@ -54,11 +56,9 @@ public class Robot extends TimedRobot// implements Logged
         // Create a timer to disable motor brake a few seconds after disable.  This will let the robot stop
         // immediately when disabled, but then also let it be pushed more 
         disabledTimer = new Timer();
-        /*
         boolean fileOnly = false;
         boolean lazyLogging = false;
         Monologue.setupMonologue(this, "Robot", fileOnly, lazyLogging);
-        */
     }
 
     /**
@@ -80,6 +80,8 @@ public class Robot extends TimedRobot// implements Logged
         // commands, running already-scheduled commands, removing finished or interrupted commands,
         // and running subsystem periodic() methods.  This must be called from the robot's periodic
         // block in order for anything in the Command-based framework to work.
+        Monologue.setFileOnly(DriverStation.isFMSAttached());
+        Monologue.updateAll();
         CommandScheduler.getInstance().run();
     }
 

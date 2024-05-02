@@ -8,11 +8,9 @@ java {
     targetCompatibility = JavaVersion.VERSION_17
 }
 
-/* 
 repositories {
   maven { url 'https://jitpack.io' }
-} 
-*/
+}
 
 def ROBOT_MAIN_CLASS = "frc.robot.Main"
 
@@ -69,11 +67,12 @@ dependencies {
     nativeDebug wpi.java.vendor.jniDebug(wpi.platforms.desktop)
     simulationDebug wpi.sim.enableDebug()
 
+
     nativeRelease wpi.java.deps.wpilibJniRelease(wpi.platforms.desktop)
     nativeRelease wpi.java.vendor.jniRelease(wpi.platforms.desktop)
     simulationRelease wpi.sim.enableRelease()
 
-    // implementation 'com.github.shueja:Monologue:1.0.0-beta6'
+    implementation 'com.github.shueja:Monologue:1.0.0-beta6'
 
     testImplementation 'org.junit.jupiter:junit-jupiter:5.10.1'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
