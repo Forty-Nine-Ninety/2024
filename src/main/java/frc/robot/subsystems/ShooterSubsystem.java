@@ -12,7 +12,7 @@ import monologue.Annotations.Log;
 
 import com.revrobotics.CANSparkLowLevel.MotorType;
 
-public class ShooterSubsystem extends SubsystemBase implements Logged
+public class ShooterSubsystem extends SubsystemBase
 {
     private CANSparkMax roller1, roller2;
     private CANSparkMax preshooter;

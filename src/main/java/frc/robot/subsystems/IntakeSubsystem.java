@@ -14,7 +14,7 @@ import monologue.Logged;
 import monologue.Annotations.Log;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
-public class IntakeSubsystem extends SubsystemBase implements Logged
+public class IntakeSubsystem extends SubsystemBase 
 {
     private CANSparkMax intakeExtend, intakeRoller;
     private SparkPIDController pid_intake;

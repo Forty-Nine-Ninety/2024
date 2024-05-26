@@ -15,7 +15,7 @@ import frc.robot.Constants.*;
 import monologue.Logged;
 import monologue.Annotations.Log;
 
-public class ArmSubsystem extends SubsystemBase implements Logged 
+public class ArmSubsystem extends SubsystemBase 
 {
     private CANSparkMax armLeft, armRight;
     private SparkPIDController m_pidController;
@@ -64,12 +64,12 @@ public class ArmSubsystem extends SubsystemBase implements Logged
 
     }
 
-    //@Log
+   // @Log
     public void resetArmPosition(){
         m_encoder.setPosition(0);
     }
 
-    //@Log
+   // @Log
     public double getPosition(){
         return (m_encoder.getPosition());
     } 
