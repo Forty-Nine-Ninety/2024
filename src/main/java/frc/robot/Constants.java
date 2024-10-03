@@ -51,7 +51,7 @@ public final class Constants
     public static class RobotMeasurements
     {
         public static double DRIVETRAIN_WHEEL_DIAMETER_IN = 4.0;
-        public static final double DRIVE_GEAR_RATIO = 6.75;
+        public static final double DRIVE_GEAR_RATIO = 5.9; //previously 6.75
         public static final double STEERING_GEAR_RATIO = 150.0/7.0;
 
         public static double ARM_MOTION_REDUCTION = 1000.0/3.0;
